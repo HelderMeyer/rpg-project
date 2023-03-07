@@ -20,7 +20,7 @@ FORMATAÇÃO NO CORPO DO SITE
 */
 
 body {
-    background-color: var(--blue1);
+    background-color: var(--blue3);
 }
 
 /*
@@ -33,6 +33,7 @@ MINHAS VARIÁVEIS
     --blue3: #205295;
     --blue4: #2C74B3;
     --white: #ffffff;
+    --black: #000000;
 }
 
 /*
@@ -72,4 +73,32 @@ ANIMAÇÃO QUE MUDA A COR DO TEXTO QUANDO PASSAR O MOUSE POR CIMA
 .header ul li a:hover{
     transition: 0.3s;
     color: #ffffff;
+}
+
+/*
+SECTION JOGO
+*/
+
+.game{
+    background-color: var(--black);
+    margin: auto;
+    width: 80%;
+    height: 500px;
+    margin-top: 80px;
+}
+
+/*
+SECTION FOOTER
+*/
+
+.footer{
+    background-color: var(--blue2);
+    margin-top: 200px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p{
+    color: var(--white)
 }
