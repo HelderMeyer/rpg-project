@@ -1,0 +1,75 @@
+/*
+IMPORTAÇÃO DE FONTS
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
+
+/*
+FORMATAÇÃO GERAL
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+/*
+FORMATAÇÃO NO CORPO DO SITE
+*/
+
+body {
+    background-color: var(--blue1);
+}
+
+/*
+MINHAS VARIÁVEIS
+*/
+
+:root {
+    --blue1: #0A2647;
+    --blue2: #144272;
+    --blue3: #205295;
+    --blue4: #2C74B3;
+    --white: #ffffff;
+}
+
+/*
+FORMATAÇÃO DA NAVBAR
+*/
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--blue2);
+    padding: 20px;
+    align-items: center;
+    gap: 20px;
+}
+
+.header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.header ul li a{
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+    color: #bcbcbc;
+    text-decoration: none;
+}
+
+/*
+ANIMAÇÃO QUE MUDA A COR DO TEXTO QUANDO PASSAR O MOUSE POR CIMA
+*/
+
+.header ul li a:hover{
+    transition: 0.3s;
+    color: #ffffff;
+}
