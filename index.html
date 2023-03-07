@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/mobile/mobile.css">
     <title>Game</title>
 </head>
+
 <body>
     <!-- NAVBAR DO SITE -->
     <header class="header">
@@ -20,12 +22,71 @@
     </header>
     <!-- JOGO -->
     <section class="game">
-
+        <!-- Nosso personagem -->
+        <div id="character">
+            <!-- Classe do personagem -->
+            <h1 style="color: white;">Hero</h1>
+            <!-- Barra de vida do personagem -->
+            <div class="lifeBar">
+                <!-- Vida do personagem -->
+                <div id="characterLife"><h3 style="color: white; font-size: 15px; margin-left: 10px; width: 100px;">100 de Vida</h3></div>
+            </div>
+            <!-- Barra de magia do personagem -->
+            <div id="magicBar">
+                <!-- Magia do personagem -->
+                <div id="characterMagic">
+                    <h3 style="color: white; font-size: 15px; margin-left: 10px; width: 100px;">100 de Magia</h3>
+                </div>
+            </div>
+            <!-- Barra de força de ataque do personagem -->
+            <div id="attackBar">
+                <!-- Força do personagem -->
+                <div id="characterAttack">
+                    <h3 style="color: white; font-size: 15px; margin-left: 10px; width: 100px;">100 de Força</h3>
+                </div>
+            </div>
+            <!-- Barra de defesa do personagem -->
+            <div id="defenseBar">
+                <!-- Defesa do personagem -->
+                <div id="characterDefense">
+                    <h3 style="color: white; font-size: 15px; margin-left: 10px; width: 200px;">100 de Defesa</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Monstro -->       
+        <div id="monster">
+            <!-- Tipo do monstro -->
+            <h1 style="color: white;">Monster</h1>
+            <!-- Barra de vida do monstro -->
+            <div class="lifeBar">
+                <!-- Vida do monstro -->
+                <div id="monsterLife">
+                    <h3 style="color: white; font-size: 15px; margin-left: 10px; width: 100px;">100 de Vida</h3>
+                </div>
+            </div>
+            <!-- Barra de força de ataque do personagem -->
+            <div id="attackBar">
+                <!-- Força do personagem -->
+                <div id="monsterAttack">
+                    <h3 style="color: white; font-size: 15px; margin-left: 10px; width: 100px;">100 de Força</h3>
+                </div>
+            </div>
+            <!-- Barra de defesa do personagem -->
+            <div id="defenseBar">
+                <!-- Defesa do personagem -->
+                <div id="monsterDefense">
+                    <h3 style="color: white; font-size: 15px; margin-left: 10px; width: 200px;">100 de Defesa</h3>
+                </div>
+            </div>
+        </div>
+        </div>
     </section>
+    <!-- Rodapé do site -->
     <footer class="footer">
         <p>Todos os Direitos Reservados &#169;</p>
         <p>Site criado por Helder Meyer</p>
     </footer>
     <script src="assets/javascript/script.js"></script>
 </body>
+
 </html>

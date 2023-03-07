@@ -21,6 +21,10 @@ FORMATAÇÃO NO CORPO DO SITE
 
 body {
     background-color: var(--blue3);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 1px;
 }
 
 /*
@@ -80,11 +84,116 @@ SECTION JOGO
 */
 
 .game{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: var(--black);
     margin: auto;
     width: 80%;
-    height: 500px;
+    padding: 20px;
+    border-radius: 15px;
+    flex-grow: 1;
     margin-top: 80px;
+}
+
+#character,#monster{
+    width: 49%;
+}
+
+/*
+BARRA DE VIDA
+*/
+
+.lifeBar{
+    border: 1px dashed #888888;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+}
+
+#characterLife{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ff0000;
+}
+
+#monsterLife{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ff0000;
+}
+
+/*
+BARRA DE MAGIA
+*/
+
+#magicBar{
+    border: 1px dashed #888888;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#characterMagic{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #0095ff;
+}
+
+/*
+BARRA DE FORÇA
+*/
+
+#attackBar{
+    border: 1px dashed #888888;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#characterAttack{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ffb300;
+}
+
+#monsterAttack{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ffb300;
+}
+
+/*
+BARRA DE DEFESA
+*/
+
+#defenseBar{
+    border: 1px dashed #888888;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#characterDefense{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #00f7ff;
+}
+
+#monsterDefense{
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #00f7ff;
 }
 
 /*
