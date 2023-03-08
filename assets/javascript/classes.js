@@ -51,6 +51,16 @@ class Stage {
         if(attacking.life <= 0 || attacked.life <= 0){ // Se a vida de quem ataca ou de quem foi atacado for menor ou igual a 0
             if(attacking <= 0){ // Se a vida de quem ataca for menor que ou igual a 0
                 console.log('Você não pode atacar, porque está sem vida!')
+            }else if(attacked.life <= 0){
+                console.log('Você não pode atacar, porque o monstro já está sem vida!')
+            }
+        }else{
+            if(attacked.life < attacking.strength){
+                attacked.life = 0
+                console.log(`O monstro está morto!`)
+            }else{
+                attacked.life -= attacking.strength
+                console.log(`O monstro recebeu ${attacking.strength} de dano!`)
             }
         }
         this.update() // Atualizar o jogo
@@ -58,10 +68,12 @@ class Stage {
     update(){ // Método que vai atualizar o jogo a cada ação realizada
         const cl = document.querySelector('#characterLife') // cl = characterLife
         const ml = document.querySelector('#monsterLife') // ml = monsterLife
-        let characterLifePct = ((this.fighter.life/this.fighter.maxLife)*100)
-        let monsterLifePct = ((this.monster.life/this.monster.maxLife)*100)
-        cl.innerHTML = `${this.fighter.life} de vida`
-        cl.style.width = `${characterLifePct}%`
-        ml.style.width = `${monsterLifePct}%`
+        let characterLifePct = ((this.fighter.life/this.fighter.maxLife)*100) // Vida do Personagem em %
+        let monsterLifePct = ((this.monster.life/this.monster.maxLife)*100) // Vida do Monstro em %
+
+        cl.innerHTML = `<p>${this.fighter.life} de vida</p>` // Exibir a vida do personagem dentro da barra de vida
+        ml.innerHTML = `<p>${this.monster.life} de vida</p>` // Exibir a vida do monstro dentro da barra de vida
+        cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
+        ml.style.width = `${monsterLifePct}%` // Manupular a barra de vida de acordo com a porcentagem da vida do monstro
     }
 }

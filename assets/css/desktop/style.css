@@ -115,12 +115,28 @@ BARRA DE VIDA
     height: 20px;
     border-radius: 10px;
     background-color: #ff0000;
+    transition: 0.7s;
+}
+
+#characterLife p {
+    margin-left: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    width: 200px;
 }
 
 #monsterLife{
     height: 20px;
     border-radius: 10px;
     background-color: #ff0000;
+    transition: 0.7s;
+}
+
+#monsterLife p {
+    margin-left: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    width: 200px;
 }
 
 /*
