@@ -200,7 +200,7 @@ BARRA DE DEFESA
 BOTÕES DE ATACAR
 */
 
-#buttonMonsterAttack,#buttonCharacterAttack{
+#buttonCharacterAttack{
     margin-top: 10px;
 }
 
