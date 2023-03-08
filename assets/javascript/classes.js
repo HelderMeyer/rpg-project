@@ -48,19 +48,44 @@ class Stage {
         this.update() // Atualizar o jogo
     }
     eventAttack(attacking, attacked){ // Evento que vai captar todos os ataques do personagem
+        let randomFactor = (Math.random() * 2).toFixed(2)
+        let actualAttack = (attacking.strength * randomFactor).toFixed(2)
+        let actualDefense = (attacked.defense * randomFactor).toFixed(2)
+        let actualCounterAttack = (attacked.strength * randomFactor).toFixed(2)
+        let actualCounterDefense = (attacking.defense * randomFactor).toFixed(2)
+
         if(attacking.life <= 0 || attacked.life <= 0){ // Se a vida de quem ataca ou de quem foi atacado for menor ou igual a 0
             if(attacking <= 0){ // Se a vida de quem ataca for menor que ou igual a 0
                 console.log('Você não pode atacar, porque está sem vida!')
-            }else if(attacked.life <= 0){
+            }else if(attacked.life <= 0){ // Se a vida de quem está sendo atacado for menor que ou igual a 0
                 console.log('Você não pode atacar, porque o monstro já está sem vida!')
             }
         }else{
-            if(attacked.life < attacking.strength){
-                attacked.life = 0
-                console.log(`O monstro está morto!`)
+            if(actualAttack < actualDefense){
+                console.log(`O ${attacked.name} defendeu!`)
             }else{
-                attacked.life -= attacking.strength
-                console.log(`O monstro recebeu ${attacking.strength} de dano!`)
+                if(attacked.life <= actualAttack){ // Se a vida de quem é atacado for menor do que a força de ataque de quem tá atacando
+                    attacked.life = 0 // Vida de quem ataca vai para 0
+                    console.log(`O monstro recebeu ${actualAttack} de dano!`)
+                    console.log(`O monstro está morto!`)
+                }else{
+                    attacked.life -= actualAttack
+                    console.log(`O monstro recebeu ${actualAttack} de dano!`)
+                }
+            }
+            if(attacked.life > 0){
+                if(actualCounterAttack < actualCounterDefense){
+                    console.log(`Você defendeu!`)
+                }else{
+                    if(attacking.life <= actualCounterAttack){
+                        attacking.life = 0 // Vida de quem ataca vai para 0
+                        console.log(`Você recebeu ${actualCounterAttack} de dano!`)
+                        console.log(`Você morreu!`)
+                    }else{
+                        attacking.life -= actualCounterAttack
+                        console.log(`Você recebeu ${actualCounterAttack} de dano!`)
+                    }
+                }
             }
         }
         this.update() // Atualizar o jogo
@@ -71,8 +96,8 @@ class Stage {
         let characterLifePct = ((this.fighter.life/this.fighter.maxLife)*100) // Vida do Personagem em %
         let monsterLifePct = ((this.monster.life/this.monster.maxLife)*100) // Vida do Monstro em %
 
-        cl.innerHTML = `<p>${this.fighter.life} de vida</p>` // Exibir a vida do personagem dentro da barra de vida
-        ml.innerHTML = `<p>${this.monster.life} de vida</p>` // Exibir a vida do monstro dentro da barra de vida
+        cl.innerHTML = `<p>${this.fighter.life.toFixed(2)} de vida</p>` // Exibir a vida do personagem dentro da barra de vida
+        ml.innerHTML = `<p>${this.monster.life.toFixed(2)} de vida</p>` // Exibir a vida do monstro dentro da barra de vida
         cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
         ml.style.width = `${monsterLifePct}%` // Manupular a barra de vida de acordo com a porcentagem da vida do monstro
     }
