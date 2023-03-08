@@ -21,11 +21,13 @@ class Character {
     }
 }
 
+// CLASSES DOS HERÓIS
+
 // Classe Knight = Cavaleiro
 
 class Knight extends Character {
     constructor(name){
-        super(name)
+        super(name) // Pega o nome da classe Character
         this.life = 100
         this.magic = 0
         this.strength = 15
@@ -38,7 +40,7 @@ class Knight extends Character {
 
 class Wizard extends Character {
     constructor(name){
-        super(name)
+        super(name) // Pega o nome da classe Character
         this.life = 85
         this.magic = 100
         this.strength = 7
@@ -51,7 +53,7 @@ class Wizard extends Character {
 
 class Archer extends Character {
     constructor(name){
-        super(name)
+        super(name) // Pega o nome da classe Character
         this.life = 90
         this.magic = 20
         this.strength = 20
@@ -60,5 +62,15 @@ class Archer extends Character {
     }
 }
 
-const p = new Knight('Helder')
-console.log(p.life)
+// CLASSES DOS VILÕES
+
+class Monster extends Character {
+    constructor(name){
+        super('Monstro')
+        this.life = 10
+        this.magic = 5
+        this.strength = 5
+        this.defense = 4
+        this.maxLife = this.life
+    }
+}
