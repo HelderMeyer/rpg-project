@@ -5,6 +5,8 @@ class Character {
     maxLife = 0 // Vida máxima do personagem
     strength = 0 // Força do personagem
     defense = 0 // Defesa do personagem
+    magic = 0 // Magia do personagem
+    maxMagic = 0 // Magia máxima do personagem
     constructor(name){
         this.name = name // Nome do personagem
     }
@@ -19,6 +21,8 @@ class Knight extends Character {
         this.maxLife = this.life // Vida máxima do Cavaleiro
         this.strength = 15 // Força do Cavaleiro
         this.defense = 10 // Defesa do Cavaleiro
+        this.magic = 0 // Magia do Cavaleiro
+        this.maxMagic = this.magic // Magia máxima do Cavaleiro
     }
 }
 
@@ -31,6 +35,8 @@ class Monster extends Character {
         this.maxLife = this.life // Vida máxima do Monstro
         this.strength = 10 // Força do Monstro
         this.defense = 8 // Defesa do Monstro
+        this.magic = 0 // Magia do Monstro
+        this.maxMagic = this.magic // Magia máxima do Monstro
     }
 }
 
@@ -104,16 +110,30 @@ class Stage {
         // FORÇA E DEFESA (MONSTRO)
         const smd = document.querySelector('#showMonsterDefense') // smd = showMonsterDefense
         const sms = document.querySelector('#showMonsterStrength') // sms = showMonsterStrength
-       
+        
+        // MAGIAS
+        const ym = document.querySelector('#characterMagic') // ym = yourMagic (Sua magia)
+        const mm = document.querySelector('#monsterMagic') // mm = monsterMagic (Magia do monstro)
+
         // SUA BARRA DE VIDA E DO MONSTRO
         let characterLifePct = ((this.fighter.life/this.fighter.maxLife)*100) // Vida do Personagem em %
         let monsterLifePct = ((this.monster.life/this.monster.maxLife)*100) // Vida do Monstro em %
+
+        // SUA BARRA DE MAGIA E A BARRA MAGIA DO MONSTRO
+        let characterMagicPct = ((this.fighter.magic/this.fighter.maxMagic)*100) // Magia do Personagem em %
+        let monsterMagicPct = ((this.monster.magic/this.monster.maxMagic)*100) // Magia do Monstro em %
         
         // VIDA NA TELA
-        cl.innerHTML = `<p>${this.fighter.life.toFixed(2)} de vida</p>` // Exibir a vida do personagem dentro da barra de vida
-        ml.innerHTML = `<p>${this.monster.life.toFixed(2)} de vida</p>` // Exibir a vida do monstro dentro da barra de vida
+        cl.innerHTML = `<p>${this.fighter.life.toFixed(0)} de vida</p>` // Exibir a vida do personagem dentro da barra de vida
+        ml.innerHTML = `<p>${this.monster.life.toFixed(0)} de vida</p>` // Exibir a vida do monstro dentro da barra de vida
         cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
         ml.style.width = `${monsterLifePct}%` // Manupular a barra de vida de acordo com a porcentagem da vida do monstro
+
+        // MAGIA NA TELA
+        ym.innerHTML = `<p>${this.fighter.magic.toFixed(0)} de magia</p>` // Exibir a magia do personagem dentro da barra de magia
+        mm.innerHTML = `<p>${this.monster.magic.toFixed(0)} de magia</p>` // Exibir a magia do monstro dentro da barra de magia
+        ym.style.width = `${characterMagicPct}%`
+        mm.style.width = `${monsterMagicPct}%`
 
         // FORÇA E DEFESA
         syd.innerHTML = `${this.fighter.defense} de defesa`

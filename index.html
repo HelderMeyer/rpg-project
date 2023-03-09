@@ -21,40 +21,65 @@
         </ul>
     </header>
     <!-- JOGO -->
+        <div id="levels">
+            <h1 class="levelsTitle">Nível</h1>
+            <ul id="levelsList">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li class="levelsList10">10</li>
+            </ul>
+        </div>
     <section class="game">
-        <!-- Personagem -->
-        <div id="character">
-            <!-- Classe do personagem -->
-            <h1 style="color: white;">Hero</h1>
-            <!-- Barra de vida do personagem -->
-            <div class="lifeBar">
-                <!-- Vida do personagem -->
-                <div id="characterLife"></div>
+            <!-- Personagem -->
+            <div id="character">
+                <!-- Classe do personagem -->
+                <h1 style="color: white;">Hero</h1>
+                <!-- Barra de vida do personagem -->
+                <div class="lifeBar">
+                    <!-- Vida do personagem -->
+                    <div id="characterLife"></div>
+                </div>
+                <!-- Barra de magia do personagem -->
+                <div class="magicBar">
+                    <!-- Magia do personagem -->
+                    <div id="characterMagic"></div>
+                </div>
+                <div class="Skills">
+                    <img src="/assets/images/Escudo.png" alt="Defesa" height="24px">
+                    <p id="showYourDefense"></p>
+                    <img src="/assets/images/Força.png" alt="Força" height="24px">
+                    <p id="showYourStrength"></p>
+                </div>
+                <button id="buttonCharacterAttack">Atacar</button>
             </div>
-            <div class="Skills">
-                <img src="/assets/images/Escudo.png" alt="Defesa" height="24px">
-                <p id="showYourDefense"></p>
-                <img src="/assets/images/Força.png" alt="Força" height="24px">
-                <p id="showYourStrength"></p>
+            <!-- Monstro -->
+            <div id="monster">
+                <!-- Tipo do monstro -->
+                <h1 style="color: white;">Monster</h1>
+                <!-- Barra de vida do monstro -->
+                <div class="lifeBar">
+                    <!-- Vida do monstro -->
+                    <div id="monsterLife"></div>
+                </div>
+                <!-- Barra de magia do personagem -->
+                <div class="magicBar">
+                    <!-- Magia do personagem -->
+                    <div id="monsterMagic"></div>
+                </div>
+                <div class="Skills">
+                    <img src="/assets/images/Escudo.png" alt="Defesa" height="24px">
+                    <p id="showMonsterDefense"></p>
+                    <img src="/assets/images/Força.png" alt="Força" height="24px">
+                    <p id="showMonsterStrength"></p>
+                </div>
             </div>
-            <button id="buttonCharacterAttack">Atacar</button>
-        </div>
-        <!-- Monstro -->
-        <div id="monster">
-            <!-- Tipo do monstro -->
-            <h1 style="color: white;">Monster</h1>
-            <!-- Barra de vida do monstro -->
-            <div class="lifeBar">
-                <!-- Vida do monstro -->
-                <div id="monsterLife"></div>
-            </div>
-            <div class="Skills">
-                <img src="/assets/images/Escudo.png" alt="Defesa" height="24px">
-                <p id="showMonsterDefense"></p>
-                <img src="/assets/images/Força.png" alt="Força" height="24px">
-                <p id="showMonsterStrength"></p>
-            </div>
-        </div>
     </section>
     <!-- Rodapé do site -->
     <footer class="footer">

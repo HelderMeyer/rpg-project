@@ -36,6 +36,7 @@ MINHAS VARIÁVEIS
     --blue2: #144272;
     --blue3: #205295;
     --blue4: #2C74B3;
+    --blue5: #41a6ff;
     --white: #ffffff;
     --black: #000000;
 }
@@ -93,7 +94,7 @@ SECTION JOGO
     padding: 20px;
     border-radius: 15px;
     flex-grow: 1;
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 #character,#monster{
@@ -143,7 +144,7 @@ BARRA DE VIDA
 BARRA DE MAGIA
 */
 
-#magicBar{
+.magicBar{
     border: 1px dashed #888888;
     width: 100%;
     height: 20px;
@@ -152,10 +153,29 @@ BARRA DE MAGIA
 }
 
 #characterMagic{
-    width: 100%;
     height: 20px;
     border-radius: 10px;
     background-color: #0095ff;
+}
+
+#monsterMagic{
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ffb300;
+}
+
+#characterMagic p{
+    color: #ffffff;
+    font-weight: bold;
+    width: 200px;
+    margin-left: 10px;
+}
+
+#monsterMagic p{
+    color: #ffffff;
+    font-weight: bold;
+    width: 200px;
+    margin-left: 10px;
 }
 
 /*
@@ -249,4 +269,37 @@ SKILLS
     margin: 0px 5px;
     text-align: center;
     font-weight: bold;
+}
+
+/*
+LEVELS DO JOGO
+*/
+
+#levels{
+    margin: auto;
+    margin-top: 20px;
+}
+
+#levels ul {
+    display: flex;
+    gap: 10px;
+}
+
+#levels ul li:last-child{
+    padding: 10px 10px !important;
+}
+
+#levelsList li{
+    list-style: none;
+    color: #ffffff;
+    background-color: var(--blue5);
+    border-radius: 50%;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.levelsTitle{
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
 }
