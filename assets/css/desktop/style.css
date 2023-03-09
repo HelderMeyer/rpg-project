@@ -233,3 +233,20 @@ SECTION FOOTER
 .footer p{
     color: var(--white)
 }
+
+/*
+SKILLS
+*/
+
+.Skills {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.Skills p {
+    color: #ffffff;
+    margin: 0px 5px;
+    text-align: center;
+    font-weight: bold;
+}
