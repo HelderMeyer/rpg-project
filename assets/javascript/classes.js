@@ -132,17 +132,17 @@ class Stage {
         // MAGIA NA TELA
         ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${this.fighter.magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
         mm.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${this.monster.magic.toFixed(0)} de magia</p></div>` // Exibir a magia do monstro dentro da barra de magia
-        ym.style.width = `${characterMagicPct}%`
-        mm.style.width = `${monsterMagicPct}%`
+        ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
+        mm.style.width = `${monsterMagicPct}%` // Manupular a barra de magia de acordo com a porcentagem de magia do monstro
 
         // FORÇA E DEFESA
-        syd.innerHTML = `${this.fighter.defense} de defesa`
+        syd.innerHTML = `${this.fighter.defense} de defesa` // Exibir a defesa do personagem
         syd.style.color = `aqua`
-        sys.innerHTML = `${this.fighter.strength} de força`
+        sys.innerHTML = `${this.fighter.strength} de força`// Exibir a força do personagem
         sys.style.color = `red`
-        smd.innerHTML = `${this.monster.defense} de defesa`
+        smd.innerHTML = `${this.monster.defense} de defesa` // Exibir a defesa do monstro
         smd.style.color = `aqua`
-        sms.innerHTML = `${this.monster.strength} de força`
+        sms.innerHTML = `${this.monster.strength} de força` // Exibir a força do monstro
         sms.style.color = `red`
     }
 }
