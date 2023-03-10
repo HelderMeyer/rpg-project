@@ -108,33 +108,44 @@ BARRA DE VIDA
 .lifeBar{
     border: 1px dashed #888888;
     width: 100%;
-    height: 20px;
+    height: 30px;
     border-radius: 10px;
 }
 
 #characterLife{
-    height: 20px;
+    height: 30px;
     border-radius: 10px;
     background-color: #ff0000;
     transition: 0.7s;
 }
 
 #characterLife p {
-    margin-left: 10px;
     color: #ffffff;
     font-weight: bold;
     width: 200px;
+    
+}
+
+.divBarsFormat{
+    width: 200px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.divBarsFormat img{
+    margin-left: 5px;
+    margin-top: 2px;
 }
 
 #monsterLife{
-    height: 20px;
+    height: 30px;
     border-radius: 10px;
     background-color: #ff0000;
     transition: 0.7s;
 }
 
 #monsterLife p {
-    margin-left: 10px;
     color: #ffffff;
     font-weight: bold;
     width: 200px;
@@ -153,13 +164,13 @@ BARRA DE MAGIA
 }
 
 #characterMagic{
-    height: 20px;
+    height: 30px;
     border-radius: 10px;
     background-color: #0095ff;
 }
 
 #monsterMagic{
-    height: 20px;
+    height: 30px;
     border-radius: 10px;
     background-color: #ffb300;
 }
@@ -168,14 +179,12 @@ BARRA DE MAGIA
     color: #ffffff;
     font-weight: bold;
     width: 200px;
-    margin-left: 10px;
 }
 
 #monsterMagic p{
     color: #ffffff;
     font-weight: bold;
     width: 200px;
-    margin-left: 10px;
 }
 
 /*

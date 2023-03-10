@@ -124,14 +124,14 @@ class Stage {
         let monsterMagicPct = ((this.monster.magic/this.monster.maxMagic)*100) // Magia do Monstro em %
         
         // VIDA NA TELA
-        cl.innerHTML = `<p>${this.fighter.life.toFixed(0)} de vida</p>` // Exibir a vida do personagem dentro da barra de vida
-        ml.innerHTML = `<p>${this.monster.life.toFixed(0)} de vida</p>` // Exibir a vida do monstro dentro da barra de vida
+        cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${this.fighter.life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
+        ml.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${this.monster.life.toFixed(0)} de vida</p></div>` // Exibir a vida do monstro dentro da barra de vida
         cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
         ml.style.width = `${monsterLifePct}%` // Manupular a barra de vida de acordo com a porcentagem da vida do monstro
 
         // MAGIA NA TELA
-        ym.innerHTML = `<p>${this.fighter.magic.toFixed(0)} de magia</p>` // Exibir a magia do personagem dentro da barra de magia
-        mm.innerHTML = `<p>${this.monster.magic.toFixed(0)} de magia</p>` // Exibir a magia do monstro dentro da barra de magia
+        ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${this.fighter.magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
+        mm.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${this.monster.magic.toFixed(0)} de magia</p></div>` // Exibir a magia do monstro dentro da barra de magia
         ym.style.width = `${characterMagicPct}%`
         mm.style.width = `${monsterMagicPct}%`
 
