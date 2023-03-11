@@ -6,4 +6,15 @@ const stage = new Stage( // Área de eventos das lutas
     document.querySelector('#character'),
     document.querySelector('#monster')
 )
-stage.start()
+const update = new Update(
+    stage.fighter,
+    stage.monster,
+    stage.fighterElement,
+    stage.monsterElement
+)
+const sword = new Sword()
+// Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => sword.eventAttack(stage.fighter, stage.monster, 'sword'))
+document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => sword.eventAttack(stage.fighter, stage.monster, 'spear'))
+document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => sword.eventAttack(stage.fighter, stage.monster, 'knife')) 
+update.update()
