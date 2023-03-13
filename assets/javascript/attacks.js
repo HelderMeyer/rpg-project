@@ -6,11 +6,11 @@ class Sword {
         let actualCounterAttack = (attacked.strength * randomFactor).toFixed(2) // Força de quem contraataca (o monstro) vezes o fator de ataque, para gerar valores de ataque aleatórios
         let actualCounterDefense = (attacking.defense * randomFactor).toFixed(2) // Defesa de quem é contraatacado (você) vezes o fator de número aleatório, para gerar valores de defesa aleatórios
 
-        if(weaponType === 'sword'){
+        if(weaponType === 'sword'){ // Ataque de Espada
             weaponType = 'Espada'
-        }else if(weaponType === 'spear'){
+        }else if(weaponType === 'spear'){ // Ataque de Lança
             weaponType = 'Lança'
-        }else if(weaponType === 'knife'){
+        }else if(weaponType === 'knife'){ // Ataque de Faca
             weaponType = 'Faca'
         }
 
@@ -54,6 +54,6 @@ class Sword {
             stage.fighterElement,
             stage.monsterElement
         )
-        update.update()
+        update.update() // Atualizar o jogo
     }
 }
