@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/desktop/style.css">
     <link rel="stylesheet" href="assets/css/mobile/mobile.css">
+    <link rel="stylesheet" href="assets/css/desktop/index.css">
     <title>Game</title>
 </head>
 
@@ -20,81 +21,35 @@
             <li><a href="contato.html">Contato</a></li>
         </ul>
     </header>
-    <!-- JOGO -->
-    <div id="levels">
-        <h1 class="levelsTitle">Nível</h1>
-        <ul id="levelsList">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li class="levelsList10">10</li>
-        </ul>
-    </div>
-    <section class="game">
-        <!-- Personagem -->
-        <div id="character">
-            <!-- Classe do personagem -->
-            <h1 style="color: white;">Hero</h1>
-            <!-- Barra de vida do personagem -->
-            <div class="lifeBar">
-                <!-- Vida do personagem -->
-                <div id="characterLife"></div>
+    <section class="start">
+        <img src="assets/images/logorpg.png" alt="Logo do jogo" height="100px">
+        <button class="startButton" id="startButton">Jogar</button>
+        <div id="selectionCharacterArea" style="display: none;">
+            <div id="knightCharacter">
+                <h1>Cavaleiro</h1>
+                <img src="assets/images/knight-512.png" alt="Cavaleiro" height="100px">
+                <button class="chooseCharacterButton" id="chooseKnightCharacter">Escolher</button>
             </div>
-            <!-- Barra de magia do personagem -->
-            <div class="magicBar">
-                <!-- Magia do personagem -->
-                <div id="characterMagic"></div>
+            <div id="wizardCharacter">
+                <h1>Mago</h1>
+                <img src="assets/images/wizard-512.png" alt="Cavaleiro" height="100px">
+                <button class="chooseCharacterButton" id="chooseWizardCharacter">Escolher</button>
             </div>
-            <div class="Skills">
-                <img src="/assets/images/Defesa.png" alt="Defesa" height="36px">
-                <p id="showYourDefense"></p>
-                <img src="/assets/images/Poder.png" alt="Força" height="36px">
-                <p id="showYourStrength"></p>
-            </div>
-            <button id="buttonCharacterSwordAttack">Espada</button>
-            <button id="buttonCharacterSpearAttack">Lança</button>
-            <button id="buttonCharacterKnifeAttack">Faca</button>
-        </div>
-        <!-- Monstro -->
-        <div id="monster">
-            <!-- Tipo do monstro -->
-            <h1 style="color: white;">Monster</h1>
-            <!-- Barra de vida do monstro -->
-            <div class="lifeBar">
-                <!-- Vida do monstro -->
-                <div id="monsterLife"></div>
-            </div>
-            <!-- Barra de magia do personagem -->
-            <div class="magicBar">
-                <!-- Magia do personagem -->
-                <div id="monsterMagic"></div>
-            </div>
-            <div class="Skills">
-                <img src="/assets/images/Defesa.png" alt="Defesa" height="36px">
-                <p id="showMonsterDefense"></p>
-                <img src="/assets/images/Poder.png" alt="Força" height="36px">
-                <p id="showMonsterStrength"></p>
+            <div id="archorCharacter">
+                <h1>Arqueira</h1>
+                <svg fill="#ffffff" height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 256A192 192 0 1 0 64 256a192 192 0 1 0 384 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 80a80 80 0 1 0 0-160 80 80 0 1 0 0 160zm0-224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zM224 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+                <button class="chooseCharacterButton" id="chooseArchorCharacter">Escolher</button>
             </div>
         </div>
+        <label style="display: none;" id="characterNameTitle" for="characterName">Nome do personagem</label>
+        <input style="display: none;" type="text" name="characterName" id="characterName" placeholder="Nome do personagem">
     </section>
     <!-- Rodapé do site -->
     <footer class="footer">
         <p>Todos os Direitos Reservados &#169;</p>
         <p>Site criado por Helder Meyer</p>
     </footer>
-    <script src="assets/javascript/stage.js"></script>
-    <script src="assets/javascript/update.js"></script>
-    <script src="assets/javascript/attacks.js"></script>
-    <script src="assets/javascript/default.js"></script>
-    <script src="assets/javascript/knight.js"></script>
-    <script src="assets/javascript/monster.js"></script>
-    <script src="assets/javascript/script.js"></script>
+    <script src="assets/javascript/start.js"></script>
 </body>
 
 </html>
