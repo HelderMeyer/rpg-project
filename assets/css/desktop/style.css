@@ -312,3 +312,27 @@ LEVELS DO JOGO
     text-align: center;
     margin-bottom: 20px;
 }
+
+/*
+BOTÃO AVANÇAR - APÓS ESCOLHER O PERSONAGEM
+*/
+
+#characterNameBeforeButton{
+    width: 30%;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 0px;
+    padding: 10px 10px;
+    background-color: var(--blue5);
+    color: #dadada;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.4s;
+    opacity: 1;
+}
+
+#characterNameBeforeButton:hover {
+    transition: 0.4s;
+    background-color: var(--blue4);
+    color: #ffffff;
+}
