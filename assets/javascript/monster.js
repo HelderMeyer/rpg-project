@@ -1,8 +1,6 @@
 // CLASSE "MONSTRO" - DERIVADO DA CLASSE "PERSONAGEM"
 
-let firstTime = true
-
-var monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
+let monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
 
 if(firstTime){
     monsterInfo.push({

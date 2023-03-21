@@ -9,7 +9,7 @@ function startEvent() {
     startGame.style.opacity = '0'
     startGame.style.transition = 'opacity 0.7s'
     setTimeout(() => { startGame.style.display = 'none' }, 700)
-    if(continueGame){
+    if (continueGame) {
         continueButton.style.opacity = '1'
         continueButton.style.transition = 'opacity 0.7s'
         setTimeout(() => { continueButton.style.display = 'flex' }, 700)
@@ -30,27 +30,49 @@ class StartGame {
 
             let characterName = document.querySelector('input#characterName')
             const characterNameBeforeButton = document.querySelector('#characterNameBeforeButton')
+            const nameCharacter = document.querySelector('#nameCharacter')
 
             characterNameBeforeButton.addEventListener('click', () => {
-                let nameCharacter = document.querySelector('#nameCharacter')
-                localStorage.setItem('name', `${characterName.value}`)
-                nameCharacter.innerHTML = `Cavaleiro - ${characterName.value}`
-                setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
-                let character = new Knight(`${characterName.value}`) // Objeto Knight Instanciado (Cavaleiro)
-                const monster = new Monster() // Objeto Monster Instanciado (Monstro)
-                const stage = new Stage( // Área de eventos das lutas
-                    character,
-                    monster,
-                    document.querySelector('#character'),
-                    document.querySelector('#monster')
-                )
-                // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
-                document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
-                stage.update()
+                if(localStorage.getItem('name') != null){
+                    let myName = localStorage.getItem('name')
+                    nameCharacter.innerHTML = `Cavaleiro - ${myName}`
+                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
+                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
+                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    let character = new Knight(`${myName}`) // Objeto Knight Instanciado (Cavaleiro)
+                    const monster = new Monster() // Objeto Monster Instanciado (Monstro)
+                    const stage = new Stage( // Área de eventos das lutas
+                        character,
+                        monster,
+                        document.querySelector('#character'),
+                        document.querySelector('#monster')
+                    )
+                    // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
+                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+                    stage.update()
+                }else if(localStorage.getItem('name') == null){
+                    localStorage.setItem('name', `${characterName.value}`) // Armazenar o nome no LocalStorage
+                    let myName = localStorage.getItem('name')
+                    nameCharacter.innerHTML = `Cavaleiro - ${myName}`
+                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
+                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
+                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    let character = new Knight(`${myName}`) // Objeto Knight Instanciado (Cavaleiro)
+                    const monster = new Monster() // Objeto Monster Instanciado (Monstro)
+                    const stage = new Stage( // Área de eventos das lutas
+                        character,
+                        monster,
+                        document.querySelector('#character'),
+                        document.querySelector('#monster')
+                    )
+                    // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
+                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+                    stage.update()
+                }
             })
         } else if (number === 2) {
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
@@ -62,26 +84,49 @@ class StartGame {
 
             let characterName = document.querySelector('input#characterName')
             const characterNameBeforeButton = document.querySelector('#characterNameBeforeButton')
+            const nameCharacter = document.querySelector('#nameCharacter')
 
             characterNameBeforeButton.addEventListener('click', () => {
-                let nameCharacter = document.querySelector('#nameCharacter')
-                nameCharacter.innerHTML = `Mago - ${characterName.value}`
-                setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
-                let character = new Wizard(`${characterName.value}`) // Objeto Wizard Instanciado (Mago)
-                const monster = new Monster() // Objeto Monster Instanciado (Monstro)
-                const stage = new Stage( // Área de eventos das lutas
-                    character,
-                    monster,
-                    document.querySelector('#character'),
-                    document.querySelector('#monster')
-                )
-                // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
-                document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
-                stage.update()
+                if(localStorage.getItem('name') != null){
+                    let myName = localStorage.getItem('name')
+                    nameCharacter.innerHTML = `Mago - ${myName}`
+                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
+                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
+                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    let character = new Wizard(`${myName}`) // Objeto Wizard Instanciado (Mago)
+                    const monster = new Monster() // Objeto Monster Instanciado (Monstro)
+                    const stage = new Stage( // Área de eventos das lutas
+                        character,
+                        monster,
+                        document.querySelector('#character'),
+                        document.querySelector('#monster')
+                    )
+                    // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
+                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+                    stage.update()
+                }else if(localStorage.getItem('name') == null){
+                    localStorage.setItem('name', `${characterName.value}`)
+                    let myName = localStorage.getItem('name')
+                    nameCharacter.innerHTML = `Mago - ${myName}`
+                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
+                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
+                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    let character = new Wizard(`${myName}`) // Objeto Wizard Instanciado (Mago)
+                    const monster = new Monster() // Objeto Monster Instanciado (Monstro)
+                    const stage = new Stage( // Área de eventos das lutas
+                        character,
+                        monster,
+                        document.querySelector('#character'),
+                        document.querySelector('#monster')
+                    )
+                    // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
+                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+                    stage.update()
+                }
             })
         } else if (number === 3) {
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
@@ -93,26 +138,49 @@ class StartGame {
 
             let characterName = document.querySelector('input#characterName')
             const characterNameBeforeButton = document.querySelector('#characterNameBeforeButton')
+            const nameCharacter = document.querySelector('#nameCharacter')
 
             characterNameBeforeButton.addEventListener('click', () => {
-                let nameCharacter = document.querySelector('#nameCharacter')
-                nameCharacter.innerHTML = `Arqueira - ${characterName.value}`
-                setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
-                let character = new Archer(`${characterName.value}`) // Objeto Wizard Instanciado (Mago)
-                const monster = new Monster() // Objeto Monster Instanciado (Monstro)
-                const stage = new Stage( // Área de eventos das lutas
-                    character,
-                    monster,
-                    document.querySelector('#character'),
-                    document.querySelector('#monster')
-                )
-                // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
-                document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
-                stage.update()
+                if(localStorage.getItem('name') != null){
+                    let myName = localStorage.getItem('name')
+                    nameCharacter.innerHTML = `Arqueira - ${characterName.value}`
+                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
+                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
+                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    let character = new Archer(`${characterName.value}`) // Objeto Wizard Instanciado (Mago)
+                    const monster = new Monster() // Objeto Monster Instanciado (Monstro)
+                    const stage = new Stage( // Área de eventos das lutas
+                        character,
+                        monster,
+                        document.querySelector('#character'),
+                        document.querySelector('#monster')
+                    )
+                    // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
+                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+                    stage.update()
+                }else if(localStorage.getItem('name') == null){
+                    localStorage.setItem('name', `${characterName.value}`)
+                    let myName = localStorage.getItem('name')
+                    nameCharacter.innerHTML = `Arqueira - ${characterName.value}`
+                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
+                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
+                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    let character = new Archer(`${characterName.value}`) // Objeto Wizard Instanciado (Mago)
+                    const monster = new Monster() // Objeto Monster Instanciado (Monstro)
+                    const stage = new Stage( // Área de eventos das lutas
+                        character,
+                        monster,
+                        document.querySelector('#character'),
+                        document.querySelector('#monster')
+                    )
+                    // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
+                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+                    stage.update()
+                }
             })
         }
     }
@@ -133,7 +201,7 @@ newGameButton.addEventListener('click', () => {
     firstTime = false
     // SALVAR AS INFORMAÇÕES DO MONSTRO NO LOCALSTORAGE
     // VARIÁVEL PARA PEGAR OS ITENS NO LOCAL STORAGE
-    var monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
+    let monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
     // VARIÁVEL PARA COLOCAR OS ITENS NA ARRAY DENTRO DO LOCALSTORAGE
     monsterInfo.push({
         life: 80,
@@ -149,20 +217,20 @@ newGameButton.addEventListener('click', () => {
 })
 
 continueButton.addEventListener('click', () => {
-        
+
 })
 
-knightSelectButton.addEventListener('click', () => { 
+knightSelectButton.addEventListener('click', () => {
     start.gameChooseCharacter(1)
-    localStorage.setItem('characterClassType', '1') 
+    localStorage.setItem('characterClassType', '1')
 })
-wizardSelectButton.addEventListener('click', () => { 
+wizardSelectButton.addEventListener('click', () => {
     start.gameChooseCharacter(2)
-    localStorage.setItem('characterClassType', '2')  
+    localStorage.setItem('characterClassType', '2')
 })
-archorSelectButton.addEventListener('click', () => { 
+archorSelectButton.addEventListener('click', () => {
     start.gameChooseCharacter(3)
-    localStorage.setItem('characterClassType', '3')  
+    localStorage.setItem('characterClassType', '3')
 })
 
 

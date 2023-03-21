@@ -1,5 +1,5 @@
 // ARÉA/EVENTOS DE LUTA/COMBATE
-
+let firstTime = true
 class Stage {
     constructor(fighter, monster, fighterElement, monsterElement){
         this.fighter = fighter // Lutador
