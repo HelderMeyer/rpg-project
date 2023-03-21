@@ -39,6 +39,15 @@ class Stage {
                 }else{
                     attacked.life -= actualAttack // Vida do monstro menos o dano recebido
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
+                    monsterInfo.push({
+                        life: attacked.life,
+                        maxLife: 80,
+                        strength: 10,
+                        defense: 8,
+                        magic: 0,
+                        maxMagic: 0
+                    });
+                    localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                 }
             }
             if(attacked.life > 0){ // Se a vida do monstro for maior que 0

@@ -336,3 +336,21 @@ BOTÃO AVANÇAR - APÓS ESCOLHER O PERSONAGEM
     background-color: var(--blue4);
     color: #ffffff;
 }
+
+/*
+BOTÃO CONTINUAR E NOVO JOGO
+*/
+
+#playButton{
+    display: flex;
+}
+#continueButton,#newGameButton{
+    display: none;
+    opacity: 0;
+    transition: 0.7s;
+    justify-content: center;
+    margin-top: 60px;
+}
+#newGameButton{
+    margin-top: 20px;
+}
