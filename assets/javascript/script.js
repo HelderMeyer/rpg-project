@@ -197,6 +197,7 @@ const wizardSelectButton = document.querySelector('button#chooseWizardCharacter'
 const archorSelectButton = document.querySelector('button#chooseArchorCharacter')
 
 newGameButton.addEventListener('click', () => {
+    localStorage.setItem('firsttime', 'false')
     localStorage.removeItem('name')
     continueButton.style.opacity = '0'
     continueButton.style.transition = 'opacity 0.7s'
@@ -205,21 +206,39 @@ newGameButton.addEventListener('click', () => {
     setTimeout(() => { continueButton.style.display = 'none' }, 700)
     setTimeout(() => { newGameButton.style.display = 'none' }, 700)
     setTimeout(() => { chooseCharacterArea.style.display = '' }, 700)
-    firstTime = false
     // SALVAR AS INFORMAÇÕES DO MONSTRO NO LOCALSTORAGE
     // VARIÁVEL PARA PEGAR OS ITENS NO LOCAL STORAGE
-    let monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
     // VARIÁVEL PARA COLOCAR OS ITENS NA ARRAY DENTRO DO LOCALSTORAGE
-    monsterInfo.push({
-        life: 80,
-        maxLife: 80,
-        strength: 10,
-        defense: 8,
-        magic: 0,
-        maxMagic: 0
-    });
+    monsterInfo[0].life = 80
+    monsterInfo[0].maxLife = 80
+    monsterInfo[0].strength = 10
+    monsterInfo[0].defense = 8
+    monsterInfo[0].magic = 0
+    monsterInfo[0].maxMagic = 0
+
+    knightInfo[0].life = 100
+    knightInfo[0].maxLife = 100
+    knightInfo[0].strength = 15
+    knightInfo[0].defense = 10
+    knightInfo[0].magic = 0
+    knightInfo[0].maxMagic = 0
+
+    wizardInfo[0].life = 80
+    wizardInfo[0].maxLife = 80
+    wizardInfo[0].strength = 15
+    wizardInfo[0].defense = 10
+    wizardInfo[0].magic = 50
+    wizardInfo[0].maxMagic = 50
+
+    archerInfo[0].life = 90
+    archerInfo[0].maxLife = 90
+    archerInfo[0].strength = 15
+    archerInfo[0].defense = 8
+    archerInfo[0].magic = 30
+    archerInfo[0].maxMagic = 30
     // SALVAR OS VALORES DA ARRAY NA LOCALSTORAGE
     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+    localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
     localStorage.setItem('continue', '1')
 })
 

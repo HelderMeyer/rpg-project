@@ -2,7 +2,7 @@
 
 let monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
 
-if(firstTime){
+if(firstTime == null){
     monsterInfo.push({
         life: 80,
         maxLife: 80,

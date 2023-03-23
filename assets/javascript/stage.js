@@ -1,5 +1,7 @@
 // ARÉA/EVENTOS DE LUTA/COMBATE
-let firstTime = true
+
+let firstTime = localStorage.getItem('firsttime')
+
 class Stage {
     constructor(fighter, monster, fighterElement, monsterElement){
         this.fighter = fighter // Lutador
@@ -36,17 +38,12 @@ class Stage {
                     attacked.life = 0 // Vida de quem ataca vai para 0
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
                     console.log(`O monstro está morto!`)
+                    monsterInfo[0].life = attacked.life
+                    localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                 }else{
                     attacked.life -= actualAttack // Vida do monstro menos o dano recebido
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
-                    monsterInfo.push({
-                        life: attacked.life,
-                        maxLife: 80,
-                        strength: 10,
-                        defense: 8,
-                        magic: 0,
-                        maxMagic: 0
-                    });
+                    monsterInfo[0].life = attacked.life
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                 }
             }
@@ -58,9 +55,21 @@ class Stage {
                         attacking.life = 0 // Vida de quem ataca vai para 0
                         console.log(`Você recebeu ${actualCounterAttack} de dano!`)
                         console.log(`Você morreu!`)
+                        knightInfo[0].life = attacking.life
+                        wizardInfo[0].life = attacking.life
+                        archerInfo[0].life = attacking.life
+                        localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+                        localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
                     }else{ // Caso contrário, você receberá o dano
                         attacking.life -= actualCounterAttack // Sua vida menos o dano do monstro
                         console.log(`Você recebeu ${actualCounterAttack} de dano!`)
+                        knightInfo[0].life = attacking.life
+                        wizardInfo[0].life = attacking.life
+                        archerInfo[0].life = attacking.life
+                        localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+                        localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
                     }
                 }
             }

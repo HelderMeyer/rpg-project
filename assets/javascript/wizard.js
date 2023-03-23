@@ -1,11 +1,25 @@
+let wizardInfo = JSON.parse(localStorage.getItem('wizardInfo') || '[]')
+
+if(firstTime == null){
+    wizardInfo.push({
+        life: 80,
+        maxLife: 80,
+        strength: 15,
+        defense: 10,
+        magic: 50,
+        maxMagic: 50
+    });
+    localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+} 
+
 class Wizard extends Character {
     constructor(name){
         super(name)
-        this.life = 80 // Vida do Mago
-        this.maxLife = this.life // Vida máxima do Mago
-        this.strength = 15 // Força do Mago
-        this.defense = 10 // Defesa do Mago
-        this.magic = 50 // Magia do Mago
-        this.maxMagic = this.magic // Magia máxima do Mago
+        this.life = wizardInfo[0].life // Vida do Mago
+        this.maxLife = wizardInfo[0].maxLife // Vida máxima do Mago
+        this.strength = wizardInfo[0].strength // Força do Mago
+        this.defense = wizardInfo[0].defense // Defesa do Mago
+        this.magic = wizardInfo[0].magic // Magia do Mago
+        this.maxMagic = wizardInfo[0].maxMagic // Magia máxima do Mago
     }
 }
