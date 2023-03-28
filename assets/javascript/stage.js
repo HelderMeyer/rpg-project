@@ -1,9 +1,8 @@
 // ARÉA/EVENTOS DE LUTA/COMBATE
 
 let firstTime = localStorage.getItem('firsttime')
-let monsterLevel = localStorage.getItem('monsterLevel')
 
-if(firstTime == null){
+if (firstTime == null) {
     localStorage.setItem('monsterLevel', '0')
 }
 
@@ -20,6 +19,7 @@ class Stage {
         let actualDefense = (monsterInfo[0].defense * randomFactor).toFixed(2) // Defesa de quem é atacado vezes o fator de número aleatório, para gerar valores de defesa aleatórios
         let actualCounterAttack = (monsterInfo[0].strength * randomFactor).toFixed(2) // Força de quem contraataca (o monstro) vezes o fator de ataque, para gerar valores de ataque aleatórios
         let actualCounterDefense = (attacking.defense * randomFactor).toFixed(2) // Defesa de quem é contraatacado (você) vezes o fator de número aleatório, para gerar valores de defesa aleatórios
+        let monsterLevel = localStorage.getItem('monsterLevel')
 
         if (weaponType === 'sword') { // Ataque de Espada
             weaponType = 'Espada'
@@ -47,7 +47,9 @@ class Stage {
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                     if (monsterInfo[0].life == 0) {
                         setTimeout(() => {
-                            localStorage.setItem('monsterLevel', `${++monsterLevel}`)
+                            ++monsterLevel
+                            console.log(monsterLevel)
+                            localStorage.setItem('monsterLevel', monsterLevel.toString())
                             this.monsterLevel(monsterLevel)
                         }, 1000)
                     }
@@ -69,7 +71,8 @@ class Stage {
                         if (attacking.life == 0) {
                             setTimeout(() => {
                                 if (monsterLevel >= 1) {
-                                    localStorage.setItem('monsterLevel', `${--monsterLevel}`)
+                                    --monsterLevel
+                                    localStorage.setItem('monsterLevel', monsterLevel.toString())
                                 } else {
                                     localStorage.setItem('monsterLevel', `0`)
                                 }
@@ -122,24 +125,88 @@ class Stage {
                 localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                 break;
             case 1:
-                monsterInfo[0].life = 160
-                monsterInfo[0].maxLife = 160
-                monsterInfo[0].strength = 20
-                monsterInfo[0].defense = 16
+                monsterInfo[0].life = 120
+                monsterInfo[0].maxLife = 120
+                monsterInfo[0].strength = 12
+                monsterInfo[0].defense = 12
                 monsterInfo[0].magic = 5
                 monsterInfo[0].maxMagic = 5
                 localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                 break;
             case 2:
-                monsterInfo[0].life = 320
-                monsterInfo[0].maxLife = 320
-                monsterInfo[0].strength = 40
-                monsterInfo[0].defense = 32
+                monsterInfo[0].life = 160
+                monsterInfo[0].maxLife = 160
+                monsterInfo[0].strength = 18
+                monsterInfo[0].defense = 16
                 monsterInfo[0].magic = 10
                 monsterInfo[0].maxMagic = 10
                 localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                 break;
-            default: break;
+            case 3:
+                monsterInfo[0].life = 200
+                monsterInfo[0].maxLife = 200
+                monsterInfo[0].strength = 26
+                monsterInfo[0].defense = 22
+                monsterInfo[0].magic = 20
+                monsterInfo[0].maxMagic = 20
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 4:
+                monsterInfo[0].life = 280
+                monsterInfo[0].maxLife = 280
+                monsterInfo[0].strength = 30
+                monsterInfo[0].defense = 28
+                monsterInfo[0].magic = 25
+                monsterInfo[0].maxMagic = 25
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 5:
+                monsterInfo[0].life = 360
+                monsterInfo[0].maxLife = 360
+                monsterInfo[0].strength = 38
+                monsterInfo[0].defense = 34
+                monsterInfo[0].magic = 30
+                monsterInfo[0].maxMagic = 30
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 6:
+                monsterInfo[0].life = 440
+                monsterInfo[0].maxLife = 440
+                monsterInfo[0].strength = 44
+                monsterInfo[0].defense = 40
+                monsterInfo[0].magic = 35
+                monsterInfo[0].maxMagic = 35
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 7:
+                monsterInfo[0].life = 600
+                monsterInfo[0].maxLife = 600
+                monsterInfo[0].strength = 64
+                monsterInfo[0].defense = 60
+                monsterInfo[0].magic = 40
+                monsterInfo[0].maxMagic = 40
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 8:
+                monsterInfo[0].life = 760
+                monsterInfo[0].maxLife = 760
+                monsterInfo[0].strength = 78
+                monsterInfo[0].defense = 70
+                monsterInfo[0].magic = 45
+                monsterInfo[0].maxMagic = 45
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 9:
+                monsterInfo[0].life = 1000
+                monsterInfo[0].maxLife = 1000
+                monsterInfo[0].strength = 100
+                monsterInfo[0].defense = 90
+                monsterInfo[0].magic = 50
+                monsterInfo[0].maxMagic = 50
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            default:
+                break;
         }
         this.update() // Atualizar o jogo
     }
