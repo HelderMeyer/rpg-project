@@ -218,10 +218,10 @@ newGameButton.addEventListener('click', () => {
     monsterInfo[0].magic = 0
     monsterInfo[0].maxMagic = 0
 
-    knightInfo[0].life = 500
-    knightInfo[0].maxLife = 500
-    knightInfo[0].strength = 70
-    knightInfo[0].defense = 60
+    knightInfo[0].life = 100
+    knightInfo[0].maxLife = 100
+    knightInfo[0].strength = 15
+    knightInfo[0].defense = 10
     knightInfo[0].magic = 0
     knightInfo[0].maxMagic = 0
 
@@ -263,4 +263,15 @@ archorSelectButton.addEventListener('click', () => {
     localStorage.setItem('characterClassType', '3')
 })
 
+const buttonShop = document.querySelector('#buttonShop')
+const ShopArea = document.querySelector('#shop')
+buttonShop.addEventListener('click', () => {
+    if(ShopArea.style.display == 'flex'){
+        ShopArea.style.display = 'none'
+        buttonShop.innerHTML = 'Abrir Loja'
+    }else{
+        ShopArea.style.display = 'flex'
+        buttonShop.innerHTML = 'Fechar Loja'
+    }
+})
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/desktop/index.css">
     <title>Game</title>
 </head>
+
 <body>
     <!-- NAVBAR DO SITE -->
     <header class="header">
@@ -38,12 +39,17 @@
             </div>
             <div id="archorCharacter">
                 <h1>Arqueira</h1>
-                <svg fill="#ffffff" height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 256A192 192 0 1 0 64 256a192 192 0 1 0 384 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 80a80 80 0 1 0 0-160 80 80 0 1 0 0 160zm0-224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zM224 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+                <svg fill="#ffffff" height="100px" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M448 256A192 192 0 1 0 64 256a192 192 0 1 0 384 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 80a80 80 0 1 0 0-160 80 80 0 1 0 0 160zm0-224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zM224 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
+                </svg>
                 <button class="chooseCharacterButton" id="chooseArchorCharacter">Escolher</button>
             </div>
         </div>
         <label style="display: none;" id="characterNameTitle" for="characterName">Nome do personagem</label>
-        <input style="display: none;" type="text" name="characterName" id="characterName" placeholder="Nome do personagem">
+        <input style="display: none;" type="text" name="characterName" id="characterName"
+            placeholder="Nome do personagem">
         <button style="display: none;" id="characterNameBeforeButton">Avançar</button>
     </section>
     <!-- JOGO -->
@@ -86,6 +92,31 @@
             <button id="buttonCharacterSwordAttack">Espada</button>
             <button id="buttonCharacterSpearAttack">Lança</button>
             <button id="buttonCharacterKnifeAttack">Faca</button>
+            <div id="shop__main__format">
+                <button id="buttonShop">Abrir Loja</button>
+                <h3>Saldo: <span>0</span> Gold.</h3>
+            </div>
+            <fieldset id="shop">
+                <legend id="shop__legend">Loja</legend>
+                <div id="shop__format">
+                <ul id="shop__itens">
+                    <li>+5 Vida Máxima</li>
+                    <li>+5 Força</li>
+                    <li>+5 Defesa</li>
+                    <li>+1 Magia</li>
+                    <li>Liberar "Lança"</li>
+                    <li>Liberar "Faca"</li>
+                </ul>
+                <div id="shop__buybuttons">
+                    <button>5G Comprar</button>
+                    <button>5G Comprar</button>
+                    <button>5G Comprar</button>
+                    <button>5G Comprar</button>
+                    <button>5G Comprar</button>
+                    <button>5G Comprar</button>
+                </div>
+                </div>
+            </fieldset>
         </div>
         <!-- Monstro -->
         <div id="monster">
@@ -122,4 +153,5 @@
     <script src="assets/javascript/monster.js"></script>
     <script src="assets/javascript/script.js"></script>
 </body>
+
 </html>

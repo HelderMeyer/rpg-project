@@ -45,7 +45,7 @@ MINHAS VARIÁVEIS
 FORMATAÇÃO DA NAVBAR
 */
 
-.header{
+.header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -63,7 +63,7 @@ FORMATAÇÃO DA NAVBAR
     list-style: none;
 }
 
-.header ul li a{
+.header ul li a {
     font-size: 20px;
     font-weight: bold;
     transition: 0.3s;
@@ -75,7 +75,7 @@ FORMATAÇÃO DA NAVBAR
 ANIMAÇÃO QUE MUDA A COR DO TEXTO QUANDO PASSAR O MOUSE POR CIMA
 */
 
-.header ul li a:hover{
+.header ul li a:hover {
     transition: 0.3s;
     color: #ffffff;
 }
@@ -84,7 +84,7 @@ ANIMAÇÃO QUE MUDA A COR DO TEXTO QUANDO PASSAR O MOUSE POR CIMA
 SECTION JOGO
 */
 
-.game{
+.game {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -97,7 +97,8 @@ SECTION JOGO
     margin-top: 20px;
 }
 
-#character,#monster{
+#character,
+#monster {
     width: 49%;
 }
 
@@ -105,14 +106,14 @@ SECTION JOGO
 BARRA DE VIDA
 */
 
-.lifeBar{
+.lifeBar {
     border: 1px dashed #888888;
     width: 100%;
     height: 30px;
     border-radius: 10px;
 }
 
-#characterLife{
+#characterLife {
     height: 30px;
     border-radius: 10px;
     background-color: #ff0000;
@@ -123,22 +124,22 @@ BARRA DE VIDA
     color: #ffffff;
     font-weight: bold;
     width: 200px;
-    
+
 }
 
-.divBarsFormat{
+.divBarsFormat {
     width: 200px;
     display: flex;
     justify-content: left;
     align-items: center;
 }
 
-.divBarsFormat img{
+.divBarsFormat img {
     margin-left: 5px;
     margin-top: 2px;
 }
 
-#monsterLife{
+#monsterLife {
     height: 30px;
     border-radius: 10px;
     background-color: #ff0000;
@@ -155,7 +156,7 @@ BARRA DE VIDA
 BARRA DE MAGIA
 */
 
-.magicBar{
+.magicBar {
     border: 1px dashed #888888;
     width: 100%;
     height: 20px;
@@ -163,25 +164,25 @@ BARRA DE MAGIA
     margin-top: 10px;
 }
 
-#characterMagic{
+#characterMagic {
     height: 30px;
     border-radius: 10px;
     background-color: #0095ff;
 }
 
-#monsterMagic{
+#monsterMagic {
     height: 30px;
     border-radius: 10px;
     background-color: #ffb300;
 }
 
-#characterMagic p{
+#characterMagic p {
     color: #ffffff;
     font-weight: bold;
     width: 200px;
 }
 
-#monsterMagic p{
+#monsterMagic p {
     color: #ffffff;
     font-weight: bold;
     width: 200px;
@@ -191,7 +192,7 @@ BARRA DE MAGIA
 BARRA DE FORÇA
 */
 
-#attackBar{
+#attackBar {
     border: 1px dashed #888888;
     width: 100%;
     height: 20px;
@@ -199,14 +200,14 @@ BARRA DE FORÇA
     margin-top: 10px;
 }
 
-#characterAttack{
+#characterAttack {
     width: 100%;
     height: 20px;
     border-radius: 10px;
     background-color: #ffb300;
 }
 
-#monsterAttack{
+#monsterAttack {
     width: 100%;
     height: 20px;
     border-radius: 10px;
@@ -217,7 +218,7 @@ BARRA DE FORÇA
 BARRA DE DEFESA
 */
 
-#defenseBar{
+#defenseBar {
     border: 1px dashed #888888;
     width: 100%;
     height: 20px;
@@ -225,14 +226,14 @@ BARRA DE DEFESA
     margin-top: 10px;
 }
 
-#characterDefense{
+#characterDefense {
     width: 100%;
     height: 20px;
     border-radius: 10px;
     background-color: #00f7ff;
 }
 
-#monsterDefense{
+#monsterDefense {
     width: 100%;
     height: 20px;
     border-radius: 10px;
@@ -243,7 +244,7 @@ BARRA DE DEFESA
 BOTÕES DE ATACAR
 */
 
-#buttonCharacterAttack{
+#buttonCharacterAttack {
     margin-top: 10px;
 }
 
@@ -251,7 +252,7 @@ BOTÕES DE ATACAR
 SECTION FOOTER
 */
 
-.footer{
+.footer {
     background-color: var(--blue2);
     margin-top: 100px;
     width: 100%;
@@ -259,7 +260,7 @@ SECTION FOOTER
     text-align: center;
 }
 
-.footer p{
+.footer p {
     color: var(--white)
 }
 
@@ -284,7 +285,7 @@ SKILLS
 LEVELS DO JOGO
 */
 
-#levels{
+#levels {
     margin: auto;
     margin-top: 20px;
 }
@@ -294,11 +295,11 @@ LEVELS DO JOGO
     gap: 10px;
 }
 
-#levels ul li:last-child{
+#levels ul li:last-child {
     padding: 10px 10px !important;
 }
 
-#levelsList li{
+#levelsList li {
     list-style: none;
     color: #ffffff;
     background-color: var(--blue5);
@@ -307,7 +308,7 @@ LEVELS DO JOGO
     text-align: center;
 }
 
-.levelsTitle{
+.levelsTitle {
     color: #ffffff;
     text-align: center;
     margin-bottom: 20px;
@@ -317,7 +318,7 @@ LEVELS DO JOGO
 BOTÃO AVANÇAR - APÓS ESCOLHER O PERSONAGEM
 */
 
-#characterNameBeforeButton{
+#characterNameBeforeButton {
     width: 30%;
     margin-top: 20px;
     border-radius: 10px;
@@ -341,16 +342,89 @@ BOTÃO AVANÇAR - APÓS ESCOLHER O PERSONAGEM
 BOTÃO CONTINUAR E NOVO JOGO
 */
 
-#playButton{
+#playButton {
     display: flex;
 }
-#continueButton,#newGameButton{
+
+#continueButton,
+#newGameButton {
     display: none;
     opacity: 0;
     transition: 0.7s;
     justify-content: center;
     margin-top: 60px;
 }
-#newGameButton{
+
+#newGameButton {
     margin-top: 20px;
+}
+
+/*
+LOJA
+*/
+
+#buttonShop {
+    padding: 5px 10px;
+    border: solid 5px 2px #888888;
+    color: #888888;
+    font-weight: bold;
+    display: flex;
+}
+
+#shop {
+    display: none;
+    z-index: 100;
+    color: #ffffff;
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+}
+
+#shop #shop__legend {
+    font-size: 1.2em !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+#shop__itens {
+    list-style: none;
+}
+
+#shop__itens li {
+    margin-top: 12px;
+}
+
+#shop__format {
+    display: flex;
+    flex-direction: row;
+}
+
+#shop__buybuttons {
+    display: flex;
+    flex-direction: column;
+}
+
+#shop__buybuttons button {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#shop__main__format {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+
+#shop__main__format h3,#shop__main__format span{
+    color: #ffffff;
+}
+
+#shop__main__format h3 {
+    margin-left: 10px;
 }
