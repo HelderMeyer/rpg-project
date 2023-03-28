@@ -4,8 +4,8 @@ let knightInfo = JSON.parse(localStorage.getItem('knightInfo') || '[]')
 
 if(firstTime == null){
     knightInfo.push({
-        life: 100,
-        maxLife: 100,
+        life: 500,
+        maxLife: 500,
         strength: 15,
         defense: 10,
         magic: 0,

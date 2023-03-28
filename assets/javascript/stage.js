@@ -1,67 +1,101 @@
 // ARÉA/EVENTOS DE LUTA/COMBATE
 
 let firstTime = localStorage.getItem('firsttime')
+let monsterLevel = localStorage.getItem('monsterLevel')
+
+if(firstTime == null){
+    localStorage.setItem('monsterLevel', '0')
+}
 
 class Stage {
-    constructor(fighter, monster, fighterElement, monsterElement){
+    constructor(fighter, monster, fighterElement, monsterElement) {
         this.fighter = fighter // Lutador
         this.fighterElement = fighterElement // Área do lutador no HTML
         this.monster = monster // Monstro
         this.monsterElement = monsterElement // Área do monstro no HTML
     }
-    eventAttack(attacking, attacked, weaponType){ // Evento que vai captar todos os ataques do personagem
+    eventAttack(attacking, attacked, weaponType) { // Evento que vai captar todos os ataques do personagem
         let randomFactor = (Math.random() * 2).toFixed(2) //Fator que vai gerar números aleatórios, de até 2 casas decimais
         let actualAttack = (attacking.strength * randomFactor).toFixed(2) // Força de quem ataca vezes o fator de ataque, para gerar valores de ataque aleatórios
-        let actualDefense = (attacked.defense * randomFactor).toFixed(2) // Defesa de quem é atacado vezes o fator de número aleatório, para gerar valores de defesa aleatórios
-        let actualCounterAttack = (attacked.strength * randomFactor).toFixed(2) // Força de quem contraataca (o monstro) vezes o fator de ataque, para gerar valores de ataque aleatórios
+        let actualDefense = (monsterInfo[0].defense * randomFactor).toFixed(2) // Defesa de quem é atacado vezes o fator de número aleatório, para gerar valores de defesa aleatórios
+        let actualCounterAttack = (monsterInfo[0].strength * randomFactor).toFixed(2) // Força de quem contraataca (o monstro) vezes o fator de ataque, para gerar valores de ataque aleatórios
         let actualCounterDefense = (attacking.defense * randomFactor).toFixed(2) // Defesa de quem é contraatacado (você) vezes o fator de número aleatório, para gerar valores de defesa aleatórios
 
-        if(weaponType === 'sword'){ // Ataque de Espada
+        if (weaponType === 'sword') { // Ataque de Espada
             weaponType = 'Espada'
-        }else if(weaponType === 'spear'){ // Ataque de Lança
+        } else if (weaponType === 'spear') { // Ataque de Lança
             weaponType = 'Lança'
-        }else if(weaponType === 'knife'){ // Ataque de Faca
+        } else if (weaponType === 'knife') { // Ataque de Faca
             weaponType = 'Faca'
         }
 
-        if(attacking.life <= 0 || attacked.life <= 0){ // Se a vida de quem ataca ou de quem foi atacado for menor ou igual a 0
-            if(attacking.life <= 0){ // Se a vida de quem ataca for menor que ou igual a 0
+        if (attacking.life <= 0 || monsterInfo[0].life <= 0) { // Se a vida de quem ataca ou de quem foi atacado for menor ou igual a 0
+            if (attacking.life <= 0) { // Se a vida de quem ataca for menor que ou igual a 0
                 console.log('Você não pode atacar, porque está sem vida!')
-            }else if(attacked.life <= 0){ // Se a vida de quem está sendo atacado for menor que ou igual a 0
+            } else if (monsterInfo[0].life <= 0) { // Se a vida de quem está sendo atacado for menor que ou igual a 0
                 console.log('Você não pode atacar, porque o monstro já está sem vida!')
             }
-        }else{
-            if(actualAttack < actualDefense){ // Se o ataque for menor que a defesa do monstro, ele defenderá
+        } else {
+            if (actualAttack < actualDefense) { // Se o ataque for menor que a defesa do monstro, ele defenderá
                 console.log(`O ${attacked.name} defendeu!`)
-            }else{ // Caso contrário, o ataque será feito no monstro
-                if(attacked.life <= actualAttack){ // Se a vida de quem é atacado for menor do que a força de ataque de quem tá atacando
-                    attacked.life = 0 // Vida de quem ataca vai para 0
+            } else { // Caso contrário, o ataque será feito no monstro
+                if (monsterInfo[0].life <= actualAttack) { // Se a vida de quem é atacado for menor do que a força de ataque de quem tá atacando
+                    monsterInfo[0].life = 0 // Vida de quem ataca vai para 0
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
                     console.log(`O monstro está morto!`)
-                    monsterInfo[0].life = attacked.life
+                    monsterInfo[0].life = monsterInfo[0].life
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
-                }else{
-                    attacked.life -= actualAttack // Vida do monstro menos o dano recebido
+                    if (monsterInfo[0].life == 0) {
+                        setTimeout(() => {
+                            localStorage.setItem('monsterLevel', `${++monsterLevel}`)
+                            this.monsterLevel(monsterLevel)
+                        }, 1000)
+                    }
+                } else {
+                    monsterInfo[0].life -= actualAttack // Vida do monstro menos o dano recebido
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
-                    monsterInfo[0].life = attacked.life
+                    monsterInfo[0].life = monsterInfo[0].life
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                 }
             }
-            if(attacked.life > 0){ // Se a vida do monstro for maior que 0
-                if(actualCounterAttack < actualCounterDefense){ // Se o contraataque for menor que a sua defesa, você defende
+            if (monsterInfo[0].life > 0) { // Se a vida do monstro for maior que 0
+                if (actualCounterAttack < actualCounterDefense) { // Se o contraataque for menor que a sua defesa, você defende
                     console.log(`Você defendeu!`)
-                }else{ // Caso contrário, você receberá o ataque do monstro
-                    if(attacking.life <= actualCounterAttack){ // Se a vida de quem ataca for menor que ou igual ao dano do monstro
+                } else { // Caso contrário, você receberá o ataque do monstro
+                    if (attacking.life <= actualCounterAttack) { // Se a vida de quem ataca for menor que ou igual ao dano do monstro
                         attacking.life = 0 // Vida de quem ataca vai para 0
                         console.log(`Você recebeu ${actualCounterAttack} de dano!`)
                         console.log(`Você morreu!`)
+                        if (attacking.life == 0) {
+                            setTimeout(() => {
+                                if (monsterLevel >= 1) {
+                                    localStorage.setItem('monsterLevel', `${--monsterLevel}`)
+                                } else {
+                                    localStorage.setItem('monsterLevel', `0`)
+                                }
+                                if (localStorage.getItem('characterClassType') == 1) {
+                                    attacking.life = knightInfo[0].maxLife
+                                } else if (localStorage.getItem('characterClassType') == 2) {
+                                    attacking.life = wizardInfo[0].maxLife
+                                } else if (localStorage.getItem('characterClassType') == 3) {
+                                    attacking.life = archerInfo[0].maxLife
+                                }
+                                knightInfo[0].life = knightInfo[0].maxLife
+                                wizardInfo[0].life = wizardInfo[0].maxLife
+                                archerInfo[0].life = archerInfo[0].maxLife
+                                localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+                                localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                                localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+                                this.monsterLevel(monsterLevel)
+                            }, 1000)
+                        }
                         knightInfo[0].life = attacking.life
                         wizardInfo[0].life = attacking.life
                         archerInfo[0].life = attacking.life
                         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
                         localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                         localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
-                    }else{ // Caso contrário, você receberá o dano
+                    } else { // Caso contrário, você receberá o dano
                         attacking.life -= actualCounterAttack // Sua vida menos o dano do monstro
                         console.log(`Você recebeu ${actualCounterAttack} de dano!`)
                         knightInfo[0].life = attacking.life
@@ -76,41 +110,89 @@ class Stage {
         }
         this.update() // Atualizar o jogo
     }
-    update(){ // Método que vai atualizar o jogo a cada ação realizada
+    monsterLevel(number) {
+        switch (number) {
+            case 0:
+                monsterInfo[0].life = 80
+                monsterInfo[0].maxLife = 80
+                monsterInfo[0].strength = 10
+                monsterInfo[0].defense = 8
+                monsterInfo[0].magic = 0
+                monsterInfo[0].maxMagic = 0
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 1:
+                monsterInfo[0].life = 160
+                monsterInfo[0].maxLife = 160
+                monsterInfo[0].strength = 20
+                monsterInfo[0].defense = 16
+                monsterInfo[0].magic = 5
+                monsterInfo[0].maxMagic = 5
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            case 2:
+                monsterInfo[0].life = 320
+                monsterInfo[0].maxLife = 320
+                monsterInfo[0].strength = 40
+                monsterInfo[0].defense = 32
+                monsterInfo[0].magic = 10
+                monsterInfo[0].maxMagic = 10
+                localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                break;
+            default: break;
+        }
+        this.update() // Atualizar o jogo
+    }
+    update() { // Método que vai atualizar o jogo a cada ação realizada
         // VARIÁVEIS PARA RESUMIR O CÓDIGO
 
         // VIDAS
         const cl = document.querySelector('#characterLife') // cl = characterLife
         const ml = document.querySelector('#monsterLife') // ml = monsterLife
-        
+
         // FORÇA E DEFESA (SUA)
         const syd = document.querySelector('#showYourDefense') // sdy = showYourDefense = Sua defesa
         const sys = document.querySelector('#showYourStrength') // ssy = showYourStrength = Sua força
-        
+
         // FORÇA E DEFESA (MONSTRO)
         const smd = document.querySelector('#showMonsterDefense') // smd = showMonsterDefense
         const sms = document.querySelector('#showMonsterStrength') // sms = showMonsterStrength
-        
+
         // MAGIAS
         const ym = document.querySelector('#characterMagic') // ym = yourMagic (Sua magia)
         const mm = document.querySelector('#monsterMagic') // mm = monsterMagic (Magia do monstro)
 
         // SUA BARRA DE VIDA E DO MONSTRO
-        let characterLifePct = ((this.fighter.life/this.fighter.maxLife)*100) // Vida do Personagem em %
-        let monsterLifePct = ((this.monster.life/this.monster.maxLife)*100) // Vida do Monstro em %
+        if (localStorage.getItem('characterClassType') == 1) {
+            let characterLifePct = ((knightInfo[0].life / knightInfo[0].maxLife) * 100) // Vida do Personagem em %
+            cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
+        } else if (localStorage.getItem('characterClassType') == 2) {
+            let characterLifePct = ((wizardInfo[0].life / wizardInfo[0].maxLife) * 100) // Vida do Personagem em %
+            cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            let characterLifePct = ((archerInfo[0].life / archerInfo[0].maxLife) * 100) // Vida do Personagem em %
+            cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
+        }
+
+        let monsterLifePct = ((monsterInfo[0].life / monsterInfo[0].maxLife) * 100) // Vida do Monstro em %
 
         // SUA BARRA DE MAGIA E A BARRA MAGIA DO MONSTRO
-        let characterMagicPct = ((this.fighter.magic/this.fighter.maxMagic)*100) // Magia do Personagem em %
-        let monsterMagicPct = ((this.monster.magic/this.monster.maxMagic)*100) // Magia do Monstro em %
-        
+        let characterMagicPct = ((this.fighter.magic / this.fighter.maxMagic) * 100) // Magia do Personagem em %
+        let monsterMagicPct = ((monsterInfo[0].magic / monsterInfo[0].maxMagic) * 100) // Magia do Monstro em %
+
         // VIDA NA TELA
-        cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${this.fighter.life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
-        ml.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${this.monster.life.toFixed(0)} de vida</p></div>` // Exibir a vida do monstro dentro da barra de vida
-        cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
+        if (localStorage.getItem('characterClassType') == 1) {
+            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${knightInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
+        } else if (localStorage.getItem('characterClassType') == 2) {
+            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${wizardInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${archerInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
+        }
+        ml.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${monsterInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do monstro dentro da barra de vida
         ml.style.width = `${monsterLifePct}%` // Manupular a barra de vida de acordo com a porcentagem da vida do monstro
         // MAGIA NA TELA
         ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${this.fighter.magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
-        mm.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${this.monster.magic.toFixed(0)} de magia</p></div>` // Exibir a magia do monstro dentro da barra de magia
+        mm.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${monsterInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do monstro dentro da barra de magia
         ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
         mm.style.width = `${monsterMagicPct}%` // Manupular a barra de magia de acordo com a porcentagem de magia do monstro
 
@@ -119,9 +201,9 @@ class Stage {
         syd.style.color = `aqua`
         sys.innerHTML = `${this.fighter.strength} de força`// Exibir a força do personagem
         sys.style.color = `red`
-        smd.innerHTML = `${this.monster.defense} de defesa` // Exibir a defesa do monstro
+        smd.innerHTML = `${monsterInfo[0].defense} de defesa` // Exibir a defesa do monstro
         smd.style.color = `aqua`
-        sms.innerHTML = `${this.monster.strength} de força` // Exibir a força do monstro
+        sms.innerHTML = `${monsterInfo[0].strength} de força` // Exibir a força do monstro
         sms.style.color = `red`
     }
 }

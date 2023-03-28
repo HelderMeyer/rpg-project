@@ -198,6 +198,7 @@ const archorSelectButton = document.querySelector('button#chooseArchorCharacter'
 
 newGameButton.addEventListener('click', () => {
     localStorage.setItem('firsttime', 'false')
+    localStorage.setItem('monsterLevel', `0`)
     localStorage.removeItem('name')
     continueButton.style.opacity = '0'
     continueButton.style.transition = 'opacity 0.7s'
@@ -216,8 +217,8 @@ newGameButton.addEventListener('click', () => {
     monsterInfo[0].magic = 0
     monsterInfo[0].maxMagic = 0
 
-    knightInfo[0].life = 100
-    knightInfo[0].maxLife = 100
+    knightInfo[0].life = 500
+    knightInfo[0].maxLife = 500
     knightInfo[0].strength = 15
     knightInfo[0].defense = 10
     knightInfo[0].magic = 0
