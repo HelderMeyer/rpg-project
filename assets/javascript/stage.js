@@ -48,10 +48,17 @@ class Stage {
                     if (monsterInfo[0].life == 0) {
                         setTimeout(() => {
                             ++monsterLevel
-                            console.log(monsterLevel)
                             localStorage.setItem('monsterLevel', monsterLevel.toString())
                             this.monsterLevel(monsterLevel)
                         }, 1000)
+                        let newGoldCurrency = Number(localStorage.getItem('gold'))
+                        newGoldCurrency += monsterInfo[0].maxLife * 0.1
+                        localStorage.setItem('gold', `${Number(newGoldCurrency).toFixed(0)}`)
+                        for(let contador = 0; contador <= Number(localStorage.getItem('gold')); contador++){
+                            setTimeout(() => {
+                                document.querySelector('#myGold').innerHTML = `${contador}`
+                            }, 500)
+                        }
                     }
                 } else {
                     monsterInfo[0].life -= actualAttack // Vida do monstro menos o dano recebido

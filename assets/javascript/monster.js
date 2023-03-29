@@ -3,6 +3,8 @@
 let monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
 
 if(firstTime == null){
+    localStorage.setItem('gold', '0')
+    document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
     monsterInfo.push({
         life: 80,
         maxLife: 80,
@@ -12,7 +14,7 @@ if(firstTime == null){
         maxMagic: 0
     });
     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
-} 
+}
 
 class Monster extends Character {
     constructor(name) {

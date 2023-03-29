@@ -56,16 +56,16 @@
     <div id="levels" style="display: none;">
         <h1 class="levelsTitle">Nível</h1>
         <ul id="levelsList">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li class="levelsList10">10</li>
+            <li id="level1">1</li>
+            <li id="level2">2</li>
+            <li id="level3">3</li>
+            <li id="level4">4</li>
+            <li id="level5">5</li>
+            <li id="level6">6</li>
+            <li id="level7">7</li>
+            <li id="level8">8</li>
+            <li id="level9">9</li>
+            <li id="level10" class="levelsList10">10</li>
         </ul>
     </div>
     <section class="game" id="theGame" style="display: none;">
@@ -94,7 +94,7 @@
             <button id="buttonCharacterKnifeAttack">Faca</button>
             <div id="shop__main__format">
                 <button id="buttonShop">Abrir Loja</button>
-                <h3>Saldo: <span>0</span> Gold.</h3>
+                <h3>Saldo: <span id="myGold" class="myGoldFormat">0</span> Gold.</h3>
             </div>
             <fieldset id="shop">
                 <legend id="shop__legend">Loja</legend>
@@ -103,17 +103,17 @@
                     <li>+5 Vida Máxima</li>
                     <li>+5 Força</li>
                     <li>+5 Defesa</li>
-                    <li>+1 Magia</li>
+                    <li>+2 Magia Máxima</li>
                     <li>Liberar "Lança"</li>
                     <li>Liberar "Faca"</li>
                 </ul>
                 <div id="shop__buybuttons">
-                    <button>5G Comprar</button>
-                    <button>5G Comprar</button>
-                    <button>5G Comprar</button>
-                    <button>5G Comprar</button>
-                    <button>5G Comprar</button>
-                    <button>5G Comprar</button>
+                    <button id="itemBuyMaxLife"><span class="shop__prices">10G</span> Comprar</button>
+                    <button id="itemBuyStrength"><span class="shop__prices">12G</span> Comprar</button>
+                    <button id="itemBuyDefense"><span class="shop__prices">12G</span> Comprar</button>
+                    <button id="itemBuyMaxMagic"><span class="shop__prices">16G</span> Comprar</button>
+                    <button id="itemBuyNewAttackSpear"><span class="shop__prices">100G</span> Comprar</button>
+                    <button id="itemBuyNewAttackKnife"><span class="shop__prices">200G</span> Comprar</button>
                 </div>
                 </div>
             </fieldset>

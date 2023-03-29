@@ -197,6 +197,9 @@ const wizardSelectButton = document.querySelector('button#chooseWizardCharacter'
 const archorSelectButton = document.querySelector('button#chooseArchorCharacter')
 
 newGameButton.addEventListener('click', () => {
+    localStorage.removeItem('gold')
+    localStorage.setItem('gold', '0')
+    document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
     localStorage.setItem('firsttime', 'false')
     localStorage.removeItem('monsterLevel')
     localStorage.setItem('monsterLevel', '0')
@@ -248,6 +251,7 @@ continueButton.addEventListener('click', () => {
     setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
     setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
     setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+    document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
     start.gameChooseCharacter(Number(localStorage.getItem('characterClassType')))
 })
 knightSelectButton.addEventListener('click', () => {
@@ -275,3 +279,53 @@ buttonShop.addEventListener('click', () => {
     }
 })
 
+const buttonBuyMaxLife = document.querySelector('#itemBuyMaxLife')
+const buttonBuyStrength = document.querySelector('#itemBuyStrength')
+const buttonBuyDefense = document.querySelector('#itemBuyDefense')
+const buttonBuyMaxMagic = document.querySelector('#itemBuyMaxMagic')
+const buttonBuyNewAttackSpear = document.querySelector('#itemBuyNewAttackSpear')
+const buttonBuyNewAttackKnife = document.querySelector('#itemBuyNewAttackKnife')
+
+buttonBuyMaxLife.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if(goldCurrency >= 10){
+        knightInfo[0].maxLife += 5
+        localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+        goldCurrency = goldCurrency - 10
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+    }
+})
+
+buttonBuyStrength.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if(goldCurrency >= 12){
+        knightInfo[0].strength += 5
+        localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+        goldCurrency = goldCurrency - 12
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+    }
+})
+
+buttonBuyDefense.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if(goldCurrency >= 12){
+        knightInfo[0].defense += 5
+        localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+        goldCurrency = goldCurrency - 12
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+    }
+})
+
+buttonBuyMaxMagic.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if(goldCurrency >= 16){
+        knightInfo[0].maxMagic += 5
+        localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+        goldCurrency = goldCurrency - 16
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+    }
+})

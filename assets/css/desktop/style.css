@@ -411,6 +411,10 @@ LOJA
 #shop__buybuttons button {
     margin-top: 10px;
     margin-left: 10px;
+    background-color: #888888;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #shop__main__format {
@@ -427,4 +431,14 @@ LOJA
 
 #shop__main__format h3 {
     margin-left: 10px;
+}
+.shop__prices{
+    color: #ffea00;
+    font-size: 16px;
+    font-weight: bold;
+}
+.myGoldFormat{
+    color: #ffea00 !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
 }
