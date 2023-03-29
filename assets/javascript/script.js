@@ -302,7 +302,11 @@ buttonBuyMaxLife.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
     if (goldCurrency >= 10) {
         knightInfo[0].maxLife += 5
+        wizardInfo[0].maxLife += 5
+        archerInfo[0].maxLife += 5
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+        localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
         goldCurrency = goldCurrency - 10
         localStorage.setItem('gold', `${Number(goldCurrency)}`)
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
@@ -313,6 +317,10 @@ buttonBuyStrength.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
     if (goldCurrency >= 12) {
         knightInfo[0].strength += 5
+        wizardInfo[0].strength += 5
+        archerInfo[0].strength += 5
+        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+        localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
         goldCurrency = goldCurrency - 12
         localStorage.setItem('gold', `${Number(goldCurrency)}`)
@@ -324,6 +332,10 @@ buttonBuyDefense.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
     if (goldCurrency >= 12) {
         knightInfo[0].defense += 5
+        wizardInfo[0].defense += 5
+        archerInfo[0].defense += 5
+        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+        localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
         goldCurrency = goldCurrency - 12
         localStorage.setItem('gold', `${Number(goldCurrency)}`)
@@ -334,7 +346,11 @@ buttonBuyDefense.addEventListener('click', () => {
 buttonBuyMaxMagic.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
     if (goldCurrency >= 16) {
-        knightInfo[0].maxMagic += 5
+        knightInfo[0].maxMagic += 2
+        wizardInfo[0].maxMagic += 2
+        archerInfo[0].maxMagic += 2
+        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+        localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
         goldCurrency = goldCurrency - 16
         localStorage.setItem('gold', `${Number(goldCurrency)}`)

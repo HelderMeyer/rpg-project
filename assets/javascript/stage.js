@@ -285,10 +285,22 @@ class Stage {
         mm.style.width = `${monsterMagicPct}%` // Manupular a barra de magia de acordo com a porcentagem de magia do monstro
 
         // FORÇA E DEFESA
-        syd.innerHTML = `${this.fighter.defense} de defesa` // Exibir a defesa do personagem
-        syd.style.color = `aqua`
-        sys.innerHTML = `${this.fighter.strength} de força`// Exibir a força do personagem
-        sys.style.color = `red`
+        if (localStorage.getItem('characterClassType') == 1) {
+            syd.innerHTML = `${knightInfo[0].defense} de defesa` // Exibir a defesa do personagem
+            syd.style.color = `aqua`
+            sys.innerHTML = `${knightInfo[0].strength} de força`// Exibir a força do personagem
+            sys.style.color = `red`
+        } else if (localStorage.getItem('characterClassType') == 2) {
+            syd.innerHTML = `${wizardInfo[0].defense} de defesa` // Exibir a defesa do personagem
+            syd.style.color = `aqua`
+            sys.innerHTML = `${wizardInfo[0].strength} de força`// Exibir a força do personagem
+            sys.style.color = `red`
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            syd.innerHTML = `${archerInfo[0].defense} de defesa` // Exibir a defesa do personagem
+            syd.style.color = `aqua`
+            sys.innerHTML = `${archerInfo[0].strength} de força`// Exibir a força do personagem
+            sys.style.color = `red`
+        }
         smd.innerHTML = `${monsterInfo[0].defense} de defesa` // Exibir a defesa do monstro
         smd.style.color = `aqua`
         sms.innerHTML = `${monsterInfo[0].strength} de força` // Exibir a força do monstro
