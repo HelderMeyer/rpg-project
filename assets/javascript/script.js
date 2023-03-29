@@ -197,6 +197,9 @@ const wizardSelectButton = document.querySelector('button#chooseWizardCharacter'
 const archorSelectButton = document.querySelector('button#chooseArchorCharacter')
 
 newGameButton.addEventListener('click', () => {
+    let myLevelList = document.querySelector('#levelsList')
+    myLevelList.getElementsByTagName('li')[0].style.backgroundColor = '#144272'
+    myLevelList.getElementsByTagName('li')[0].style.scale = '1.2'
     localStorage.removeItem('gold')
     localStorage.setItem('gold', '0')
     document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
@@ -244,10 +247,19 @@ newGameButton.addEventListener('click', () => {
     // SALVAR OS VALORES DA ARRAY NA LOCALSTORAGE
     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
     localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
+    localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+    localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
     localStorage.setItem('continue', '1')
 })
 
 continueButton.addEventListener('click', () => {
+    let actualLevel = Number(localStorage.getItem('monsterLevel'))
+    let myLevelList = document.querySelector('#levelsList')
+    for(let i = 0; i < actualLevel; i++){
+        myLevelList.getElementsByTagName('li')[i].style.backgroundColor = 'green'
+    }
+    myLevelList.getElementsByTagName('li')[actualLevel].style.backgroundColor = '#144272'
+    myLevelList.getElementsByTagName('li')[actualLevel].style.scale = '1.2'
     setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
     setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
     setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
@@ -270,10 +282,10 @@ archorSelectButton.addEventListener('click', () => {
 const buttonShop = document.querySelector('#buttonShop')
 const ShopArea = document.querySelector('#shop')
 buttonShop.addEventListener('click', () => {
-    if(ShopArea.style.display == 'flex'){
+    if (ShopArea.style.display == 'flex') {
         ShopArea.style.display = 'none'
         buttonShop.innerHTML = 'Abrir Loja'
-    }else{
+    } else {
         ShopArea.style.display = 'flex'
         buttonShop.innerHTML = 'Fechar Loja'
     }
@@ -288,7 +300,7 @@ const buttonBuyNewAttackKnife = document.querySelector('#itemBuyNewAttackKnife')
 
 buttonBuyMaxLife.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
-    if(goldCurrency >= 10){
+    if (goldCurrency >= 10) {
         knightInfo[0].maxLife += 5
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
         goldCurrency = goldCurrency - 10
@@ -299,7 +311,7 @@ buttonBuyMaxLife.addEventListener('click', () => {
 
 buttonBuyStrength.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
-    if(goldCurrency >= 12){
+    if (goldCurrency >= 12) {
         knightInfo[0].strength += 5
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
         goldCurrency = goldCurrency - 12
@@ -310,7 +322,7 @@ buttonBuyStrength.addEventListener('click', () => {
 
 buttonBuyDefense.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
-    if(goldCurrency >= 12){
+    if (goldCurrency >= 12) {
         knightInfo[0].defense += 5
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
         goldCurrency = goldCurrency - 12
@@ -321,7 +333,7 @@ buttonBuyDefense.addEventListener('click', () => {
 
 buttonBuyMaxMagic.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
-    if(goldCurrency >= 16){
+    if (goldCurrency >= 16) {
         knightInfo[0].maxMagic += 5
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
         goldCurrency = goldCurrency - 16
@@ -329,3 +341,7 @@ buttonBuyMaxMagic.addEventListener('click', () => {
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
     }
 })
+
+
+
+

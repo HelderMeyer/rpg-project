@@ -46,15 +46,20 @@ class Stage {
                     monsterInfo[0].life = monsterInfo[0].life
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                     if (monsterInfo[0].life == 0) {
+                        let myLevelList = document.querySelector('#levelsList')
+                        myLevelList.getElementsByTagName('li')[monsterLevel].style.backgroundColor = 'green'
+                        myLevelList.getElementsByTagName('li')[monsterLevel].style.scale = '1'
                         setTimeout(() => {
                             ++monsterLevel
                             localStorage.setItem('monsterLevel', monsterLevel.toString())
                             this.monsterLevel(monsterLevel)
+                            myLevelList.getElementsByTagName('li')[monsterLevel].style.backgroundColor = '#144272'
+                            myLevelList.getElementsByTagName('li')[monsterLevel].style.scale = '1.2'
                         }, 1000)
                         let newGoldCurrency = Number(localStorage.getItem('gold'))
                         newGoldCurrency += monsterInfo[0].maxLife * 0.1
                         localStorage.setItem('gold', `${Number(newGoldCurrency).toFixed(0)}`)
-                        for(let contador = 0; contador <= Number(localStorage.getItem('gold')); contador++){
+                        for (let contador = 0; contador <= Number(localStorage.getItem('gold')); contador++) {
                             setTimeout(() => {
                                 document.querySelector('#myGold').innerHTML = `${contador}`
                             }, 500)
@@ -76,7 +81,10 @@ class Stage {
                         console.log(`Você recebeu ${actualCounterAttack} de dano!`)
                         console.log(`Você morreu!`)
                         if (attacking.life == 0) {
+                            let myLevelList = document.querySelector('#levelsList')
                             setTimeout(() => {
+                                myLevelList.getElementsByTagName('li')[monsterLevel].style.scale = '1'
+                                myLevelList.getElementsByTagName('li')[monsterLevel].style.backgroundColor = '#41a6ff'
                                 if (monsterLevel >= 1) {
                                     --monsterLevel
                                     localStorage.setItem('monsterLevel', monsterLevel.toString())
@@ -97,6 +105,8 @@ class Stage {
                                 localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                                 localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
                                 this.monsterLevel(monsterLevel)
+                                myLevelList.getElementsByTagName('li')[monsterLevel].style.backgroundColor = '#144272'
+                                myLevelList.getElementsByTagName('li')[monsterLevel].style.scale = '1.2'
                             }, 1000)
                         }
                         knightInfo[0].life = attacking.life
@@ -121,6 +131,10 @@ class Stage {
         this.update() // Atualizar o jogo
     }
     monsterLevel(number) {
+        // 0 - 9 (10 números)
+        // Pegue o que eu estou e deixe azul escuro #144272
+        // Quando avançar, pegar o anterior e deixar verde #green
+        // Se eu perder o que eu estou, voltar 1 nível e deixar o nível que perdi em vermelho #red
         switch (number) {
             case 0:
                 monsterInfo[0].life = 80
