@@ -15,11 +15,41 @@ class Stage {
     }
     eventAttack(attacking, attacked, weaponType) { // Evento que vai captar todos os ataques do personagem
         let randomFactor = (Math.random() * 2).toFixed(2) //Fator que vai gerar números aleatórios, de até 2 casas decimais
-        let actualAttack = (attacking.strength * randomFactor).toFixed(2) // Força de quem ataca vezes o fator de ataque, para gerar valores de ataque aleatórios
+        
+        let actualAttack = 0
+        
         let actualDefense = (monsterInfo[0].defense * randomFactor).toFixed(2) // Defesa de quem é atacado vezes o fator de número aleatório, para gerar valores de defesa aleatórios
         let actualCounterAttack = (monsterInfo[0].strength * randomFactor).toFixed(2) // Força de quem contraataca (o monstro) vezes o fator de ataque, para gerar valores de ataque aleatórios
-        let actualCounterDefense = (attacking.defense * randomFactor).toFixed(2) // Defesa de quem é contraatacado (você) vezes o fator de número aleatório, para gerar valores de defesa aleatórios
+        
+        let actualCounterDefense = 0
+        
         let monsterLevel = localStorage.getItem('monsterLevel')
+
+        if (localStorage.getItem('characterClassType') == 1) {
+            actualAttack = (knightInfo[0].strength * randomFactor).toFixed(2)
+        } else if (localStorage.getItem('characterClassType') == 2) {
+            actualAttack = (wizardInfo[0].strength * randomFactor).toFixed(2)
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            actualAttack = (archerInfo[0].strength * randomFactor).toFixed(2)
+        }
+
+        if (localStorage.getItem('characterClassType') == 1) {
+            actualCounterDefense = (knightInfo[0].defense * randomFactor).toFixed(2)
+        } else if (localStorage.getItem('characterClassType') == 2) {
+            actualCounterDefense = (wizardInfo[0].defense * randomFactor).toFixed(2)
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            actualCounterDefense = (archerInfo[0].defense * randomFactor).toFixed(2)
+        }
+
+        /*
+        if (localStorage.getItem('characterClassType') == 1) {
+            
+        } else if (localStorage.getItem('characterClassType') == 2) {
+           
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            
+        }
+        */
 
         if (weaponType === 'sword') { // Ataque de Espada
             weaponType = 'Espada'
@@ -29,8 +59,18 @@ class Stage {
             weaponType = 'Faca'
         }
 
-        if (attacking.life <= 0 || monsterInfo[0].life <= 0) { // Se a vida de quem ataca ou de quem foi atacado for menor ou igual a 0
-            if (attacking.life <= 0) { // Se a vida de quem ataca for menor que ou igual a 0
+        let attackingLife = 0 
+
+        if (localStorage.getItem('characterClassType') == 1) {
+            attackingLife = knightInfo[0].life
+        } else if (localStorage.getItem('characterClassType') == 2) {
+            attackingLife = wizardInfo[0].life
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            attackingLife = archerInfo[0].life
+        }
+
+        if (attackingLife <= 0 || monsterInfo[0].life <= 0) { // Se a vida de quem ataca ou de quem foi atacado for menor ou igual a 0
+            if (attackingLife <= 0) { // Se a vida de quem ataca for menor que ou igual a 0
                 console.log('Você não pode atacar, porque está sem vida!')
             } else if (monsterInfo[0].life <= 0) { // Se a vida de quem está sendo atacado for menor que ou igual a 0
                 console.log('Você não pode atacar, porque o monstro já está sem vida!')
@@ -76,11 +116,11 @@ class Stage {
                 if (actualCounterAttack < actualCounterDefense) { // Se o contraataque for menor que a sua defesa, você defende
                     console.log(`Você defendeu!`)
                 } else { // Caso contrário, você receberá o ataque do monstro
-                    if (attacking.life <= actualCounterAttack) { // Se a vida de quem ataca for menor que ou igual ao dano do monstro
-                        attacking.life = 0 // Vida de quem ataca vai para 0
+                    if (attackingLife <= actualCounterAttack) { // Se a vida de quem ataca for menor que ou igual ao dano do monstro
+                        attackingLife = 0 // Vida de quem ataca vai para 0
                         console.log(`Você recebeu ${actualCounterAttack} de dano!`)
                         console.log(`Você morreu!`)
-                        if (attacking.life == 0) {
+                        if (attackingLife == 0) {
                             let myLevelList = document.querySelector('#levelsList')
                             setTimeout(() => {
                                 myLevelList.getElementsByTagName('li')[monsterLevel].style.scale = '1'
@@ -92,11 +132,11 @@ class Stage {
                                     localStorage.setItem('monsterLevel', `0`)
                                 }
                                 if (localStorage.getItem('characterClassType') == 1) {
-                                    attacking.life = knightInfo[0].maxLife
+                                    attackingLife = knightInfo[0].maxLife
                                 } else if (localStorage.getItem('characterClassType') == 2) {
-                                    attacking.life = wizardInfo[0].maxLife
+                                    attackingLife = wizardInfo[0].maxLife
                                 } else if (localStorage.getItem('characterClassType') == 3) {
-                                    attacking.life = archerInfo[0].maxLife
+                                    attackingLife = archerInfo[0].maxLife
                                 }
                                 knightInfo[0].life = knightInfo[0].maxLife
                                 wizardInfo[0].life = wizardInfo[0].maxLife
@@ -109,18 +149,18 @@ class Stage {
                                 myLevelList.getElementsByTagName('li')[monsterLevel].style.scale = '1.2'
                             }, 1000)
                         }
-                        knightInfo[0].life = attacking.life
-                        wizardInfo[0].life = attacking.life
-                        archerInfo[0].life = attacking.life
+                        knightInfo[0].life = attackingLife
+                        wizardInfo[0].life = attackingLife
+                        archerInfo[0].life = attackingLife
                         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
                         localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                         localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
                     } else { // Caso contrário, você receberá o dano
-                        attacking.life -= actualCounterAttack // Sua vida menos o dano do monstro
+                        attackingLife -= actualCounterAttack // Sua vida menos o dano do monstro
                         console.log(`Você recebeu ${actualCounterAttack} de dano!`)
-                        knightInfo[0].life = attacking.life
-                        wizardInfo[0].life = attacking.life
-                        archerInfo[0].life = attacking.life
+                        knightInfo[0].life = attackingLife
+                        wizardInfo[0].life = attackingLife
+                        archerInfo[0].life = attackingLife
                         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
                         localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                         localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
