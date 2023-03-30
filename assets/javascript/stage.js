@@ -275,11 +275,11 @@ class Stage {
         // VARIÁVEIS PARA RESUMIR O CÓDIGO
 
         // VIDAS
-        const cl = document.querySelector('#characterLife') // cl = characterLife
-        const ml = document.querySelector('#monsterLife') // ml = monsterLife
+        const cl = document.querySelector('#characterLife') // cl = characterLife - BARRA DE VIDA DO PERSONAGEM
+        const ml = document.querySelector('#monsterLife') // ml = monsterLife - BARRA DE VIDA DO MONSTRO
 
         // FORÇA E DEFESA (SUA)
-        const syd = document.querySelector('#showYourDefense') // sdy = showYourDefense = Sua defesa
+        const syd = document.querySelector('#showYourDefense') // sdy = showYourDefense = Sua defesa 
         const sys = document.querySelector('#showYourStrength') // ssy = showYourStrength = Sua força
 
         // FORÇA E DEFESA (MONSTRO)
@@ -287,8 +287,8 @@ class Stage {
         const sms = document.querySelector('#showMonsterStrength') // sms = showMonsterStrength
 
         // MAGIAS
-        const ym = document.querySelector('#characterMagic') // ym = yourMagic (Sua magia)
-        const mm = document.querySelector('#monsterMagic') // mm = monsterMagic (Magia do monstro)
+        const ym = document.querySelector('#characterMagic') // ym = yourMagic (Sua magia) - BARRA DE MAGIA
+        const mm = document.querySelector('#monsterMagic') // mm = monsterMagic (Magia do monstro) - BARRA DE MAGIA
 
         // SUA BARRA DE VIDA E DO MONSTRO
         if (localStorage.getItem('characterClassType') == 1) {
@@ -305,8 +305,22 @@ class Stage {
         let monsterLifePct = ((monsterInfo[0].life / monsterInfo[0].maxLife) * 100) // Vida do Monstro em %
 
         // SUA BARRA DE MAGIA E A BARRA MAGIA DO MONSTRO
-        let characterMagicPct = ((this.fighter.magic / this.fighter.maxMagic) * 100) // Magia do Personagem em %
-        let monsterMagicPct = ((monsterInfo[0].magic / monsterInfo[0].maxMagic) * 100) // Magia do Monstro em %
+        let characterMagicPct = 0
+        if (localStorage.getItem('characterClassType') == 1) {
+            characterMagicPct = ((knightInfo[0].magic/knightInfo[0].maxMagic) * 100)
+            ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
+            ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${knightInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
+        } else if (localStorage.getItem('characterClassType') == 2) {
+            characterMagicPct = ((wizardInfo[0].magic/wizardInfo[0].maxMagic) * 100)
+            ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
+            ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${wizardInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
+        } else if (localStorage.getItem('characterClassType') == 3) {
+            characterMagicPct = ((knightInfo[0].magic/knightInfo[0].maxMagic) * 100)
+            ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
+            ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${archerInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
+        }
+
+        let monsterMagicPct = ((archerInfo[0].magic / archerInfo[0].maxMagic) * 100) // Magia do Monstro em %
 
         // VIDA NA TELA
         if (localStorage.getItem('characterClassType') == 1) {
@@ -316,15 +330,16 @@ class Stage {
         } else if (localStorage.getItem('characterClassType') == 3) {
             cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${archerInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
         }
+
         ml.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${monsterInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do monstro dentro da barra de vida
         ml.style.width = `${monsterLifePct}%` // Manupular a barra de vida de acordo com a porcentagem da vida do monstro
-        // MAGIA NA TELA
-        ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${this.fighter.magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
         mm.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${monsterInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do monstro dentro da barra de magia
-        ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
         mm.style.width = `${monsterMagicPct}%` // Manupular a barra de magia de acordo com a porcentagem de magia do monstro
 
+        // ==============
         // FORÇA E DEFESA
+        // ==============
+
         if (localStorage.getItem('characterClassType') == 1) {
             syd.innerHTML = `${knightInfo[0].defense} de defesa` // Exibir a defesa do personagem
             syd.style.color = `aqua`

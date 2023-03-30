@@ -347,8 +347,11 @@ buttonBuyMaxMagic.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
     if (goldCurrency >= 16) {
         knightInfo[0].maxMagic += 2
+        knightInfo[0].magic = knightInfo[0].maxMagic
         wizardInfo[0].maxMagic += 2
+        wizardInfo[0].magic = wizardInfo[0].maxMagic
         archerInfo[0].maxMagic += 2
+        archerInfo[0].magic = archerInfo[0].maxMagic
         localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
         localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
         localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
