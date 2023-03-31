@@ -21,6 +21,15 @@ function startEvent() {
 class StartGame {
     gameChooseCharacter(number) {
         if (number === 1) { // CAVALEIRO
+
+            document.querySelector('#itemBuyMaxMagic').style.display = 'none'
+            document.querySelector('#buyMaxMagic').style.display = 'none'
+
+            document.querySelector('#buttonCharacterCrookAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterFireAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterIceAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterLightning').style.display = 'none'
+
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
             setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
             setTimeout(() => { document.querySelector('#characterName').style.display = '' }, 700)
@@ -112,6 +121,11 @@ class StartGame {
                 stage.update()
             }
         } else if (number === 2) {
+
+            document.querySelector('button#buttonCharacterPunchAttack').style.display = 'none'
+            document.querySelector('button#buttonCharacterSwordAttack').style.display = 'none'
+            document.querySelector('button#buttonCharacterSpearAttack').style.display = 'none'
+
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
             setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
             setTimeout(() => { document.querySelector('#characterName').style.display = '' }, 700)
@@ -140,12 +154,13 @@ class StartGame {
                         document.querySelector('#monster')
                     )
                     // ====================
-                    // BOTÕES DE ATAQUE DO CAVALEIRO
+                    // ATAQUES DO MAGO
                     // ====================
 
-                    document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
-                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    document.querySelector('#buttonCharacterCrookAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'crook', 1))
+                    document.querySelector('#buttonCharacterFireAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'fire', 1.4))
+                    document.querySelector('#buttonCharacterIceAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'ice', 1.5))
+                    document.querySelector('#buttonCharacterLightning').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'lightning', 2))
 
                     stage.update()
                     return
@@ -167,12 +182,14 @@ class StartGame {
                 )
                 // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
                 // ====================
-                // BOTÕES DE ATAQUE DO CAVALEIRO
+                // ATAQUES DO MAGO
                 // ====================
 
-                document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
-                document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                document.querySelector('#buttonCharacterCrookAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'crook', 1))
+                document.querySelector('#buttonCharacterFireAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'fire', 1.4))
+                document.querySelector('#buttonCharacterIceAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'ice', 1.5))
+                document.querySelector('#buttonCharacterLightning').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'lightning', 2))
+
                 stage.update()
             }
         } else if (number === 3) {
@@ -249,6 +266,7 @@ const archorSelectButton = document.querySelector('button#chooseArchorCharacter'
 
 newGameButton.addEventListener('click', () => {
     knightAttacks[0].sword = 0
+    knightAttacks[0].spear = 0
     localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
     let myLevelList = document.querySelector('#levelsList')
     myLevelList.getElementsByTagName('li')[0].style.backgroundColor = '#144272'

@@ -15,14 +15,14 @@ class Stage {
     }
     eventAttack(attacking, attacked, weaponType, attackTypePercent) { // Evento que vai captar todos os ataques do personagem
         let randomFactor = (Math.random() * 2).toFixed(2) //Fator que vai gerar números aleatórios, de até 2 casas decimais
-        
+
         let actualAttack = 0
-        
+
         let actualDefense = (monsterInfo[0].defense * randomFactor).toFixed(2) // Defesa de quem é atacado vezes o fator de número aleatório, para gerar valores de defesa aleatórios
         let actualCounterAttack = (monsterInfo[0].strength * randomFactor).toFixed(2) // Força de quem contraataca (o monstro) vezes o fator de ataque, para gerar valores de ataque aleatórios
-        
+
         let actualCounterDefense = 0
-        
+
         let monsterLevel = localStorage.getItem('monsterLevel')
 
         if (localStorage.getItem('characterClassType') == 1) {
@@ -57,9 +57,17 @@ class Stage {
             weaponType = 'Lança'
         } else if (weaponType === 'punch') { // Ataque de Faca
             weaponType = 'Soco'
+        } else if (weaponType === 'crook') {
+            weaponType = 'Cajado'
+        } else if (weaponType === 'fire') {
+            weaponType = 'Fogo'
+        } else if (weaponType === 'ice') {
+            weaponType = 'Gelo'
+        } else if (weaponType === 'lightning') {
+            weaponType = 'Relâmpagos'
         }
 
-        let attackingLife = 0 
+        let attackingLife = 0
 
         if (localStorage.getItem('characterClassType') == 1) {
             attackingLife = knightInfo[0].life
@@ -307,15 +315,15 @@ class Stage {
         // SUA BARRA DE MAGIA E A BARRA MAGIA DO MONSTRO
         let characterMagicPct = 0
         if (localStorage.getItem('characterClassType') == 1) {
-            characterMagicPct = ((knightInfo[0].magic/knightInfo[0].maxMagic) * 100)
+            characterMagicPct = ((knightInfo[0].magic / knightInfo[0].maxMagic) * 100)
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${knightInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
         } else if (localStorage.getItem('characterClassType') == 2) {
-            characterMagicPct = ((wizardInfo[0].magic/wizardInfo[0].maxMagic) * 100)
+            characterMagicPct = ((wizardInfo[0].magic / wizardInfo[0].maxMagic) * 100)
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${wizardInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
         } else if (localStorage.getItem('characterClassType') == 3) {
-            characterMagicPct = ((knightInfo[0].magic/knightInfo[0].maxMagic) * 100)
+            characterMagicPct = ((knightInfo[0].magic / knightInfo[0].maxMagic) * 100)
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${archerInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
         }
