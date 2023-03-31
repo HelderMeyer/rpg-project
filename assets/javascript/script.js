@@ -20,7 +20,7 @@ function startEvent() {
 }
 class StartGame {
     gameChooseCharacter(number) {
-        if (number === 1) {
+        if (number === 1) { // CAVALEIRO
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
             setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
             setTimeout(() => { document.querySelector('#characterName').style.display = '' }, 700)
@@ -49,9 +49,27 @@ class StartGame {
                         document.querySelector('#monster')
                     )
                     // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
-                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+
+                    // ====================
+                    // ATAQUES DO CAVALEIRO
+                    // ====================
+                    let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
+                    if (knightAttacks[0].sword == 0) {
+                        document.querySelector('button#buttonCharacterSwordAttack').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterSwordAttack').style.display = ''
+                    }
+
+                    if (knightAttacks[0].spear == 0) {
+                        document.querySelector('button#buttonCharacterSpearAttack').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterSpearAttack').style.display = ''
+                    }
+
+                    document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch', 1))
+                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword', 1.5))
+                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear', 2))
+
                     stage.update()
                     return
                 }
@@ -71,9 +89,26 @@ class StartGame {
                     document.querySelector('#monster')
                 )
                 // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
-                document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+                // ====================
+                // ATAQUES DO CAVALEIRO
+                // ====================
+
+                let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
+                if (knightAttacks[0].sword == 0) {
+                    document.querySelector('button#buttonCharacterSwordAttack').style.display = 'none'
+                } else {
+                    document.querySelector('button#buttonCharacterSwordAttack').style.display = ''
+                }
+
+                if (knightAttacks[0].spear == 0) {
+                    document.querySelector('button#buttonCharacterSpearAttack').style.display = 'none'
+                } else {
+                    document.querySelector('button#buttonCharacterSpearAttack').style.display = ''
+                }
+
+                document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch', 1))
+                document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword', 1.5))
+                document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear', 2))
                 stage.update()
             }
         } else if (number === 2) {
@@ -104,10 +139,14 @@ class StartGame {
                         document.querySelector('#character'),
                         document.querySelector('#monster')
                     )
-                    // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    // ====================
+                    // BOTÕES DE ATAQUE DO CAVALEIRO
+                    // ====================
+
+                    document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
                     document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
                     document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
+
                     stage.update()
                     return
                 }
@@ -127,9 +166,13 @@ class StartGame {
                     document.querySelector('#monster')
                 )
                 // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                // ====================
+                // BOTÕES DE ATAQUE DO CAVALEIRO
+                // ====================
+
+                document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
                 document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
                 document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
                 stage.update()
             }
         } else if (number === 3) {
@@ -161,9 +204,13 @@ class StartGame {
                         document.querySelector('#monster')
                     )
                     // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                    // ====================
+                    // BOTÕES DE ATAQUE DO CAVALEIRO
+                    // ====================
+
+                    document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
                     document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
                     document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                    document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
                     stage.update()
                     return
                 }
@@ -183,9 +230,13 @@ class StartGame {
                     document.querySelector('#monster')
                 )
                 // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
+                // ====================
+                // BOTÕES DE ATAQUE DO CAVALEIRO
+                // ====================
+
+                document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
                 document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
                 document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
-                document.querySelector('button#buttonCharacterKnifeAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'knife'))
                 stage.update()
             }
         }
@@ -197,6 +248,8 @@ const wizardSelectButton = document.querySelector('button#chooseWizardCharacter'
 const archorSelectButton = document.querySelector('button#chooseArchorCharacter')
 
 newGameButton.addEventListener('click', () => {
+    knightAttacks[0].sword = 0
+    localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
     let myLevelList = document.querySelector('#levelsList')
     myLevelList.getElementsByTagName('li')[0].style.backgroundColor = '#144272'
     myLevelList.getElementsByTagName('li')[0].style.scale = '1.2'
@@ -255,7 +308,7 @@ newGameButton.addEventListener('click', () => {
 continueButton.addEventListener('click', () => {
     let actualLevel = Number(localStorage.getItem('monsterLevel'))
     let myLevelList = document.querySelector('#levelsList')
-    for(let i = 0; i < actualLevel; i++){
+    for (let i = 0; i < actualLevel; i++) {
         myLevelList.getElementsByTagName('li')[i].style.backgroundColor = 'green'
     }
     myLevelList.getElementsByTagName('li')[actualLevel].style.backgroundColor = '#144272'
@@ -296,7 +349,7 @@ const buttonBuyStrength = document.querySelector('#itemBuyStrength')
 const buttonBuyDefense = document.querySelector('#itemBuyDefense')
 const buttonBuyMaxMagic = document.querySelector('#itemBuyMaxMagic')
 const buttonBuyNewAttackSpear = document.querySelector('#itemBuyNewAttackSpear')
-const buttonBuyNewAttackKnife = document.querySelector('#itemBuyNewAttackKnife')
+const buttonBuyNewAttackSword = document.querySelector('#itemBuyNewAttackSword')
 
 buttonBuyMaxLife.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
@@ -360,7 +413,28 @@ buttonBuyMaxMagic.addEventListener('click', () => {
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
     }
 })
+let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
 
+buttonBuyNewAttackSword.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 100) {
+        knightAttacks[0].sword = 1
+        localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
+        document.querySelector('button#buttonCharacterSwordAttack').style.display = ''
+        goldCurrency = goldCurrency - 100
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+    }
+})
 
-
-
+buttonBuyNewAttackSpear.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 300) {
+        knightAttacks[0].spear = 1
+        localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
+        document.querySelector('button#buttonCharacterSpearAttack').style.display = ''
+        goldCurrency = goldCurrency - 300
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+    }
+})

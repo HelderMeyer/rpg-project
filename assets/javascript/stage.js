@@ -13,7 +13,7 @@ class Stage {
         this.monster = monster // Monstro
         this.monsterElement = monsterElement // Área do monstro no HTML
     }
-    eventAttack(attacking, attacked, weaponType) { // Evento que vai captar todos os ataques do personagem
+    eventAttack(attacking, attacked, weaponType, attackTypePercent) { // Evento que vai captar todos os ataques do personagem
         let randomFactor = (Math.random() * 2).toFixed(2) //Fator que vai gerar números aleatórios, de até 2 casas decimais
         
         let actualAttack = 0
@@ -26,7 +26,7 @@ class Stage {
         let monsterLevel = localStorage.getItem('monsterLevel')
 
         if (localStorage.getItem('characterClassType') == 1) {
-            actualAttack = (knightInfo[0].strength * randomFactor).toFixed(2)
+            actualAttack = ((knightInfo[0].strength * randomFactor) * Number(attackTypePercent)).toFixed(2)
         } else if (localStorage.getItem('characterClassType') == 2) {
             actualAttack = (wizardInfo[0].strength * randomFactor).toFixed(2)
         } else if (localStorage.getItem('characterClassType') == 3) {
@@ -55,8 +55,8 @@ class Stage {
             weaponType = 'Espada'
         } else if (weaponType === 'spear') { // Ataque de Lança
             weaponType = 'Lança'
-        } else if (weaponType === 'knife') { // Ataque de Faca
-            weaponType = 'Faca'
+        } else if (weaponType === 'punch') { // Ataque de Faca
+            weaponType = 'Soco'
         }
 
         let attackingLife = 0 

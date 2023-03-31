@@ -2,7 +2,7 @@
 
 let knightInfo = JSON.parse(localStorage.getItem('knightInfo') || '[]')
 
-if(firstTime == null){
+if (firstTime == null) {
     knightInfo.push({
         life: 100,
         maxLife: 100,
@@ -12,10 +12,18 @@ if(firstTime == null){
         maxMagic: 0
     });
     localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
-} 
+    
+    let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
+    knightAttacks.push({
+        punch: 1,
+        sword: 0,
+        spear: 0
+    });
+    localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
+}
 
 class Knight extends Character {
-    constructor(name){
+    constructor(name) {
         super(name) // Vai pegar o nome da classe Character
         this.life = knightInfo[0].life // Vida do Cavaleiro
         this.maxLife = knightInfo[0].maxLife // Vida máxima do Cavaleiro
