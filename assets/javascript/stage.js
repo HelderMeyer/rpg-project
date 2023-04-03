@@ -109,18 +109,26 @@ class Stage {
                         }
                     }
 
-                    if(wizardInfo[0].magic >= 4){
+                    if(wizardInfo[0].magic >= 4 && wizardAttacks[0].lightning == 1){
                         buttonCharacterLightning.style.display = ''
                     }else{
                         buttonCharacterLightning.style.display = 'none'
                     }
 
-                    if(wizardInfo[0].magic >= 2){
-                        buttonCharacterFireAttack.style.display = ''
-                        buttonCharacterIceAttack.style.display = ''
-                    }else{
-                        buttonCharacterFireAttack.style.display = 'none'
-                        buttonCharacterIceAttack.style.display = 'none'
+                    if(wizardAttacks[0].fire == 1){
+                        if(wizardInfo[0].magic >= 2){
+                            buttonCharacterFireAttack.style.display = ''
+                        }else{
+                            buttonCharacterFireAttack.style.display = 'none'
+                        }
+                    }
+                    
+                    if(wizardAttacks[0].ice == 1){
+                        if(wizardInfo[0].magic >= 2){
+                            buttonCharacterIceAttack.style.display = ''
+                        }else{
+                            buttonCharacterIceAttack.style.display = 'none'
+                        }
                     }
 
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
@@ -172,18 +180,26 @@ class Stage {
                         }
                     }
 
-                    if(wizardInfo[0].magic >= 4){
+                    if(wizardInfo[0].magic >= 4 && wizardAttacks[0].lightning == 1){
                         buttonCharacterLightning.style.display = ''
                     }else{
                         buttonCharacterLightning.style.display = 'none'
                     }
 
-                    if(wizardInfo[0].magic >= 2){
-                        buttonCharacterFireAttack.style.display = ''
-                        buttonCharacterIceAttack.style.display = ''
-                    }else{
-                        buttonCharacterFireAttack.style.display = 'none'
-                        buttonCharacterIceAttack.style.display = 'none'
+                    if(wizardAttacks[0].fire == 1){
+                        if(wizardInfo[0].magic >= 2){
+                            buttonCharacterFireAttack.style.display = ''
+                        }else{
+                            buttonCharacterFireAttack.style.display = 'none'
+                        }
+                    }
+                    
+                    if(wizardAttacks[0].ice == 1){
+                        if(wizardInfo[0].magic >= 2){
+                            buttonCharacterIceAttack.style.display = ''
+                        }else{
+                            buttonCharacterIceAttack.style.display = 'none'
+                        }
                     }
                     
                 }

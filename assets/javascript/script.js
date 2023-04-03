@@ -22,6 +22,13 @@ class StartGame {
     gameChooseCharacter(number) {
         if (number === 1) { // CAVALEIRO
 
+            buttonBuyNewAttackFire.style.display = 'none'
+            buttonBuyNewAttackIce.style.display = 'none'
+            buttonBuyNewAttackLightning.style.display = 'none'
+            document.querySelector('#liFire').style.display = 'none'
+            document.querySelector('#liIce').style.display = 'none'
+            document.querySelector('#liLightning').style.display = 'none'
+            
             document.querySelector('#itemBuyMaxMagic').style.display = 'none'
             document.querySelector('#buyMaxMagic').style.display = 'none'
 
@@ -162,6 +169,25 @@ class StartGame {
                     // ATAQUES DO MAGO
                     // ====================
 
+                    let wizardAttacks = JSON.parse(localStorage.getItem('wizardAttacks') || '[]')
+                    if (wizardAttacks[0].fire == 0) {
+                        document.querySelector('button#buttonCharacterFireAttack').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterFireAttack').style.display = ''
+                    }
+
+                    if (wizardAttacks[0].ice == 0) {
+                        document.querySelector('button#buttonCharacterIceAttack').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterIceAttack').style.display = ''
+                    }
+
+                    if (wizardAttacks[0].lightning == 0) {
+                        document.querySelector('button#buttonCharacterLightning').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterLightning').style.display = ''
+                    }
+
                     document.querySelector('#buttonCharacterCrookAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'crook', 1))
                     document.querySelector('#buttonCharacterFireAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'fire', 1.4))
                     document.querySelector('#buttonCharacterIceAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'ice', 1.5))
@@ -189,6 +215,25 @@ class StartGame {
                 // ====================
                 // ATAQUES DO MAGO
                 // ====================
+
+                let wizardAttacks = JSON.parse(localStorage.getItem('wizardAttacks') || '[]')
+                    if (wizardAttacks[0].fire == 0) {
+                        document.querySelector('button#buttonCharacterFireAttack').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterFireAttack').style.display = ''
+                    }
+
+                    if (wizardAttacks[0].ice == 0) {
+                        document.querySelector('button#buttonCharacterIceAttack').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterIceAttack').style.display = ''
+                    }
+
+                    if (wizardAttacks[0].lightning == 0) {
+                        document.querySelector('button#buttonCharacterLightning').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterLightning').style.display = ''
+                    }
 
                 document.querySelector('#buttonCharacterCrookAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'crook', 1))
                 document.querySelector('#buttonCharacterFireAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'fire', 1.4))
@@ -270,6 +315,7 @@ const wizardSelectButton = document.querySelector('button#chooseWizardCharacter'
 const archorSelectButton = document.querySelector('button#chooseArchorCharacter')
 
 newGameButton.addEventListener('click', () => {
+    // Ataques do Cavaleiro
     buttonBuyNewAttackSword.style.display = ''
     document.querySelector('#liSword').style.display = ''
     buttonBuyNewAttackSpear.style.display = ''
@@ -277,6 +323,22 @@ newGameButton.addEventListener('click', () => {
     knightAttacks[0].sword = 0
     knightAttacks[0].spear = 0
     localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
+
+    // Ataques do Mago
+
+    buttonBuyNewAttackFire.style.display = ''
+    buttonBuyNewAttackIce.style.display = ''
+    buttonBuyNewAttackLightning.style.display = ''
+
+    document.querySelector('#liFire').style.display = ''
+    document.querySelector('#liIce').style.display = ''
+    document.querySelector('#liLightning').style.display = ''
+
+    wizardAttacks[0].fire = 0
+    wizardAttacks[0].ice = 0
+    wizardAttacks[0].lightning = 0
+    localStorage.setItem('wizardAttacks', JSON.stringify(wizardAttacks));
+
     let myLevelList = document.querySelector('#levelsList')
     myLevelList.getElementsByTagName('li')[0].style.backgroundColor = '#144272'
     myLevelList.getElementsByTagName('li')[0].style.scale = '1.2'
@@ -378,6 +440,10 @@ const buttonBuyMaxMagic = document.querySelector('#itemBuyMaxMagic')
 const buttonBuyNewAttackSpear = document.querySelector('#itemBuyNewAttackSpear')
 const buttonBuyNewAttackSword = document.querySelector('#itemBuyNewAttackSword')
 
+const buttonBuyNewAttackFire = document.querySelector('#itemBuyNewAttackFire')
+const buttonBuyNewAttackIce = document.querySelector('#itemBuyNewAttackIce')
+const buttonBuyNewAttackLightning = document.querySelector('#itemBuyNewAttackLightning')
+
 buttonBuyMaxLife.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
     if (goldCurrency >= 10) {
@@ -441,6 +507,7 @@ buttonBuyMaxMagic.addEventListener('click', () => {
     }
 })
 let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
+let wizardAttacks = JSON.parse(localStorage.getItem('wizardAttacks') || '[]')
 
 if (knightAttacks[0].sword == 1) {
     buttonBuyNewAttackSword.style.display = 'none'
@@ -477,5 +544,62 @@ buttonBuyNewAttackSpear.addEventListener('click', () => {
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
         buttonBuyNewAttackSpear.style.display = 'none'
         document.querySelector('#liSpear').style.display = 'none'
+    }
+})
+
+if (wizardAttacks[0].fire == 1) {
+    buttonBuyNewAttackFire.style.display = 'none'
+    document.querySelector('#liFire').style.display = 'none'
+}
+
+buttonBuyNewAttackFire.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 100) {
+        wizardAttacks[0].fire = 1
+        localStorage.setItem('wizardAttacks', JSON.stringify(wizardAttacks));
+        document.querySelector('button#buttonCharacterFireAttack').style.display = ''
+        goldCurrency = goldCurrency - 100
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackFire.style.display = 'none'
+        document.querySelector('#liFire').style.display = 'none'
+    }
+})
+
+if (wizardAttacks[0].ice == 1) {
+    buttonBuyNewAttackIce.style.display = 'none'
+    document.querySelector('#liIce').style.display = 'none'
+}
+
+buttonBuyNewAttackIce.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 100) {
+        wizardAttacks[0].ice = 1
+        localStorage.setItem('wizardAttacks', JSON.stringify(wizardAttacks));
+        document.querySelector('button#buttonCharacterIceAttack').style.display = ''
+        goldCurrency = goldCurrency - 100
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackIce.style.display = 'none'
+        document.querySelector('#liIce').style.display = 'none'
+    }
+})
+
+if (wizardAttacks[0].lightning == 1) {
+    buttonBuyNewAttackLightning.style.display = 'none'
+    document.querySelector('#liLightning').style.display = 'none'
+}
+
+buttonBuyNewAttackLightning.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 100) {
+        wizardAttacks[0].lightning = 1
+        localStorage.setItem('wizardAttacks', JSON.stringify(wizardAttacks));
+        document.querySelector('button#buttonCharacterLightning').style.display = ''
+        goldCurrency = goldCurrency - 200
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackLightning.style.display = 'none'
+        document.querySelector('#liLightning').style.display = 'none'
     }
 })

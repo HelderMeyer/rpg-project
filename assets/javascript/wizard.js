@@ -10,6 +10,15 @@ if(firstTime == null){
         maxMagic: 50
     });
     localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+
+    let wizardAttacks = JSON.parse(localStorage.getItem('wizardAttacks') || '[]')
+    wizardAttacks.push({
+        crook: 1,
+        fire: 0,
+        ice: 0,
+        lightning: 0
+    });
+    localStorage.setItem('wizardAttacks', JSON.stringify(wizardAttacks));
 } 
 
 class Wizard extends Character {
