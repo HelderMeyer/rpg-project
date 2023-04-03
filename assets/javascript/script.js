@@ -433,6 +433,11 @@ buttonBuyMaxMagic.addEventListener('click', () => {
 })
 let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
 
+if (knightAttacks[0].sword == 1) {
+    buttonBuyNewAttackSword.style.display = 'none'
+    document.querySelector('#liSword').style.display = 'none'
+}
+
 buttonBuyNewAttackSword.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
     if (goldCurrency >= 100) {
@@ -442,17 +447,26 @@ buttonBuyNewAttackSword.addEventListener('click', () => {
         goldCurrency = goldCurrency - 100
         localStorage.setItem('gold', `${Number(goldCurrency)}`)
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackSword.style.display = 'none'
+        document.querySelector('#liSword').style.display = 'none'
     }
 })
 
+if (knightAttacks[0].spear == 1) {
+    buttonBuyNewAttackSpear.style.display = 'none'
+    document.querySelector('#liSpear').style.display = 'none'
+}
+
 buttonBuyNewAttackSpear.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
-    if (goldCurrency >= 300) {
+    if (goldCurrency >= 200) {
         knightAttacks[0].spear = 1
         localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
         document.querySelector('button#buttonCharacterSpearAttack').style.display = ''
-        goldCurrency = goldCurrency - 300
+        goldCurrency = goldCurrency - 200
         localStorage.setItem('gold', `${Number(goldCurrency)}`)
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackSpear.style.display = 'none'
+        document.querySelector('#liSpear').style.display = 'none'
     }
 })
