@@ -28,7 +28,7 @@ class StartGame {
             document.querySelector('#liFire').style.display = 'none'
             document.querySelector('#liIce').style.display = 'none'
             document.querySelector('#liLightning').style.display = 'none'
-            
+
             document.querySelector('#itemBuyMaxMagic').style.display = 'none'
             document.querySelector('#buyMaxMagic').style.display = 'none'
 
@@ -216,7 +216,20 @@ class StartGame {
                 // ATAQUES DO MAGO
                 // ====================
 
-                let wizardAttacks = JSON.parse(localStorage.getItem('wizardAttacks') || '[]')
+                let wizardInfo = JSON.parse(localStorage.getItem('wizardInfo') || '[]')
+                if (wizardInfo[0].magic < 4) {
+                    buttonCharacterLightning.style.display = 'none'
+                } else {
+                    if (wizardAttacks[0].lightning == 0) {
+                        document.querySelector('button#buttonCharacterLightning').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterLightning').style.display = ''
+                    }
+                }
+                if (wizardInfo[0].magic < 2) {
+                    buttonCharacterIceAttack.style.display = 'none'
+                    buttonCharacterFireAttack.style.display = 'none'
+                } else {
                     if (wizardAttacks[0].fire == 0) {
                         document.querySelector('button#buttonCharacterFireAttack').style.display = 'none'
                     } else {
@@ -228,12 +241,7 @@ class StartGame {
                     } else {
                         document.querySelector('button#buttonCharacterIceAttack').style.display = ''
                     }
-
-                    if (wizardAttacks[0].lightning == 0) {
-                        document.querySelector('button#buttonCharacterLightning').style.display = 'none'
-                    } else {
-                        document.querySelector('button#buttonCharacterLightning').style.display = ''
-                    }
+                }
 
                 document.querySelector('#buttonCharacterCrookAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'crook', 1))
                 document.querySelector('#buttonCharacterFireAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'fire', 1.4))
