@@ -89,6 +89,40 @@ class Stage {
             } else { // Caso contrário, o ataque será feito no monstro
                 if (monsterInfo[0].life <= actualAttack) { // Se a vida de quem é atacado for menor do que a força de ataque de quem tá atacando
                     monsterInfo[0].life = 0 // Vida de quem ataca vai para 0
+
+                    // 1234518342167341283672153126735167835126783521786352178635126783561253672815367125312678351267357128653
+
+                    if(wizardInfo[0].magic >= 2){
+                        if(weaponType == 'Fogo'){
+                            wizardInfo[0].magic -= 2
+                            localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                        }
+                        if(weaponType == 'Gelo'){
+                            wizardInfo[0].magic -= 2
+                            localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                        }
+                        if(wizardInfo[0].magic >= 4){
+                            if(weaponType == 'Relâmpagos'){
+                                wizardInfo[0].magic -= 4
+                                localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                            }
+                        }
+                    }
+
+                    if(wizardInfo[0].magic >= 4){
+                        buttonCharacterLightning.style.display = ''
+                    }else{
+                        buttonCharacterLightning.style.display = 'none'
+                    }
+
+                    if(wizardInfo[0].magic >= 2){
+                        buttonCharacterFireAttack.style.display = ''
+                        buttonCharacterIceAttack.style.display = ''
+                    }else{
+                        buttonCharacterFireAttack.style.display = 'none'
+                        buttonCharacterIceAttack.style.display = 'none'
+                    }
+
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
                     console.log(`O monstro está morto!`)
                     monsterInfo[0].life = monsterInfo[0].life
@@ -118,6 +152,40 @@ class Stage {
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
                     monsterInfo[0].life = monsterInfo[0].life
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
+                    
+                    // 1234518342167341283672153126735167835126783521786352178635126783561253672815367125312678351267357128653
+
+                    if(wizardInfo[0].magic >= 2){
+                        if(weaponType == 'Fogo'){
+                            wizardInfo[0].magic -= 2
+                            localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                        }
+                        if(weaponType == 'Gelo'){
+                            wizardInfo[0].magic -= 2
+                            localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                        }
+                        if(wizardInfo[0].magic >= 4){
+                            if(weaponType == 'Relâmpagos'){
+                                wizardInfo[0].magic -= 4
+                                localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
+                            }
+                        }
+                    }
+
+                    if(wizardInfo[0].magic >= 4){
+                        buttonCharacterLightning.style.display = ''
+                    }else{
+                        buttonCharacterLightning.style.display = 'none'
+                    }
+
+                    if(wizardInfo[0].magic >= 2){
+                        buttonCharacterFireAttack.style.display = ''
+                        buttonCharacterIceAttack.style.display = ''
+                    }else{
+                        buttonCharacterFireAttack.style.display = 'none'
+                        buttonCharacterIceAttack.style.display = 'none'
+                    }
+                    
                 }
             }
             if (monsterInfo[0].life > 0) { // Se a vida do monstro for maior que 0

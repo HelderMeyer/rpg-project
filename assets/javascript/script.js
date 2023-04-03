@@ -122,6 +122,11 @@ class StartGame {
             }
         } else if (number === 2) {
 
+            buttonBuyNewAttackSword.style.display = 'none'
+            document.querySelector('#liSword').style.display = 'none'
+            buttonBuyNewAttackSpear.style.display = 'none'
+            document.querySelector('#liSpear').style.display = 'none'
+
             document.querySelector('button#buttonCharacterPunchAttack').style.display = 'none'
             document.querySelector('button#buttonCharacterSwordAttack').style.display = 'none'
             document.querySelector('button#buttonCharacterSpearAttack').style.display = 'none'
@@ -265,6 +270,10 @@ const wizardSelectButton = document.querySelector('button#chooseWizardCharacter'
 const archorSelectButton = document.querySelector('button#chooseArchorCharacter')
 
 newGameButton.addEventListener('click', () => {
+    buttonBuyNewAttackSword.style.display = ''
+    document.querySelector('#liSword').style.display = ''
+    buttonBuyNewAttackSpear.style.display = ''
+    document.querySelector('#liSpear').style.display = ''
     knightAttacks[0].sword = 0
     knightAttacks[0].spear = 0
     localStorage.setItem('knightAttacks', JSON.stringify(knightAttacks));
