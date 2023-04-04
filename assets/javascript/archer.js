@@ -10,8 +10,16 @@ if(firstTime == null){
         maxMagic: 30
     });
     localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
-} 
 
+    let archerAttacks = JSON.parse(localStorage.getItem('archerAttacks') || '[]')
+    archerAttacks.push({
+        arrows: 1,
+        poisonarrow: 0,
+        flamingarrow: 0,
+        raysarrow: 0
+    });
+    localStorage.setItem('archerAttacks', JSON.stringify(archerAttacks));
+} 
 
 class Archer extends Character {
     constructor(name){

@@ -36,6 +36,10 @@ class StartGame {
             document.querySelector('#buttonCharacterFireAttack').style.display = 'none'
             document.querySelector('#buttonCharacterIceAttack').style.display = 'none'
             document.querySelector('#buttonCharacterLightning').style.display = 'none'
+            document.querySelector('#buttonCharacterBowAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterBowArrowPoison').style.display = 'none'
+            document.querySelector('#buttonCharacterBowArrowFlaming').style.display = 'none'
+            document.querySelector('#buttonCharacterBowArrowRays').style.display = 'none'
 
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
             setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
@@ -137,6 +141,10 @@ class StartGame {
             document.querySelector('button#buttonCharacterPunchAttack').style.display = 'none'
             document.querySelector('button#buttonCharacterSwordAttack').style.display = 'none'
             document.querySelector('button#buttonCharacterSpearAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterBowAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterBowArrowPoison').style.display = 'none'
+            document.querySelector('#buttonCharacterBowArrowFlaming').style.display = 'none'
+            document.querySelector('#buttonCharacterBowArrowRays').style.display = 'none'
 
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
             setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
@@ -251,6 +259,26 @@ class StartGame {
                 stage.update()
             }
         } else if (number === 3) {
+
+            buttonBuyNewAttackFire.style.display = 'none'
+            buttonBuyNewAttackIce.style.display = 'none'
+            buttonBuyNewAttackLightning.style.display = 'none'
+            buttonBuyNewAttackSword.style.display = 'none'
+            buttonBuyNewAttackSpear.style.display = 'none'
+            document.querySelector('#liFire').style.display = 'none'
+            document.querySelector('#liIce').style.display = 'none'
+            document.querySelector('#liLightning').style.display = 'none'
+            document.querySelector('#liSword').style.display = 'none'
+            document.querySelector('#liSpear').style.display = 'none'
+
+            document.querySelector('#buttonCharacterPunchAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterSwordAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterSpearAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterIceAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterFireAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterCrookAttack').style.display = 'none'
+            document.querySelector('#buttonCharacterLightning').style.display = 'none'
+
             setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
             setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
             setTimeout(() => { document.querySelector('#characterName').style.display = '' }, 700)
@@ -280,12 +308,20 @@ class StartGame {
                     )
                     // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
                     // ====================
-                    // BOTÕES DE ATAQUE DO CAVALEIRO
+                    // ATAQUES DA ARQUEIRA
                     // ====================
 
-                    document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
-                    document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                    document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                    /*
+                    <button id="buttonCharacterBowAttack">Flexa Normal</button>
+                    <button id="buttonCharacterBowArrowPoison">Flexas de Veneno</button>
+                    <button id="buttonCharacterBowArrowFlaming">Flexas de Fogo</button>
+                    <button id="buttonCharacterBowArrowRays">Flexas de Raios</button>
+                    */
+
+                    document.querySelector('#buttonCharacterBowAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'normalarrow', 1))
+                    document.querySelector('#buttonCharacterBowArrowPoison').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'poisonarrow', 1.3))
+                    document.querySelector('#buttonCharacterBowArrowFlaming').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'flamingarrow', 1.6))
+                    document.querySelector('#buttonCharacterBowArrowRays').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'raysarrow', 2))
                     stage.update()
                     return
                 }
@@ -306,12 +342,13 @@ class StartGame {
                 )
                 // Criei o evento de quando clicar no botão "Atacar". O método eventAttack será chamado.
                 // ====================
-                // BOTÕES DE ATAQUE DO CAVALEIRO
+                // ATAQUES DA ARQUEIRA
                 // ====================
 
-                document.querySelector('button#buttonCharacterPunchAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'punch'))
-                document.querySelector('button#buttonCharacterSwordAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'sword'))
-                document.querySelector('button#buttonCharacterSpearAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'spear'))
+                document.querySelector('#buttonCharacterBowAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'normalarrow', 1))
+                document.querySelector('#buttonCharacterBowArrowPoison').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'poisonarrow', 1.3))
+                document.querySelector('#buttonCharacterBowArrowFlaming').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'flamingarrow', 1.6))
+                document.querySelector('#buttonCharacterBowArrowRays').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'raysarrow', 2))
                 stage.update()
             }
         }

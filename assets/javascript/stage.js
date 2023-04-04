@@ -65,6 +65,14 @@ class Stage {
             weaponType = 'Gelo'
         } else if (weaponType === 'lightning') {
             weaponType = 'Relâmpagos'
+        } else if (weaponType === 'normalarrow'){
+            weaponType = 'Flexas'
+        } else if (weaponType === 'poisonarrow'){
+            weaponType = 'Flexas Envenenadas'
+        } else if (weaponType === 'flamingarrow'){
+            weaponType = 'Flexas Flamejantes'
+        } else if (weaponType === 'raysarrow'){
+            weaponType = 'Flexas de Raios'
         }
 
         let attackingLife = 0
@@ -159,7 +167,7 @@ class Stage {
                     }
                 } else {
                     monsterInfo[0].life -= actualAttack // Vida do monstro menos o dano recebido
-                    console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
+                    console.log(`O monstro recebeu ${actualAttack} de dano de ${weaponType}!`)
                     monsterInfo[0].life = monsterInfo[0].life
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
                     

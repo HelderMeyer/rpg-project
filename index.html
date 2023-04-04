@@ -89,13 +89,20 @@
                 <img src="/assets/images/Poder.png" alt="Força" height="36px">
                 <p id="showYourStrength"></p>
             </div>
+            <!-- Ataques do Cavaleiro -->
             <button id="buttonCharacterPunchAttack">Soco</button>
             <button id="buttonCharacterSwordAttack">Espada</button>
             <button id="buttonCharacterSpearAttack">Lança</button>
+            <!-- Ataques do Mago -->
             <button id="buttonCharacterCrookAttack">Cajado</button>
             <button id="buttonCharacterFireAttack">Fogo</button>
             <button id="buttonCharacterIceAttack">Gelo</button>
             <button id="buttonCharacterLightning">Relâmpagos</button>
+            <!-- Ataques da Arqueira -->
+            <button id="buttonCharacterBowAttack">Flexa Normal</button>
+            <button id="buttonCharacterBowArrowPoison">Flexas Envenenadas</button>
+            <button id="buttonCharacterBowArrowFlaming">Flexas Flamejantes</button>
+            <button id="buttonCharacterBowArrowRays">Flexas de Raios</button>
             <div id="shop__main__format">
                 <button id="buttonShop">Abrir Loja</button>
                 <h3>Saldo: <span id="myGold" class="myGoldFormat">0</span> Gold.</h3>
@@ -115,6 +122,10 @@
                     <li id="liFire">Liberar "Fogo"</li>
                     <li id="liIce">Liberar "Gelo"</li>
                     <li id="liLightning">Liberr "Relâmpagos"</li>
+
+                    <li id="liPoisonArrows">Liberar "Flexas Envenenadas"</li>
+                    <li id="liFlamingArrows">Liberar "Flexas Flamejantes"</li>
+                    <li id="liRaysArrows">Liberar "Flexas de Raios"</li>
                 </ul>
                 <div id="shop__buybuttons">
                     <button id="itemBuyMaxLife"><span class="shop__prices">10G</span> Comprar</button>
@@ -128,6 +139,10 @@
                     <button id="itemBuyNewAttackFire"><span class="shop__prices">100G</span> Comprar</button>
                     <button id="itemBuyNewAttackIce"><span class="shop__prices">100G</span> Comprar</button>
                     <button id="itemBuyNewAttackLightning"><span class="shop__prices">200G</span> Comprar</button>
+
+                    <button id="itemBuyNewAttackPoisonArrows"><span class="shop__prices">100G</span> Comprar</button>
+                    <button id="itemBuyNewAttackFlamingArrows"><span class="shop__prices">100G</span> Comprar</button>
+                    <button id="itemBuyNewAttackRaysArrows"><span class="shop__prices">200G</span> Comprar</button>
                 </div>
                 </div>
             </fieldset>
