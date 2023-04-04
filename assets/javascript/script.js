@@ -22,6 +22,13 @@ class StartGame {
     gameChooseCharacter(number) {
         if (number === 1) { // CAVALEIRO
 
+            buttonBuyNewAttackPoisonArrow.style.display = 'none'
+            buttonBuyNewAttackFlamingArrow.style.display = 'none'
+            buttonBuyNewAttackRaysArrow.style.display = 'none'
+            document.querySelector('#liPoisonArrows').style.display = 'none'
+            document.querySelector('#liFlamingArrows').style.display = 'none'
+            document.querySelector('#liRaysArrows').style.display = 'none'
+
             buttonBuyNewAttackFire.style.display = 'none'
             buttonBuyNewAttackIce.style.display = 'none'
             buttonBuyNewAttackLightning.style.display = 'none'
@@ -133,9 +140,16 @@ class StartGame {
             }
         } else if (number === 2) {
 
+            buttonBuyNewAttackPoisonArrow.style.display = 'none'
+            buttonBuyNewAttackFlamingArrow.style.display = 'none'
+            buttonBuyNewAttackRaysArrow.style.display = 'none'
+            document.querySelector('#liPoisonArrows').style.display = 'none'
+            document.querySelector('#liFlamingArrows').style.display = 'none'
+            document.querySelector('#liRaysArrows').style.display = 'none'
+
             buttonBuyNewAttackSword.style.display = 'none'
-            document.querySelector('#liSword').style.display = 'none'
             buttonBuyNewAttackSpear.style.display = 'none'
+            document.querySelector('#liSword').style.display = 'none'
             document.querySelector('#liSpear').style.display = 'none'
 
             document.querySelector('button#buttonCharacterPunchAttack').style.display = 'none'
@@ -311,12 +325,24 @@ class StartGame {
                     // ATAQUES DA ARQUEIRA
                     // ====================
 
-                    /*
-                    <button id="buttonCharacterBowAttack">Flexa Normal</button>
-                    <button id="buttonCharacterBowArrowPoison">Flexas de Veneno</button>
-                    <button id="buttonCharacterBowArrowFlaming">Flexas de Fogo</button>
-                    <button id="buttonCharacterBowArrowRays">Flexas de Raios</button>
-                    */
+                    let archerAttacks = JSON.parse(localStorage.getItem('archerAttacks') || '[]')
+                    if (archerAttacks[0].poisonarrow == 0) {
+                        document.querySelector('button#buttonCharacterBowArrowPoison').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterBowArrowPoison').style.display = ''
+                    }
+
+                    if (archerAttacks[0].flamingarrow == 0) {
+                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = ''
+                    }
+
+                    if (archerAttacks[0].raysarrow == 0) {
+                        document.querySelector('button#buttonCharacterBowArrowRays').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterBowArrowRays').style.display = ''
+                    }
 
                     document.querySelector('#buttonCharacterBowAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'normalarrow', 1))
                     document.querySelector('#buttonCharacterBowArrowPoison').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'poisonarrow', 1.3))
@@ -344,6 +370,25 @@ class StartGame {
                 // ====================
                 // ATAQUES DA ARQUEIRA
                 // ====================
+
+                let archerAttacks = JSON.parse(localStorage.getItem('archerAttacks') || '[]')
+                    if (archerAttacks[0].poisonarrow == 0) {
+                        document.querySelector('button#buttonCharacterBowArrowPoison').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterBowArrowPoison').style.display = ''
+                    }
+
+                    if (archerAttacks[0].flamingarrow == 0) {
+                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = ''
+                    }
+
+                    if (archerAttacks[0].raysarrow == 0) {
+                        document.querySelector('button#buttonCharacterBowArrowRays').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterBowArrowRays').style.display = ''
+                    }
 
                 document.querySelector('#buttonCharacterBowAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'normalarrow', 1))
                 document.querySelector('#buttonCharacterBowArrowPoison').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'poisonarrow', 1.3))
@@ -383,6 +428,21 @@ newGameButton.addEventListener('click', () => {
     wizardAttacks[0].ice = 0
     wizardAttacks[0].lightning = 0
     localStorage.setItem('wizardAttacks', JSON.stringify(wizardAttacks));
+
+    // Ataques da Arqueira
+
+    buttonBuyNewAttackPoisonArrow.style.display = ''
+    buttonBuyNewAttackFlamingArrow.style.display = ''
+    buttonBuyNewAttackRaysArrow.style.display = ''
+
+    document.querySelector('#liPoisonArrows').style.display = ''
+    document.querySelector('#liFlamingArrows').style.display = ''
+    document.querySelector('#liRaysArrows').style.display = ''
+
+    archerAttacks[0].poisonarrow = 0
+    archerAttacks[0].flamingarrow = 0
+    archerAttacks[0].raysarrow = 0
+    localStorage.setItem('archerAttacks', JSON.stringify(archerAttacks));
 
     let myLevelList = document.querySelector('#levelsList')
     myLevelList.getElementsByTagName('li')[0].style.backgroundColor = '#144272'
@@ -482,12 +542,17 @@ const buttonBuyMaxLife = document.querySelector('#itemBuyMaxLife')
 const buttonBuyStrength = document.querySelector('#itemBuyStrength')
 const buttonBuyDefense = document.querySelector('#itemBuyDefense')
 const buttonBuyMaxMagic = document.querySelector('#itemBuyMaxMagic')
+
 const buttonBuyNewAttackSpear = document.querySelector('#itemBuyNewAttackSpear')
 const buttonBuyNewAttackSword = document.querySelector('#itemBuyNewAttackSword')
 
 const buttonBuyNewAttackFire = document.querySelector('#itemBuyNewAttackFire')
 const buttonBuyNewAttackIce = document.querySelector('#itemBuyNewAttackIce')
 const buttonBuyNewAttackLightning = document.querySelector('#itemBuyNewAttackLightning')
+
+const buttonBuyNewAttackPoisonArrow = document.querySelector('#itemBuyNewAttackPoisonArrows')
+const buttonBuyNewAttackFlamingArrow = document.querySelector('#itemBuyNewAttackFlamingArrows')
+const buttonBuyNewAttackRaysArrow = document.querySelector('#itemBuyNewAttackRaysArrows')
 
 buttonBuyMaxLife.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
@@ -551,8 +616,10 @@ buttonBuyMaxMagic.addEventListener('click', () => {
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
     }
 })
+
 let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
 let wizardAttacks = JSON.parse(localStorage.getItem('wizardAttacks') || '[]')
+let archerAttacks = JSON.parse(localStorage.getItem('archerAttacks') || '[]')
 
 if (knightAttacks[0].sword == 1) {
     buttonBuyNewAttackSword.style.display = 'none'
@@ -637,7 +704,7 @@ if (wizardAttacks[0].lightning == 1) {
 
 buttonBuyNewAttackLightning.addEventListener('click', () => {
     let goldCurrency = Number(localStorage.getItem('gold'))
-    if (goldCurrency >= 100) {
+    if (goldCurrency >= 200) {
         wizardAttacks[0].lightning = 1
         localStorage.setItem('wizardAttacks', JSON.stringify(wizardAttacks));
         document.querySelector('button#buttonCharacterLightning').style.display = ''
@@ -646,5 +713,62 @@ buttonBuyNewAttackLightning.addEventListener('click', () => {
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
         buttonBuyNewAttackLightning.style.display = 'none'
         document.querySelector('#liLightning').style.display = 'none'
+    }
+})
+
+if (archerAttacks[0].poisonarrow == 1) {
+    buttonBuyNewAttackPoisonArrow.style.display = 'none'
+    document.querySelector('#liPoisonArrows').style.display = 'none'
+}
+
+buttonBuyNewAttackPoisonArrow.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 100) {
+        archerAttacks[0].poisonarrow = 1
+        localStorage.setItem('archerAttacks', JSON.stringify(archerAttacks));
+        document.querySelector('button#buttonCharacterBowArrowPoison').style.display = ''
+        goldCurrency = goldCurrency - 100
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackPoisonArrow.style.display = 'none'
+        document.querySelector('#liPoisonArrows').style.display = 'none'
+    }
+})
+
+if (archerAttacks[0].flamingarrow == 1) {
+    buttonBuyNewAttackFlamingArrow.style.display = 'none'
+    document.querySelector('#liFlamingArrows').style.display = 'none'
+}
+
+buttonBuyNewAttackFlamingArrow.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 100) {
+        archerAttacks[0].flamingarrow = 1
+        localStorage.setItem('archerAttacks', JSON.stringify(archerAttacks));
+        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = ''
+        goldCurrency = goldCurrency - 100
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackFlamingArrow.style.display = 'none'
+        document.querySelector('#liFlamingArrows').style.display = 'none'
+    }
+})
+
+if (archerAttacks[0].raysarrow == 1) {
+    buttonBuyNewAttackRaysArrow.style.display = 'none'
+    document.querySelector('#liRaysArrows').style.display = 'none'
+}
+
+buttonBuyNewAttackRaysArrow.addEventListener('click', () => {
+    let goldCurrency = Number(localStorage.getItem('gold'))
+    if (goldCurrency >= 200) {
+        archerAttacks[0].raysarrow = 1
+        localStorage.setItem('archerAttacks', JSON.stringify(archerAttacks));
+        document.querySelector('button#buttonCharacterBowArrowRays').style.display = ''
+        goldCurrency = goldCurrency - 200
+        localStorage.setItem('gold', `${Number(goldCurrency)}`)
+        document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        buttonBuyNewAttackRaysArrow.style.display = 'none'
+        document.querySelector('#liRaysArrows').style.display = 'none'
     }
 })
