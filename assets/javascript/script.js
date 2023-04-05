@@ -2,9 +2,8 @@ const startGame = document.querySelector('button#startButton')
 const continueButton = document.querySelector('#continueButton')
 const newGameButton = document.querySelector('#newGameButton')
 const chooseCharacterArea = document.querySelector('div#selectionCharacterArea')
-startGame.addEventListener('click', () => { startEvent() })
 
-function startEvent() {
+startGame.addEventListener('click', () => {
     let continueGame = Number(localStorage.getItem('continue'))
     startGame.style.opacity = '0'
     startGame.style.transition = 'opacity 0.7s'
@@ -17,7 +16,8 @@ function startEvent() {
     newGameButton.style.opacity = '1'
     newGameButton.style.transition = 'opacity 0.7s'
     setTimeout(() => { newGameButton.style.display = 'flex' }, 700)
-}
+})
+
 class StartGame {
     gameChooseCharacter(number) {
         if (number === 1) { // CAVALEIRO
@@ -48,12 +48,14 @@ class StartGame {
             document.querySelector('#buttonCharacterBowArrowFlaming').style.display = 'none'
             document.querySelector('#buttonCharacterBowArrowRays').style.display = 'none'
 
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
-            setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#characterName').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#characterNameBeforeButton').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').style.opacity = '0' }, 700)
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').transition = 'opacity 0.7s' }, 700)
+            setTimeout(() => { 
+                document.querySelector('#selectionCharacterArea').style.display = 'none'
+                document.querySelector('#characterNameTitle').style.display = '' 
+                document.querySelector('#characterName').style.display = ''
+                document.querySelector('#characterNameBeforeButton').style.display = ''
+                document.querySelector('#selectionCharacterArea').style.opacity = '0'
+                document.querySelector('#selectionCharacterArea').transition = 'opacity 0.7s'
+            }, 700)
 
             let characterName = document.querySelector('input#characterName')
             const characterNameBeforeButton = document.querySelector('#characterNameBeforeButton')
@@ -64,9 +66,11 @@ class StartGame {
                     localStorage.setItem('name', `${characterName.value}`) // Armazenar o nome no LocalStorage
                     let myName = localStorage.getItem('name')
                     nameCharacter.innerHTML = `Cavaleiro - ${myName}`
-                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    setTimeout(() => { 
+                        document.querySelector('#sectionStart').style.display = 'none'
+                        document.querySelector('#levels').style.display = ''
+                        document.querySelector('#theGame').style.display = '' 
+                    }, 700)
                     let character = new Knight(myName) // Objeto Knight Instanciado (Cavaleiro)
                     const monster = new Monster() // Objeto Monster Instanciado (Monstro)
                     const stage = new Stage( // Área de eventos das lutas
@@ -104,9 +108,11 @@ class StartGame {
             if (localStorage.getItem('name') != null) {
                 let myName = localStorage.getItem('name')
                 nameCharacter.innerHTML = `Cavaleiro - ${myName}`
-                setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                setTimeout(() => { 
+                    document.querySelector('#sectionStart').style.display = 'none'
+                    document.querySelector('#levels').style.display = '' 
+                    document.querySelector('#theGame').style.display = ''
+                }, 700)
                 let character = new Knight(`${myName}`) // Objeto Knight Instanciado (Cavaleiro)
                 const monster = new Monster() // Objeto Monster Instanciado (Monstro)
                 const stage = new Stage( // Área de eventos das lutas
@@ -160,12 +166,14 @@ class StartGame {
             document.querySelector('#buttonCharacterBowArrowFlaming').style.display = 'none'
             document.querySelector('#buttonCharacterBowArrowRays').style.display = 'none'
 
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
-            setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#characterName').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#characterNameBeforeButton').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').style.opacity = '0' }, 700)
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').transition = 'opacity 0.7s' }, 700)
+            setTimeout(() => { 
+                document.querySelector('#selectionCharacterArea').style.display = 'none'
+                document.querySelector('#characterNameTitle').style.display = ''
+                document.querySelector('#characterName').style.display = ''
+                document.querySelector('#characterNameBeforeButton').style.display = ''
+                document.querySelector('#selectionCharacterArea').style.opacity = '0'
+                document.querySelector('#selectionCharacterArea').transition = 'opacity 0.7s' 
+            }, 700)
 
             let characterName = document.querySelector('input#characterName')
             const characterNameBeforeButton = document.querySelector('#characterNameBeforeButton')
@@ -176,9 +184,11 @@ class StartGame {
                     localStorage.setItem('name', `${characterName.value}`)
                     let myName = localStorage.getItem('name')
                     nameCharacter.innerHTML = `Mago - ${myName}`
-                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    setTimeout(() => { 
+                        document.querySelector('#sectionStart').style.display = 'none'
+                        document.querySelector('#levels').style.display = ''
+                        document.querySelector('#theGame').style.display = '' 
+                    }, 700)
                     let character = new Wizard(`${myName}`) // Objeto Wizard Instanciado (Mago)
                     const monster = new Monster() // Objeto Monster Instanciado (Monstro)
                     const stage = new Stage( // Área de eventos das lutas
@@ -222,9 +232,11 @@ class StartGame {
             if (localStorage.getItem('name') != null) {
                 let myName = localStorage.getItem('name')
                 nameCharacter.innerHTML = `Mago - ${myName}`
-                setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                setTimeout(() => { 
+                    document.querySelector('#sectionStart').style.display = 'none'
+                    document.querySelector('#levels').style.display = ''
+                    document.querySelector('#theGame').style.display = '' 
+                }, 700)
                 let character = new Wizard(`${myName}`) // Objeto Wizard Instanciado (Mago)
                 const monster = new Monster() // Objeto Monster Instanciado (Monstro)
                 const stage = new Stage( // Área de eventos das lutas
@@ -293,12 +305,14 @@ class StartGame {
             document.querySelector('#buttonCharacterCrookAttack').style.display = 'none'
             document.querySelector('#buttonCharacterLightning').style.display = 'none'
 
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').style.display = 'none' }, 700)
-            setTimeout(() => { document.querySelector('#characterNameTitle').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#characterName').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#characterNameBeforeButton').style.display = '' }, 700)
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').style.opacity = '0' }, 700)
-            setTimeout(() => { document.querySelector('#selectionCharacterArea').transition = 'opacity 0.7s' }, 700)
+            setTimeout(() => { 
+                document.querySelector('#selectionCharacterArea').style.display = 'none'
+                document.querySelector('#characterNameTitle').style.display = ''
+                document.querySelector('#characterName').style.display = ''
+                document.querySelector('#characterNameBeforeButton').style.display = ''
+                document.querySelector('#selectionCharacterArea').style.opacity = '0'
+                document.querySelector('#selectionCharacterArea').transition = 'opacity 0.7s' 
+            }, 700)
 
             let characterName = document.querySelector('input#characterName')
             const characterNameBeforeButton = document.querySelector('#characterNameBeforeButton')
@@ -309,9 +323,11 @@ class StartGame {
                     localStorage.setItem('name', `${characterName.value}`)
                     let myName = localStorage.getItem('name')
                     nameCharacter.innerHTML = `Arqueira - ${characterName.value}`
-                    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                    setTimeout(() => { 
+                        document.querySelector('#sectionStart').style.display = 'none' 
+                        document.querySelector('#levels').style.display = ''
+                        document.querySelector('#theGame').style.display = ''
+                    }, 700)
                     let character = new Archer(`${characterName.value}`) // Objeto Wizard Instanciado (Mago)
                     const monster = new Monster() // Objeto Monster Instanciado (Monstro)
                     const stage = new Stage( // Área de eventos das lutas
@@ -355,9 +371,11 @@ class StartGame {
             if (localStorage.getItem('name') != null) {
                 let myName = localStorage.getItem('name')
                 nameCharacter.innerHTML = `Arqueira - ${characterName.value}`
-                setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-                setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-                setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+                setTimeout(() => { 
+                    document.querySelector('#sectionStart').style.display = 'none'
+                    document.querySelector('#levels').style.display = ''
+                    document.querySelector('#theGame').style.display = '' 
+                }, 700)
                 let character = new Archer(`${characterName.value}`) // Objeto Wizard Instanciado (Mago)
                 const monster = new Monster() // Objeto Monster Instanciado (Monstro)
                 const stage = new Stage( // Área de eventos das lutas
@@ -467,9 +485,11 @@ newGameButton.addEventListener('click', () => {
     continueButton.style.transition = 'opacity 0.7s'
     newGameButton.style.opacity = '0'
     newGameButton.style.transition = 'opacity 0.7s'
-    setTimeout(() => { continueButton.style.display = 'none' }, 700)
-    setTimeout(() => { newGameButton.style.display = 'none' }, 700)
-    setTimeout(() => { chooseCharacterArea.style.display = '' }, 700)
+    setTimeout(() => { 
+        continueButton.style.display = 'none'
+        newGameButton.style.display = 'none'
+        chooseCharacterArea.style.display = '' 
+    }, 700)
     // SALVAR AS INFORMAÇÕES DO MONSTRO NO LOCALSTORAGE
     // VARIÁVEL PARA PEGAR OS ITENS NO LOCAL STORAGE
     // VARIÁVEL PARA COLOCAR OS ITENS NA ARRAY DENTRO DO LOCALSTORAGE
@@ -516,9 +536,11 @@ continueButton.addEventListener('click', () => {
     }
     myLevelList.getElementsByTagName('li')[actualLevel].style.backgroundColor = '#144272'
     myLevelList.getElementsByTagName('li')[actualLevel].style.scale = '1.2'
-    setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
-    setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
-    setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
+    setTimeout(() => { 
+        document.querySelector('#sectionStart').style.display = 'none' 
+        document.querySelector('#levels').style.display = ''
+        document.querySelector('#theGame').style.display = ''
+    }, 700)
     document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
     start.gameChooseCharacter(Number(localStorage.getItem('characterClassType')))
 })
