@@ -65,13 +65,13 @@ class Stage {
             weaponType = 'Gelo'
         } else if (weaponType === 'lightning') {
             weaponType = 'Relâmpagos'
-        } else if (weaponType === 'normalarrow'){
+        } else if (weaponType === 'normalarrow') {
             weaponType = 'Flexas'
-        } else if (weaponType === 'poisonarrow'){
+        } else if (weaponType === 'poisonarrow') {
             weaponType = 'Flexas Envenenadas'
-        } else if (weaponType === 'flamingarrow'){
+        } else if (weaponType === 'flamingarrow') {
             weaponType = 'Flexas Flamejantes'
-        } else if (weaponType === 'raysarrow'){
+        } else if (weaponType === 'raysarrow') {
             weaponType = 'Flexas de Raios'
         }
 
@@ -97,77 +97,6 @@ class Stage {
             } else { // Caso contrário, o ataque será feito no monstro
                 if (monsterInfo[0].life <= actualAttack) { // Se a vida de quem é atacado for menor do que a força de ataque de quem tá atacando
                     monsterInfo[0].life = 0 // Vida de quem ataca vai para 0
-
-                    // GASTAR MAGIA DO MAGO
-
-                    if(wizardInfo[0].magic >= 2){
-                        if(weaponType == 'Fogo'){
-                            wizardInfo[0].magic -= 2
-                            localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
-                        }
-                        if(weaponType == 'Gelo'){
-                            wizardInfo[0].magic -= 2
-                            localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
-                        }
-                        if(wizardInfo[0].magic >= 4){
-                            if(weaponType == 'Relâmpagos'){
-                                wizardInfo[0].magic -= 4
-                                localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
-                            }
-                        }
-                    }
-
-                    if(wizardInfo[0].magic >= 4 && wizardAttacks[0].lightning == 1){
-                        buttonCharacterLightning.style.display = ''
-                    }else{
-                        buttonCharacterLightning.style.display = 'none'
-                    }
-
-                    if(wizardAttacks[0].fire == 1){
-                        if(wizardInfo[0].magic >= 2){
-                            buttonCharacterFireAttack.style.display = ''
-                        }else{
-                            buttonCharacterFireAttack.style.display = 'none'
-                        }
-                    }
-                    
-                    if(wizardAttacks[0].ice == 1){
-                        if(wizardInfo[0].magic >= 2){
-                            buttonCharacterIceAttack.style.display = ''
-                        }else{
-                            buttonCharacterIceAttack.style.display = 'none'
-                        }
-                    }
-
-                    // GASTAR MAGIA DA ARQUEIRA
-
-                    if(archerInfo[0].magic >= 2){
-                        if(weaponType == 'Flexas Flamejantes'){
-                            archerInfo[0].magic -= 2
-                            localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
-                        }
-                        if(archerInfo[0].magic >= 4){
-                            if(weaponType == 'Flexas de Raios'){
-                                archerInfo[0].magic -= 4
-                                localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
-                            }
-                        }
-                    }
-
-                    if(archerInfo[0].magic >= 4 && archerAttacks[0].raysarrow == 1){
-                        buttonCharacterBowArrowRays.style.display = ''
-                    }else{
-                        buttonCharacterBowArrowRays.style.display = 'none'
-                    }
-
-                    if(archerAttacks[0].flamingarrow == 1){
-                        if(archerInfo[0].magic >= 2){
-                            buttonCharacterBowArrowFlaming.style.display = ''
-                        }else{
-                            buttonCharacterBowArrowFlaming.style.display = 'none'
-                        }
-                    }
-
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
                     console.log(`O monstro está morto!`)
                     monsterInfo[0].life = monsterInfo[0].life
@@ -185,11 +114,52 @@ class Stage {
                         }, 1000)
                         let newGoldCurrency = Number(localStorage.getItem('gold'))
                         newGoldCurrency += monsterInfo[0].maxLife * 0.1
-                        if((wizardInfo[0].magic + (monsterInfo[0].maxLife * 0.1)) > wizardInfo[0].maxMagic){
+                        if ((wizardInfo[0].magic + (monsterInfo[0].maxLife * 0.1)) > wizardInfo[0].maxMagic) {
                             wizardInfo[0].magic = wizardInfo[0].maxMagic
-                        }else{
+                        } else {
                             wizardInfo[0].magic += monsterInfo[0].maxLife * 0.1
                         }
+                        if ((archerInfo[0].magic + (monsterInfo[0].maxLife * 0.1)) > archerInfo[0].maxMagic) {
+                            archerInfo[0].magic = archerInfo[0].maxMagic
+                        } else {
+                            archerInfo[0].magic += monsterInfo[0].maxLife * 0.1
+                        }
+                        if (wizardInfo[0].magic >= 4 && wizardAttacks[0].lightning == 1) {
+                            buttonCharacterLightning.style.display = ''
+                        } else {
+                            buttonCharacterLightning.style.display = 'none'
+                        }
+    
+                        if (wizardAttacks[0].fire == 1) {
+                            if (wizardInfo[0].magic >= 2) {
+                                buttonCharacterFireAttack.style.display = ''
+                            } else {
+                                buttonCharacterFireAttack.style.display = 'none'
+                            }
+                        }
+    
+                        if (wizardAttacks[0].ice == 1) {
+                            if (wizardInfo[0].magic >= 2) {
+                                buttonCharacterIceAttack.style.display = ''
+                            } else {
+                                buttonCharacterIceAttack.style.display = 'none'
+                            }
+                        }
+    
+                        if (archerInfo[0].magic >= 4 && archerAttacks[0].raysarrow == 1) {
+                            buttonCharacterBowArrowRays.style.display = ''
+                        } else {
+                            buttonCharacterBowArrowRays.style.display = 'none'
+                        }
+    
+                        if (archerAttacks[0].flamingarrow == 1) {
+                            if (archerInfo[0].magic >= 2) {
+                                buttonCharacterBowArrowFlaming.style.display = ''
+                            } else {
+                                buttonCharacterBowArrowFlaming.style.display = 'none'
+                            }
+                        }
+                        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
                         localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                         localStorage.setItem('gold', `${Number(newGoldCurrency).toFixed(0)}`)
                         for (let contador = 0; contador <= Number(localStorage.getItem('gold')); contador++) {
@@ -203,77 +173,77 @@ class Stage {
                     console.log(`O monstro recebeu ${actualAttack} de dano de ${weaponType}!`)
                     monsterInfo[0].life = monsterInfo[0].life
                     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
-                    
+
                     // 1234518342167341283672153126735167835126783521786352178635126783561253672815367125312678351267357128653
 
-                    if(wizardInfo[0].magic >= 2){
-                        if(weaponType == 'Fogo'){
+                    if (wizardInfo[0].magic >= 2) {
+                        if (weaponType == 'Fogo') {
                             wizardInfo[0].magic -= 2
                             localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                         }
-                        if(weaponType == 'Gelo'){
+                        if (weaponType == 'Gelo') {
                             wizardInfo[0].magic -= 2
                             localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                         }
-                        if(wizardInfo[0].magic >= 4){
-                            if(weaponType == 'Relâmpagos'){
+                        if (wizardInfo[0].magic >= 4) {
+                            if (weaponType == 'Relâmpagos') {
                                 wizardInfo[0].magic -= 4
                                 localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                             }
                         }
                     }
 
-                    if(wizardInfo[0].magic >= 4 && wizardAttacks[0].lightning == 1){
+                    if (wizardInfo[0].magic >= 4 && wizardAttacks[0].lightning == 1) {
                         buttonCharacterLightning.style.display = ''
-                    }else{
+                    } else {
                         buttonCharacterLightning.style.display = 'none'
                     }
 
-                    if(wizardAttacks[0].fire == 1){
-                        if(wizardInfo[0].magic >= 2){
+                    if (wizardAttacks[0].fire == 1) {
+                        if (wizardInfo[0].magic >= 2) {
                             buttonCharacterFireAttack.style.display = ''
-                        }else{
+                        } else {
                             buttonCharacterFireAttack.style.display = 'none'
                         }
                     }
-                    
-                    if(wizardAttacks[0].ice == 1){
-                        if(wizardInfo[0].magic >= 2){
+
+                    if (wizardAttacks[0].ice == 1) {
+                        if (wizardInfo[0].magic >= 2) {
                             buttonCharacterIceAttack.style.display = ''
-                        }else{
+                        } else {
                             buttonCharacterIceAttack.style.display = 'none'
                         }
                     }
 
-                   // GASTAR MAGIA DA ARQUEIRA
+                    // GASTAR MAGIA DA ARQUEIRA
 
-                   if(archerInfo[0].magic >= 2){
-                    if(weaponType == 'Flexas Flamejantes'){
-                        archerInfo[0].magic -= 2
-                        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
-                    }
-                    if(archerInfo[0].magic >= 4){
-                        if(weaponType == 'Flexas de Raios'){
-                            archerInfo[0].magic -= 4
+                    if (archerInfo[0].magic >= 2) {
+                        if (weaponType == 'Flexas Flamejantes') {
+                            archerInfo[0].magic -= 2
                             localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
                         }
+                        if (archerInfo[0].magic >= 4) {
+                            if (weaponType == 'Flexas de Raios') {
+                                archerInfo[0].magic -= 4
+                                localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+                            }
+                        }
                     }
-                }
 
-                if(archerInfo[0].magic >= 4 && archerAttacks[0].raysarrow == 1){
-                    buttonCharacterBowArrowRays.style.display = ''
-                }else{
-                    buttonCharacterBowArrowRays.style.display = 'none'
-                }
-
-                if(archerAttacks[0].flamingarrow == 1){
-                    if(archerInfo[0].magic >= 2){
-                        buttonCharacterBowArrowFlaming.style.display = ''
-                    }else{
-                        buttonCharacterBowArrowFlaming.style.display = 'none'
+                    if (archerInfo[0].magic >= 4 && archerAttacks[0].raysarrow == 1) {
+                        buttonCharacterBowArrowRays.style.display = ''
+                    } else {
+                        buttonCharacterBowArrowRays.style.display = 'none'
                     }
-                } 
-                    
+
+                    if (archerAttacks[0].flamingarrow == 1) {
+                        if (archerInfo[0].magic >= 2) {
+                            buttonCharacterBowArrowFlaming.style.display = ''
+                        } else {
+                            buttonCharacterBowArrowFlaming.style.display = 'none'
+                        }
+                    }
+
                 }
             }
             if (monsterInfo[0].life > 0) { // Se a vida do monstro for maior que 0
@@ -304,8 +274,43 @@ class Stage {
                                 }
                                 knightInfo[0].life = knightInfo[0].maxLife
                                 wizardInfo[0].life = wizardInfo[0].maxLife
-                                wizardInfo[0].magic = wizardInfo[0].maxMagic
                                 archerInfo[0].life = archerInfo[0].maxLife
+                                wizardInfo[0].magic = wizardInfo[0].maxMagic
+                                archerInfo[0].magic = archerInfo[0].maxMagic
+                                if (wizardInfo[0].magic >= 4 && wizardAttacks[0].lightning == 1) {
+                                    buttonCharacterLightning.style.display = ''
+                                } else {
+                                    buttonCharacterLightning.style.display = 'none'
+                                }
+
+                                if (wizardAttacks[0].fire == 1) {
+                                    if (wizardInfo[0].magic >= 2) {
+                                        buttonCharacterFireAttack.style.display = ''
+                                    } else {
+                                        buttonCharacterFireAttack.style.display = 'none'
+                                    }
+                                }
+
+                                if (wizardAttacks[0].ice == 1) {
+                                    if (wizardInfo[0].magic >= 2) {
+                                        buttonCharacterIceAttack.style.display = ''
+                                    } else {
+                                        buttonCharacterIceAttack.style.display = 'none'
+                                    }
+                                }
+                                if (archerInfo[0].magic >= 4 && archerAttacks[0].raysarrow == 1) {
+                                    buttonCharacterBowArrowRays.style.display = ''
+                                } else {
+                                    buttonCharacterBowArrowRays.style.display = 'none'
+                                }
+
+                                if (archerAttacks[0].flamingarrow == 1) {
+                                    if (archerInfo[0].magic >= 2) {
+                                        buttonCharacterBowArrowFlaming.style.display = ''
+                                    } else {
+                                        buttonCharacterBowArrowFlaming.style.display = 'none'
+                                    }
+                                }
                                 localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
                                 localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                                 localStorage.setItem('archerInfo', JSON.stringify(archerInfo));

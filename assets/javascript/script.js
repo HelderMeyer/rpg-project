@@ -590,6 +590,10 @@ buttonBuyStrength.addEventListener('click', () => {
         goldCurrency = goldCurrency - 12
         localStorage.setItem('gold', `${Number(goldCurrency)}`)
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        const sys = document.querySelector('#showYourStrength') // ssy = showYourStrength = Sua força
+        sys.innerHTML = `${knightInfo[0].strength} de força`// Exibir a força do personagem
+        sys.innerHTML = `${wizardInfo[0].strength} de força`// Exibir a força do personagem
+        sys.innerHTML = `${archerInfo[0].strength} de força`// Exibir a força do personagem
     }
 })
 
@@ -605,6 +609,10 @@ buttonBuyDefense.addEventListener('click', () => {
         goldCurrency = goldCurrency - 12
         localStorage.setItem('gold', `${Number(goldCurrency)}`)
         document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+        const syd = document.querySelector('#showYourDefense') // sdy = showYourDefense = Sua defesa 
+        syd.innerHTML = `${knightInfo[0].defense} de defesa` // Exibir a defesa do personagem
+        syd.innerHTML = `${wizardInfo[0].defense} de defesa` // Exibir a defesa do personagem
+        syd.innerHTML = `${archerInfo[0].defense} de defesa` // Exibir a defesa do personagem
     }
 })
 
