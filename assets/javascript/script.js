@@ -67,7 +67,7 @@ class StartGame {
                     setTimeout(() => { document.querySelector('#sectionStart').style.display = 'none' }, 700)
                     setTimeout(() => { document.querySelector('#levels').style.display = '' }, 700)
                     setTimeout(() => { document.querySelector('#theGame').style.display = '' }, 700)
-                    let character = new Knight(`${myName}`) // Objeto Knight Instanciado (Cavaleiro)
+                    let character = new Knight(myName) // Objeto Knight Instanciado (Cavaleiro)
                     const monster = new Monster() // Objeto Monster Instanciado (Monstro)
                     const stage = new Stage( // Área de eventos das lutas
                         character,

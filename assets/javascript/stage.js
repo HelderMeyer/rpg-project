@@ -156,7 +156,11 @@ class Stage {
                         }, 1000)
                         let newGoldCurrency = Number(localStorage.getItem('gold'))
                         newGoldCurrency += monsterInfo[0].maxLife * 0.1
-                        wizardInfo[0].magic += monsterInfo[0].maxLife * 0.1
+                        if((wizardInfo[0].magic + (monsterInfo[0].maxLife * 0.1)) > wizardInfo[0].maxMagic){
+                            wizardInfo[0].magic = wizardInfo[0].maxMagic
+                        }else{
+                            wizardInfo[0].magic += monsterInfo[0].maxLife * 0.1
+                        }
                         localStorage.setItem('wizardInfo', JSON.stringify(wizardInfo));
                         localStorage.setItem('gold', `${Number(newGoldCurrency).toFixed(0)}`)
                         for (let contador = 0; contador <= Number(localStorage.getItem('gold')); contador++) {
