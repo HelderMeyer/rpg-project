@@ -98,7 +98,7 @@ class Stage {
                 if (monsterInfo[0].life <= actualAttack) { // Se a vida de quem é atacado for menor do que a força de ataque de quem tá atacando
                     monsterInfo[0].life = 0 // Vida de quem ataca vai para 0
 
-                    // 1234518342167341283672153126735167835126783521786352178635126783561253672815367125312678351267357128653
+                    // GASTAR MAGIA DO MAGO
 
                     if(wizardInfo[0].magic >= 2){
                         if(weaponType == 'Fogo'){
@@ -136,6 +136,35 @@ class Stage {
                             buttonCharacterIceAttack.style.display = ''
                         }else{
                             buttonCharacterIceAttack.style.display = 'none'
+                        }
+                    }
+
+                    // GASTAR MAGIA DA ARQUEIRA
+
+                    if(archerInfo[0].magic >= 2){
+                        if(weaponType == 'Flexas Flamejantes'){
+                            archerInfo[0].magic -= 2
+                            localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+                        }
+                        if(archerInfo[0].magic >= 4){
+                            if(weaponType == 'Flexas de Raios'){
+                                archerInfo[0].magic -= 4
+                                localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+                            }
+                        }
+                    }
+
+                    if(archerInfo[0].magic >= 4 && archerAttacks[0].raysarrow == 1){
+                        buttonCharacterBowArrowRays.style.display = ''
+                    }else{
+                        buttonCharacterBowArrowRays.style.display = 'none'
+                    }
+
+                    if(archerAttacks[0].flamingarrow == 1){
+                        if(archerInfo[0].magic >= 2){
+                            buttonCharacterBowArrowFlaming.style.display = ''
+                        }else{
+                            buttonCharacterBowArrowFlaming.style.display = 'none'
                         }
                     }
 
@@ -215,6 +244,35 @@ class Stage {
                             buttonCharacterIceAttack.style.display = 'none'
                         }
                     }
+
+                   // GASTAR MAGIA DA ARQUEIRA
+
+                   if(archerInfo[0].magic >= 2){
+                    if(weaponType == 'Flexas Flamejantes'){
+                        archerInfo[0].magic -= 2
+                        localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+                    }
+                    if(archerInfo[0].magic >= 4){
+                        if(weaponType == 'Flexas de Raios'){
+                            archerInfo[0].magic -= 4
+                            localStorage.setItem('archerInfo', JSON.stringify(archerInfo));
+                        }
+                    }
+                }
+
+                if(archerInfo[0].magic >= 4 && archerAttacks[0].raysarrow == 1){
+                    buttonCharacterBowArrowRays.style.display = ''
+                }else{
+                    buttonCharacterBowArrowRays.style.display = 'none'
+                }
+
+                if(archerAttacks[0].flamingarrow == 1){
+                    if(archerInfo[0].magic >= 2){
+                        buttonCharacterBowArrowFlaming.style.display = ''
+                    }else{
+                        buttonCharacterBowArrowFlaming.style.display = 'none'
+                    }
+                } 
                     
                 }
             }
@@ -422,12 +480,12 @@ class Stage {
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${wizardInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
         } else if (localStorage.getItem('characterClassType') == 3) {
-            characterMagicPct = ((knightInfo[0].magic / knightInfo[0].maxMagic) * 100)
+            characterMagicPct = ((archerInfo[0].magic / archerInfo[0].maxMagic) * 100)
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${archerInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
         }
 
-        let monsterMagicPct = ((archerInfo[0].magic / archerInfo[0].maxMagic) * 100) // Magia do Monstro em %
+        let monsterMagicPct = ((monsterInfo[0].magic / monsterInfo[0].maxMagic) * 100) // Magia do Monstro em %
 
         // VIDA NA TELA
         if (localStorage.getItem('characterClassType') == 1) {

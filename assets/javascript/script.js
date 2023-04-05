@@ -372,23 +372,32 @@ class StartGame {
                 // ====================
 
                 let archerAttacks = JSON.parse(localStorage.getItem('archerAttacks') || '[]')
-                    if (archerAttacks[0].poisonarrow == 0) {
-                        document.querySelector('button#buttonCharacterBowArrowPoison').style.display = 'none'
-                    } else {
-                        document.querySelector('button#buttonCharacterBowArrowPoison').style.display = ''
-                    }
 
-                    if (archerAttacks[0].flamingarrow == 0) {
-                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = 'none'
-                    } else {
-                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = ''
-                    }
+                if (archerAttacks[0].poisonarrow == 0) {
+                    document.querySelector('button#buttonCharacterBowArrowPoison').style.display = 'none'
+                } else {
+                    document.querySelector('button#buttonCharacterBowArrowPoison').style.display = ''
+                }
 
+                let archerInfo = JSON.parse(localStorage.getItem('archerInfo') || '[]')
+                if (archerInfo[0].magic < 4) {
+                    buttonCharacterBowArrowRays.style.display = 'none'
+                } else {
                     if (archerAttacks[0].raysarrow == 0) {
                         document.querySelector('button#buttonCharacterBowArrowRays').style.display = 'none'
                     } else {
                         document.querySelector('button#buttonCharacterBowArrowRays').style.display = ''
                     }
+                }
+                if (archerInfo[0].magic < 2) {
+                    buttonCharacterBowArrowFlaming.style.display = 'none'
+                } else {
+                    if (archerAttacks[0].flamingarrow == 0) {
+                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = 'none'
+                    } else {
+                        document.querySelector('button#buttonCharacterBowArrowFlaming').style.display = ''
+                    }
+                }
 
                 document.querySelector('#buttonCharacterBowAttack').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'normalarrow', 1))
                 document.querySelector('#buttonCharacterBowArrowPoison').addEventListener('click', () => stage.eventAttack(stage.fighter, stage.monster, 'poisonarrow', 1.3))
