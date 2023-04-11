@@ -5,56 +5,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Import do style.css -->
     <link rel="stylesheet" href="assets/css/desktop/style.css">
+    <!-- Import do style.css responsível para mobile -->
     <link rel="stylesheet" href="assets/css/mobile/mobile.css">
+    <!-- Import do index.css -->
     <link rel="stylesheet" href="assets/css/desktop/index.css">
-    <title>Game</title>
+    <title>HytekerRPG</title>
 </head>
 
 <body>
-    <!-- NAVBAR DO SITE -->
+    <!-- Início da Área de Navegação do Site -->
     <header class="header">
+        <!-- Logo -->
         <img src="assets/images/logorpg.png" alt="LogoRPG" height="50px">
         <ul>
+            <!-- Página principal (O jogo) -->
             <li><a href="index.html">Jogo</a></li>
+            <!-- Página que vai explicar como funciona o jogo -->
             <li><a href="funcionamento.html">Funcionamento</a></li>
+            <!-- Página com informações para contato -->
             <li><a href="contato.html">Contato</a></li>
         </ul>
     </header>
+    <!-- Fim da Área de Navegação do Site -->
+    <!-- Início da Área de Seleção do Personagem -->
     <section class="start" id="sectionStart">
+        <!-- Logo -->
         <img src="assets/images/logorpg.png" alt="Logo do jogo" height="100px">
+        <!-- Botão para Começar o Jogo -->
         <button class="startButton" id="startButton">Jogar</button>
+        <!-- Botão para Continuar o Jogo, caso foi iniciado anteriormente -->
         <button class="startButton" id="continueButton">Continuar</button>
+        <!-- Botão para criar um Jogo novo -->
         <button class="startButton" id="newGameButton">Novo Jogo</button>
+        <!-- Botão para Resetar o Jogo, caso ocorra algum BUG ou a pessoa queira voltar ao "padrão de fábrica" -->
+        <button class="startButton" id="resetButton">Resetar</button>
+        <!-- Área de seleção de personagem -->
         <div id="selectionCharacterArea" style="display: none;">
+            <!-- Personagem 1 - Caveleiro -->
             <div id="knightCharacter">
+                <!-- Título com o nome do personagem -->
                 <h1>Cavaleiro</h1>
+                <!-- Ícone do personagem -->
                 <img src="assets/images/knight-512.png" alt="Cavaleiro" height="100px">
+                <!-- Botão para escolher o Cavaleiro -->
                 <button class="chooseCharacterButton" id="chooseKnightCharacter">Escolher</button>
             </div>
+            <!-- Personagem 2 - Mago -->
             <div id="wizardCharacter">
+                <!-- Título com o nome do personagem -->
                 <h1>Mago</h1>
+                <!-- Ícone do personagem -->
                 <img src="assets/images/wizard-512.png" alt="Cavaleiro" height="100px">
+                <!-- Botão para escolher o Mago -->
                 <button class="chooseCharacterButton" id="chooseWizardCharacter">Escolher</button>
             </div>
+            <!-- Personagem 3 - Arqueira -->
             <div id="archorCharacter">
+                <!-- Título com o nome do personagem -->
                 <h1>Arqueira</h1>
+                <!-- Ícone da personagem -->
                 <svg fill="#ffffff" height="100px" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path
                         d="M448 256A192 192 0 1 0 64 256a192 192 0 1 0 384 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 80a80 80 0 1 0 0-160 80 80 0 1 0 0 160zm0-224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zM224 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
                 </svg>
+                <!-- Botão para escolher a arqueira -->
                 <button class="chooseCharacterButton" id="chooseArchorCharacter">Escolher</button>
             </div>
         </div>
+        <!-- Título da área para escolher o nome do personagem -->
         <label style="display: none;" id="characterNameTitle" for="characterName">Nome do personagem</label>
+        <!-- Input para colocar o nome desejado -->
         <input style="display: none;" type="text" name="characterName" id="characterName"
             placeholder="Nome do personagem">
+        <!-- Botão para avançar e salvar o nome do personagem -->
         <button style="display: none;" id="characterNameBeforeButton">Avançar</button>
     </section>
-    <!-- JOGO -->
+    <!-- Fim da Área de Seleção do Personagem -->
+    <!-- Início da Área do Jogo -->
     <div id="levels" style="display: none;">
         <h1 class="levelsTitle">Nível</h1>
+        <!-- Níveis do jogo -->
         <ul id="levelsList">
             <li id="level1">1</li>
             <li id="level2">2</li>
@@ -68,6 +101,7 @@
             <li id="level10" class="levelsList10">10</li>
         </ul>
     </div>
+    <!-- Área do Jogo -->
     <section class="game" id="theGame" style="display: none;">
         <!-- Personagem -->
         <div id="character">
@@ -83,67 +117,107 @@
                 <!-- Magia do personagem -->
                 <div id="characterMagic"></div>
             </div>
+            <!-- Habilidades do personagem -->
             <div class="Skills">
+                <!-- Defesa do Personagem -->
                 <img src="/assets/images/Defesa.png" alt="Defesa" height="36px">
                 <p id="showYourDefense"></p>
+                <!-- Força do Personagem -->
                 <img src="/assets/images/Poder.png" alt="Força" height="36px">
                 <p id="showYourStrength"></p>
             </div>
             <!-- Ataques do Cavaleiro -->
+            <!-- Soco do Cavaleiro -->
             <button id="buttonCharacterPunchAttack">Soco</button>
+            <!-- Espada do Cavaleiro -->
             <button id="buttonCharacterSwordAttack">Espada</button>
+            <!-- Lança do Cavaleiro -->
             <button id="buttonCharacterSpearAttack">Lança</button>
             <!-- Ataques do Mago -->
+            <!-- Cajado do Mago -->
             <button id="buttonCharacterCrookAttack">Cajado</button>
+            <!-- Ataque de Fogo do Mago -->
             <button id="buttonCharacterFireAttack">Fogo</button>
+            <!-- Ataque de Gelo do Mago -->
             <button id="buttonCharacterIceAttack">Gelo</button>
+            <!-- Ataque de Relâmpagos do Mago -->
             <button id="buttonCharacterLightning">Relâmpagos</button>
             <!-- Ataques da Arqueira -->
+            <!-- Ataque com Flexas Normais da Arqueira -->
             <button id="buttonCharacterBowAttack">Flexa Normal</button>
+            <!-- Ataque com Flexas Envenenadas da Arqueira -->
             <button id="buttonCharacterBowArrowPoison">Flexas Envenenadas</button>
+            <!-- Ataque com Flexas Flamejantes da Arqueira -->
             <button id="buttonCharacterBowArrowFlaming">Flexas Flamejantes</button>
+            <!-- Ataque com Flexas de Raios da Arqueira -->
             <button id="buttonCharacterBowArrowRays">Flexas de Raios</button>
+            <!-- Área para Abrir a Loja de Habilidades/Ataques -->
             <div id="shop__main__format">
+                <!-- Botao para Abrir a Loja -->
                 <button id="buttonShop">Abrir Loja</button>
+                <!-- Saldo de Gold -->
                 <h3>Saldo: <span id="myGold" class="myGoldFormat">0</span> Gold.</h3>
             </div>
+            <!-- Área da Loja -->
             <fieldset id="shop">
+                <!-- Título -->
                 <legend id="shop__legend">Loja</legend>
                 <div id="shop__format">
-                <ul id="shop__itens">
-                    <li>+5 Vida Máxima</li>
-                    <li>+5 Força</li>
-                    <li>+5 Defesa</li>
-                    <li id="buyMaxMagic">+2 Magia Máxima</li>
-
-                    <li id="liSword">Liberar "Espada"</li>
-                    <li id="liSpear">Liberar "Lança"</li>
-                    
-                    <li id="liFire">Liberar "Fogo"</li>
-                    <li id="liIce">Liberar "Gelo"</li>
-                    <li id="liLightning">Liberr "Relâmpagos"</li>
-
-                    <li id="liPoisonArrows">Liberar "Flexas Envenenadas"</li>
-                    <li id="liFlamingArrows">Liberar "Flexas Flamejantes"</li>
-                    <li id="liRaysArrows">Liberar "Flexas de Raios"</li>
-                </ul>
-                <div id="shop__buybuttons">
-                    <button id="itemBuyMaxLife"><span class="shop__prices">10G</span> Comprar</button>
-                    <button id="itemBuyStrength"><span class="shop__prices">12G</span> Comprar</button>
-                    <button id="itemBuyDefense"><span class="shop__prices">12G</span> Comprar</button>
-                    <button id="itemBuyMaxMagic"><span class="shop__prices">16G</span> Comprar</button>
-
-                    <button id="itemBuyNewAttackSword"><span class="shop__prices">100G</span> Comprar</button>
-                    <button id="itemBuyNewAttackSpear"><span class="shop__prices">200G</span> Comprar</button>
-
-                    <button id="itemBuyNewAttackFire"><span class="shop__prices">100G</span> Comprar</button>
-                    <button id="itemBuyNewAttackIce"><span class="shop__prices">100G</span> Comprar</button>
-                    <button id="itemBuyNewAttackLightning"><span class="shop__prices">200G</span> Comprar</button>
-
-                    <button id="itemBuyNewAttackPoisonArrows"><span class="shop__prices">100G</span> Comprar</button>
-                    <button id="itemBuyNewAttackFlamingArrows"><span class="shop__prices">100G</span> Comprar</button>
-                    <button id="itemBuyNewAttackRaysArrows"><span class="shop__prices">200G</span> Comprar</button>
-                </div>
+                    <ul id="shop__itens">
+                        <!-- Comprar 5 de Vida Máxima -->
+                        <li>+5 Vida Máxima</li>
+                        <!-- Comprar 5 de Força -->
+                        <li>+5 Força</li>
+                        <!-- Comprar 5 de Defesa -->
+                        <li>+5 Defesa</li>
+                        <!-- Comprar 2 de Magia Máxima -->
+                        <li id="buyMaxMagic">+2 Magia Máxima</li>
+                        <!-- Liberar um ataque novo "Espada" -->
+                        <li id="liSword">Liberar "Espada"</li>
+                        <!-- Liberar um ataque novo "Lança" -->
+                        <li id="liSpear">Liberar "Lança"</li>
+                        <!-- Liberar um ataque novo "Fogo" -->
+                        <li id="liFire">Liberar "Fogo"</li>
+                        <!-- Liberar um ataque novo "Gelo" -->
+                        <li id="liIce">Liberar "Gelo"</li>
+                        <!-- Liberar um ataque novo "Relâmpagos" -->
+                        <li id="liLightning">Liberr "Relâmpagos"</li>
+                        <!-- Liberar um ataque novo "Flexas Envenenadas" -->
+                        <li id="liPoisonArrows">Liberar "Flexas Envenenadas"</li>
+                        <!-- Liberar um ataque novo "Flexas Flamejantes" -->
+                        <li id="liFlamingArrows">Liberar "Flexas Flamejantes"</li>
+                        <!-- Liberar um ataque novo "Flexas de Raios" -->
+                        <li id="liRaysArrows">Liberar "Flexas de Raios"</li>
+                    </ul>
+                    <!-- Botões para comprar -->
+                    <div id="shop__buybuttons">
+                        <!-- Botão para comprar Vida Máxima -->
+                        <button id="itemBuyMaxLife"><span class="shop__prices">10G</span> Comprar</button>
+                        <!-- Botão para comprar Força -->
+                        <button id="itemBuyStrength"><span class="shop__prices">12G</span> Comprar</button>
+                        <!-- Botão para comprar Defesa -->
+                        <button id="itemBuyDefense"><span class="shop__prices">12G</span> Comprar</button>
+                        <!-- Botão para comprar Magia Máxima -->
+                        <button id="itemBuyMaxMagic"><span class="shop__prices">16G</span> Comprar</button>
+                        <!-- Botão para comprar o ataque de "Espada" -->
+                        <button id="itemBuyNewAttackSword"><span class="shop__prices">100G</span> Comprar</button>
+                        <!-- Botão para comprar o ataque de "Lança" -->
+                        <button id="itemBuyNewAttackSpear"><span class="shop__prices">200G</span> Comprar</button>
+                        <!-- Botão para comprar o ataque de "Fogo" -->
+                        <button id="itemBuyNewAttackFire"><span class="shop__prices">100G</span> Comprar</button>
+                        <!-- Botão para comprar o ataque de "Gelo" -->
+                        <button id="itemBuyNewAttackIce"><span class="shop__prices">100G</span> Comprar</button>
+                        <!-- Botão para comprar o ataque de "Relâmpagos" -->
+                        <button id="itemBuyNewAttackLightning"><span class="shop__prices">200G</span> Comprar</button>
+                        <!-- Botão para comprar o ataque "Flexas Envenenadas" -->
+                        <button id="itemBuyNewAttackPoisonArrows"><span class="shop__prices">100G</span>
+                            Comprar</button>
+                        <!-- Botão para comprar o ataque "Flexas Flamejantes" -->
+                        <button id="itemBuyNewAttackFlamingArrows"><span class="shop__prices">100G</span>
+                            Comprar</button>
+                        <!-- Botão para comprar o ataque "Flexas de Raios" -->
+                        <button id="itemBuyNewAttackRaysArrows"><span class="shop__prices">200G</span> Comprar</button>
+                    </div>
                 </div>
             </fieldset>
         </div>
@@ -161,19 +235,25 @@
                 <!-- Magia do personagem -->
                 <div id="monsterMagic"></div>
             </div>
+            <!-- Habilidades do Monstro -->
             <div class="Skills">
+                <!-- Defesa do Monstro -->
                 <img src="/assets/images/Defesa.png" alt="Defesa" height="36px">
                 <p id="showMonsterDefense"></p>
+                <!-- Força do Monstro -->
                 <img src="/assets/images/Poder.png" alt="Força" height="36px">
                 <p id="showMonsterStrength"></p>
             </div>
         </div>
     </section>
-    <!-- Rodapé do site -->
+    <!-- Fim da Área do Jogo -->
+    <!-- Início do Rodapé do site -->
     <footer class="footer">
         <p>Todos os Direitos Reservados &#169;</p>
         <p>Site criado por Helder Meyer</p>
     </footer>
+    <!-- Fim do Rodapé do site -->
+    <!-- Scripts Incrementados -->
     <script src="assets/javascript/stage.js"></script>
     <script src="assets/javascript/default.js"></script>
     <script src="assets/javascript/wizard.js"></script>

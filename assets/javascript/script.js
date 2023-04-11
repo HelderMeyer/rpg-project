@@ -2,6 +2,24 @@ const startGame = document.querySelector('button#startButton')
 const continueButton = document.querySelector('#continueButton')
 const newGameButton = document.querySelector('#newGameButton')
 const chooseCharacterArea = document.querySelector('div#selectionCharacterArea')
+const resetButton = document.querySelector('#resetButton')
+
+resetButton.addEventListener('click', () => {
+    localStorage.removeItem('wizardInfo')
+    localStorage.removeItem('wizardAttacks')
+    localStorage.removeItem('archerInfo')
+    localStorage.removeItem('archerAttacks')
+    localStorage.removeItem('knightInfo')
+    localStorage.removeItem('knightAttacks')
+    localStorage.removeItem('monsterInfo')
+    localStorage.removeItem('gold')
+    localStorage.removeItem('firsttime')
+    localStorage.removeItem('monsterLevel')
+    localStorage.removeItem('continue')
+    localStorage.removeItem('characterClassType')
+    localStorage.removeItem('name')
+    location.reload()
+})
 
 startGame.addEventListener('click', () => {
     let continueGame = Number(localStorage.getItem('continue'))
@@ -16,6 +34,9 @@ startGame.addEventListener('click', () => {
     newGameButton.style.opacity = '1'
     newGameButton.style.transition = 'opacity 0.7s'
     setTimeout(() => { newGameButton.style.display = 'flex' }, 700)
+    resetButton.style.opacity = '1'
+    resetButton.style.transition = 'opacity 0.7s'
+    setTimeout(() => { resetButton.style.display = 'flex' }, 700)
 })
 
 class StartGame {
@@ -485,9 +506,12 @@ newGameButton.addEventListener('click', () => {
     continueButton.style.transition = 'opacity 0.7s'
     newGameButton.style.opacity = '0'
     newGameButton.style.transition = 'opacity 0.7s'
+    resetButton.style.opacity = '0'
+    resetButton.style.transition = 'opacity 0.7s'
     setTimeout(() => { 
         continueButton.style.display = 'none'
         newGameButton.style.display = 'none'
+        resetButton.style.display = 'none'
         chooseCharacterArea.style.display = '' 
     }, 700)
     // SALVAR AS INFORMAÇÕES DO MONSTRO NO LOCALSTORAGE

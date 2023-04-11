@@ -109,6 +109,11 @@ INPUT PARA ESCOLHER O TIPO DE PERSONAGEM
     background-color: var(--blue1);
 }
 
+#resetButton {
+    margin-top: 60px;
+    background-color: var(--blue3);
+}
+
 
 
 

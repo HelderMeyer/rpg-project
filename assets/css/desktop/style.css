@@ -347,7 +347,8 @@ BOTÃO CONTINUAR E NOVO JOGO
 }
 
 #continueButton,
-#newGameButton {
+#newGameButton,
+#resetButton {
     display: none;
     opacity: 0;
     transition: 0.7s;
