@@ -1,6 +1,9 @@
 // CLASSE "ARQUEIRA" - DERIVADO DA CLASSE "PERSONAGEM"
-let archerInfo = JSON.parse(localStorage.getItem('archerInfo') || '[]')
+
 // Import do localStorage para os atributos/habildades do "Arqueira"
+let archerInfo = JSON.parse(localStorage.getItem('archerInfo') || '[]')
+
+// Se o jogo for iniciado pela primeira vez, vai definir os seguintes atributos ao personagem "Arqueira"
 if(firstTime == null){
     // Habilidades da "Arqueira"
     archerInfo.push({

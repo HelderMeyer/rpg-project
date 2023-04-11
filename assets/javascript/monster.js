@@ -1,10 +1,15 @@
 // CLASSE "MONSTRO" - DERIVADO DA CLASSE "PERSONAGEM"
 
+// Import do localStorage para os atributos do "Monstro"
 let monsterInfo = JSON.parse(localStorage.getItem('monsterInfo') || '[]')
 
+// Se o jogo for iniciado pela primeira vez, vai definir os seguintes atributos ao personagem "Monstro"
 if(firstTime == null){
+    // Definir o gold como 0
     localStorage.setItem('gold', '0')
+    // Colocar na tela o valor de Gold
     document.querySelector('#myGold').innerHTML = `${Number(localStorage.getItem('gold'))}`
+    // Habilidades do "Monstro"
     monsterInfo.push({
         life: 80,
         maxLife: 80,
@@ -13,6 +18,7 @@ if(firstTime == null){
         magic: 0,
         maxMagic: 0
     });
+    // Salvar no localStorage
     localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
 }
 
