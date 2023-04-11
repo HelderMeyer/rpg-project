@@ -18,6 +18,7 @@ if (firstTime == null) {
     localStorage.setItem('knightInfo', JSON.stringify(knightInfo));
     // Import do localStorage para os ataques do "Cavaleiro"
     let knightAttacks = JSON.parse(localStorage.getItem('knightAttacks') || '[]')
+    // Ataques do "Cavaleiro"
     knightAttacks.push({
         punch: 1,
         sword: 0,
