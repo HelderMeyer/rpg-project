@@ -25,31 +25,21 @@ class Stage {
 
         let monsterLevel = localStorage.getItem('monsterLevel')
 
+        let attackingLife = 0
+
         if (localStorage.getItem('characterClassType') == 1) {
             actualAttack = ((knightInfo[0].strength * randomFactor) * Number(attackTypePercent)).toFixed(2)
+            actualCounterDefense = (knightInfo[0].defense * randomFactor).toFixed(2)
+            attackingLife = knightInfo[0].life
         } else if (localStorage.getItem('characterClassType') == 2) {
             actualAttack = (wizardInfo[0].strength * randomFactor).toFixed(2)
+            actualCounterDefense = (wizardInfo[0].defense * randomFactor).toFixed(2)
+            attackingLife = wizardInfo[0].life
         } else if (localStorage.getItem('characterClassType') == 3) {
             actualAttack = (archerInfo[0].strength * randomFactor).toFixed(2)
-        }
-
-        if (localStorage.getItem('characterClassType') == 1) {
-            actualCounterDefense = (knightInfo[0].defense * randomFactor).toFixed(2)
-        } else if (localStorage.getItem('characterClassType') == 2) {
-            actualCounterDefense = (wizardInfo[0].defense * randomFactor).toFixed(2)
-        } else if (localStorage.getItem('characterClassType') == 3) {
             actualCounterDefense = (archerInfo[0].defense * randomFactor).toFixed(2)
+            attackingLife = archerInfo[0].life
         }
-
-        /*
-        if (localStorage.getItem('characterClassType') == 1) {
-            
-        } else if (localStorage.getItem('characterClassType') == 2) {
-           
-        } else if (localStorage.getItem('characterClassType') == 3) {
-            
-        }
-        */
 
         if (weaponType === 'sword') { // Ataque de Espada
             weaponType = 'Espada'
@@ -73,16 +63,6 @@ class Stage {
             weaponType = 'Flexas Flamejantes'
         } else if (weaponType === 'raysarrow') {
             weaponType = 'Flexas de Raios'
-        }
-
-        let attackingLife = 0
-
-        if (localStorage.getItem('characterClassType') == 1) {
-            attackingLife = knightInfo[0].life
-        } else if (localStorage.getItem('characterClassType') == 2) {
-            attackingLife = wizardInfo[0].life
-        } else if (localStorage.getItem('characterClassType') == 3) {
-            attackingLife = archerInfo[0].life
         }
 
         if (attackingLife <= 0 || monsterInfo[0].life <= 0) { // Se a vida de quem ataca ou de quem foi atacado for menor ou igual a 0
@@ -460,46 +440,50 @@ class Stage {
         const ym = document.querySelector('#characterMagic') // ym = yourMagic (Sua magia) - BARRA DE MAGIA
         const mm = document.querySelector('#monsterMagic') // mm = monsterMagic (Magia do monstro) - BARRA DE MAGIA
 
+        let monsterLifePct = ((monsterInfo[0].life / monsterInfo[0].maxLife) * 100) // Vida do Monstro em %
+        let characterMagicPct = 0
+        let monsterMagicPct = ((monsterInfo[0].magic / monsterInfo[0].maxMagic) * 100) // Magia do Monstro em %
+
         // SUA BARRA DE VIDA E DO MONSTRO
         if (localStorage.getItem('characterClassType') == 1) {
             let characterLifePct = ((knightInfo[0].life / knightInfo[0].maxLife) * 100) // Vida do Personagem em %
             cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
-        } else if (localStorage.getItem('characterClassType') == 2) {
-            let characterLifePct = ((wizardInfo[0].life / wizardInfo[0].maxLife) * 100) // Vida do Personagem em %
-            cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
-        } else if (localStorage.getItem('characterClassType') == 3) {
-            let characterLifePct = ((archerInfo[0].life / archerInfo[0].maxLife) * 100) // Vida do Personagem em %
-            cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
-        }
-
-        let monsterLifePct = ((monsterInfo[0].life / monsterInfo[0].maxLife) * 100) // Vida do Monstro em %
-
-        // SUA BARRA DE MAGIA E A BARRA MAGIA DO MONSTRO
-        let characterMagicPct = 0
-        if (localStorage.getItem('characterClassType') == 1) {
             characterMagicPct = ((knightInfo[0].magic / knightInfo[0].maxMagic) * 100)
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${knightInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
+            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${knightInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
+            syd.innerHTML = `${knightInfo[0].defense} de defesa` // Exibir a defesa do personagem
+            syd.style.color = `aqua`
+            sys.innerHTML = `${knightInfo[0].strength} de força`// Exibir a força do personagem
+            sys.style.color = `red`
         } else if (localStorage.getItem('characterClassType') == 2) {
+            let characterLifePct = ((wizardInfo[0].life / wizardInfo[0].maxLife) * 100) // Vida do Personagem em %
+            cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
             characterMagicPct = ((wizardInfo[0].magic / wizardInfo[0].maxMagic) * 100)
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${wizardInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
+            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${wizardInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
+            syd.innerHTML = `${wizardInfo[0].defense} de defesa` // Exibir a defesa do personagem
+            syd.style.color = `aqua`
+            sys.innerHTML = `${wizardInfo[0].strength} de força`// Exibir a força do personagem
+            sys.style.color = `red`
         } else if (localStorage.getItem('characterClassType') == 3) {
+            let characterLifePct = ((archerInfo[0].life / archerInfo[0].maxLife) * 100) // Vida do Personagem em %
+            cl.style.width = `${characterLifePct}%` // Manipular a barra de vida de acordo com a porcentagem da vida do personagem
             characterMagicPct = ((archerInfo[0].magic / archerInfo[0].maxMagic) * 100)
             ym.style.width = `${characterMagicPct}%` // Manipular a barra de magia de acordo com a porcentagem de magia do personagem
             ym.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Magia.png" height="24px"><img><p>${archerInfo[0].magic.toFixed(0)} de magia</p></div>` // Exibir a magia do personagem dentro da barra de magia
+            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${archerInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
+            syd.innerHTML = `${archerInfo[0].defense} de defesa` // Exibir a defesa do personagem
+            syd.style.color = `aqua`
+            sys.innerHTML = `${archerInfo[0].strength} de força`// Exibir a força do personagem
+            sys.style.color = `red`
         }
 
-        let monsterMagicPct = ((monsterInfo[0].magic / monsterInfo[0].maxMagic) * 100) // Magia do Monstro em %
+        // SUA BARRA DE MAGIA E A BARRA MAGIA DO MONSTRO
 
         // VIDA NA TELA
-        if (localStorage.getItem('characterClassType') == 1) {
-            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${knightInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
-        } else if (localStorage.getItem('characterClassType') == 2) {
-            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${wizardInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
-        } else if (localStorage.getItem('characterClassType') == 3) {
-            cl.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${archerInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do personagem dentro da barra de vida
-        }
+        
 
         ml.innerHTML = `<div class="divBarsFormat"><img src="../assets/images/Vida.png" height="24px"><img><p>${monsterInfo[0].life.toFixed(0)} de vida</p></div>` // Exibir a vida do monstro dentro da barra de vida
         ml.style.width = `${monsterLifePct}%` // Manupular a barra de vida de acordo com a porcentagem da vida do monstro
@@ -510,22 +494,6 @@ class Stage {
         // FORÇA E DEFESA
         // ==============
 
-        if (localStorage.getItem('characterClassType') == 1) {
-            syd.innerHTML = `${knightInfo[0].defense} de defesa` // Exibir a defesa do personagem
-            syd.style.color = `aqua`
-            sys.innerHTML = `${knightInfo[0].strength} de força`// Exibir a força do personagem
-            sys.style.color = `red`
-        } else if (localStorage.getItem('characterClassType') == 2) {
-            syd.innerHTML = `${wizardInfo[0].defense} de defesa` // Exibir a defesa do personagem
-            syd.style.color = `aqua`
-            sys.innerHTML = `${wizardInfo[0].strength} de força`// Exibir a força do personagem
-            sys.style.color = `red`
-        } else if (localStorage.getItem('characterClassType') == 3) {
-            syd.innerHTML = `${archerInfo[0].defense} de defesa` // Exibir a defesa do personagem
-            syd.style.color = `aqua`
-            sys.innerHTML = `${archerInfo[0].strength} de força`// Exibir a força do personagem
-            sys.style.color = `red`
-        }
         smd.innerHTML = `${monsterInfo[0].defense} de defesa` // Exibir a defesa do monstro
         smd.style.color = `aqua`
         sms.innerHTML = `${monsterInfo[0].strength} de força` // Exibir a força do monstro
