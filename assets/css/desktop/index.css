@@ -118,6 +118,9 @@ BOTÃO PARA RESETAR O JOGO
     background-color: var(--blue3);
 }
 
+#resetButton:hover {
+    background-color: var(--blue4);
+}
 
 
 
