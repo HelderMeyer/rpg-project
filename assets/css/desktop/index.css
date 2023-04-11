@@ -109,6 +109,10 @@ INPUT PARA ESCOLHER O TIPO DE PERSONAGEM
     background-color: var(--blue1);
 }
 
+/*
+BOTÃO PARA RESETAR O JOGO
+*/
+
 #resetButton {
     margin-top: 60px;
     background-color: var(--blue3);
