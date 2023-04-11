@@ -1,4 +1,4 @@
-// CLASSE "CAVALEIRO" - DERIVADO DA CLASSE "PERSONAGEM"
+// CLASSE "MAGO" - DERIVADO DA CLASSE "PERSONAGEM"
 
 // Importar o localStorage com os atributos/habilidades do "Mago"
 let wizardInfo = JSON.parse(localStorage.getItem('wizardInfo') || '[]')
