@@ -1,66 +1,95 @@
 // ARÉA/EVENTOS DE LUTA/COMBATE
 
+// Variável que vai pegar a informação do localStorage (Se é a primeira vez que a pessoa está jogando)
 let firstTime = localStorage.getItem('firsttime')
 
+// Se for a primeira vez que a pessoa está jogando
 if (firstTime == null) {
+    // O nível do monstro vai para 0
     localStorage.setItem('monsterLevel', '0')
 }
 
+// Classe Stage (Onde as lutas acontecem)
 class Stage {
+    // Construtor que pega quem ataca, o monstro, a área envolvendo quem ataca (no html) e a área envolvendo o monstro (no html)
     constructor(fighter, monster, fighterElement, monsterElement) {
-        this.fighter = fighter // Lutador
+        this.fighter = fighter // Lutador/Cavaleiro/Mago/Arqueira
         this.fighterElement = fighterElement // Área do lutador no HTML
         this.monster = monster // Monstro
         this.monsterElement = monsterElement // Área do monstro no HTML
     }
-    eventAttack(attacking, attacked, weaponType, attackTypePercent) { // Evento que vai captar todos os ataques do personagem
-        let randomFactor = (Math.random() * 2).toFixed(2) //Fator que vai gerar números aleatórios, de até 2 casas decimais
-
+    // Método que vai efetuar os ataques (quem ataca, quem foi atacado, o tipo da arma e a porcentagem de dano daquela arma)
+    eventAttack(attacking, attacked, weaponType, attackTypePercent) { 
+        //Fator que vai gerar números aleatórios, de até 2 casas decimais
+        let randomFactor = (Math.random() * 2).toFixed(2) 
+        // O ataque do personagem começa com 0 de dano
         let actualAttack = 0
-
-        let actualDefense = (monsterInfo[0].defense * randomFactor).toFixed(2) // Defesa de quem é atacado vezes o fator de número aleatório, para gerar valores de defesa aleatórios
-        let actualCounterAttack = (monsterInfo[0].strength * randomFactor).toFixed(2) // Força de quem contraataca (o monstro) vezes o fator de ataque, para gerar valores de ataque aleatórios
-
+        // A defesa do monstro é multiplicada pelo fator aleatório, para gerar valores aleatórios de defesa
+        let actualDefense = (monsterInfo[0].defense * randomFactor).toFixed(2) 
+        // A defesa de quem ataca é multiplicada pelo fator aleatório, para gerar valores aleatórios de defesa
+        let actualCounterAttack = (monsterInfo[0].strength * randomFactor).toFixed(2) 
+        // A defesa do personagem começa em 0
         let actualCounterDefense = 0
-
+        // Variável para pegar o nível do monstro no localstorage
         let monsterLevel = localStorage.getItem('monsterLevel')
-
+        // A vida do personagem começa em 0
         let attackingLife = 0
-
+        // Se o personagem for o Cavaleiro (1)
         if (localStorage.getItem('characterClassType') == 1) {
+            // O ataque do cavaleiro será a força dele multiplicado pelo fator aleatório multiplicado pela taxa de dano da arma utilizada
             actualAttack = ((knightInfo[0].strength * randomFactor) * Number(attackTypePercent)).toFixed(2)
+            // A defensa do cavaleiro será a defesa dele multiplicado pela fator aleatório
             actualCounterDefense = (knightInfo[0].defense * randomFactor).toFixed(2)
+            // A vida do atacante será a do cavaleiro
             attackingLife = knightInfo[0].life
+            // Se o personagem for o Mago (2)
         } else if (localStorage.getItem('characterClassType') == 2) {
-            actualAttack = (wizardInfo[0].strength * randomFactor).toFixed(2)
+            // O ataque do mago será a força dele multiplicado pelo fator aleatório multiplicado pela taxa de dano da arma utilizada
+            actualAttack = ((wizardInfo[0].strength * randomFactor) * Number(attackTypePercent)).toFixed(2)
+            // A defensa do mago será a defesa dele multiplicado pela fator aleatório
             actualCounterDefense = (wizardInfo[0].defense * randomFactor).toFixed(2)
+            // A vida do atacante será a do mago
             attackingLife = wizardInfo[0].life
+            // Se o personagem for o Arqueira (3)
         } else if (localStorage.getItem('characterClassType') == 3) {
-            actualAttack = (archerInfo[0].strength * randomFactor).toFixed(2)
+            // O ataque da arqueira será a força dele multiplicado pelo fator aleatório multiplicado pela taxa de dano da arma utilizada
+            actualAttack = ((archerInfo[0].strength * randomFactor) * Number(attackTypePercent)).toFixed(2)
+            // A defensa da arqueira será a defesa dele multiplicado pela fator aleatório
             actualCounterDefense = (archerInfo[0].defense * randomFactor).toFixed(2)
+            // A vida da atacante será a da arqueira
             attackingLife = archerInfo[0].life
         }
-
-        if (weaponType === 'sword') { // Ataque de Espada
+        // O ataque será com a Espada
+        if (weaponType === 'sword') { 
             weaponType = 'Espada'
-        } else if (weaponType === 'spear') { // Ataque de Lança
+        // O ataque será com a Lança
+        } else if (weaponType === 'spear') { 
             weaponType = 'Lança'
-        } else if (weaponType === 'punch') { // Ataque de Faca
+        // O ataque será um Soco
+        } else if (weaponType === 'punch') {
             weaponType = 'Soco'
+        // O ataque será com o Cajado
         } else if (weaponType === 'crook') {
             weaponType = 'Cajado'
+        // O ataque será com Fogo
         } else if (weaponType === 'fire') {
             weaponType = 'Fogo'
+        // O ataque será com Gelo
         } else if (weaponType === 'ice') {
             weaponType = 'Gelo'
+        // O ataque será com Relâmpagos
         } else if (weaponType === 'lightning') {
             weaponType = 'Relâmpagos'
+        // O ataque será com Flexas Normais
         } else if (weaponType === 'normalarrow') {
             weaponType = 'Flexas'
+        // O ataque será com Flexas Envenenadas
         } else if (weaponType === 'poisonarrow') {
             weaponType = 'Flexas Envenenadas'
+        // O ataque será com Flexas Flamejantes
         } else if (weaponType === 'flamingarrow') {
             weaponType = 'Flexas Flamejantes'
+        // O ataque será com Flexas de Raios
         } else if (weaponType === 'raysarrow') {
             weaponType = 'Flexas de Raios'
         }
@@ -79,13 +108,13 @@ class Stage {
                     monsterInfo[0].life = 0 // Vida de quem ataca vai para 0
                     console.log(`O monstro recebeu ${actualAttack} de dano da ${weaponType}!`)
                     console.log(`O monstro está morto!`)
-                    monsterInfo[0].life = monsterInfo[0].life
-                    localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo));
-                    if (monsterInfo[0].life == 0) {
+                    monsterInfo[0].life = monsterInfo[0].life // A vida do monstro é atualizada
+                    localStorage.setItem('monsterInfo', JSON.stringify(monsterInfo)); // A vida do monstro será salvada
+                    if (monsterInfo[0].life == 0) { // Se a vida do monstro for igual a 0
                         let myLevelList = document.querySelector('#levelsList')
                         myLevelList.getElementsByTagName('li')[monsterLevel].style.backgroundColor = 'green'
                         myLevelList.getElementsByTagName('li')[monsterLevel].style.scale = '1'
-                        setTimeout(() => {
+                        setTimeout(() => { // O nível do monstro será atualizado
                             ++monsterLevel
                             localStorage.setItem('monsterLevel', monsterLevel.toString())
                             this.monsterLevel(monsterLevel)
